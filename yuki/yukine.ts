@@ -18,6 +18,7 @@ import {mult} from "./func/array/mult";
 import {multBy} from "./func/array/mult-by";
 import {div} from "./func/array/div";
 import {divBy} from "./func/array/div-by";
+import {divFrom} from "./func/array/div-from";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -39,6 +40,7 @@ mult.monkeyPatch();
 multBy.monkeyPatch();
 div.monkeyPatch();
 divBy.monkeyPatch();
+divFrom.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -166,4 +168,10 @@ console.log(divBy(ys, 3))
 
 console.log(xs.divBy(5))
 console.log(ys.divBy(3))
+
+console.log(divFrom(xs,4))
+console.log(divFrom(ys,-5))
+
+console.log(xs.divFrom(4))
+console.log(ys.divFrom(-5))
 */
