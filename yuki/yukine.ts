@@ -21,6 +21,7 @@ import {divBy} from "./func/array/div-by";
 import {divFrom} from "./func/array/div-from";
 import {sin} from "./func/array/sin";
 import {cos} from "./func/array/cos";
+import {tan} from "./func/array/tan";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -45,15 +46,12 @@ divBy.monkeyPatch();
 divFrom.monkeyPatch();
 sin.monkeyPatch();
 cos.monkeyPatch();
-
+tan.monkeyPatch();
 
 const doubler = n => n * 2;
 
 const xs = [1, 2, 3, 4, 5, 6];
-const ys = [-4, 2, -5, 10, -2, 0];
-
-
-
+const ys = [-4, 2, -5, 10, -2, 1];
 
 
 /*
@@ -192,4 +190,11 @@ console.log(ys.cos())
 
 console.log(xs.cos().pow(2).add(xs.sin().pow(2)))
 
+console.log(tan(xs))
+console.log(tan(ys))
+
+console.log(xs.tan())
+console.log(ys.tan())
+
+console.log(xs.sin().div(xs.cos()).div(xs.tan())) // sinx / cosx * tanx = 1
 */
