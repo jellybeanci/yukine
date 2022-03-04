@@ -54,6 +54,8 @@ const xs = [1, 2, 3, 4, 5, 6];
 const ys = [-4, 2, -5, 10, -2, 1];
 
 
+//`tan` Implemented and Tested.
+
 /*
 // DEBUB
 
