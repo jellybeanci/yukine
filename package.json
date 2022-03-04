@@ -1,0 +1,24 @@
+{
+  "name": "monkey-patch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node patch-js/test.js",
+    "build": "date +\"%T\" && echo \"Cleaning...\" && rm -rf ./patch-js && echo \"Compiling...\" && tsc && echo \"Done!\" && date +\"%T\" && echo \"~~~~~~~~~~~~~~~~\n\"",
+    "bundle": "npm run build && browserify --node --ignore-missing patch-js/test.ts | terser > bundle.js",
+    "compile": "npm run build && npm run start",
+    "run-on-ts-node": "ts-node patch/takes/sum-test.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/abbrev": "^1.1.2",
+    "abbrev": "^1.1.1"
+  },
+  "dependencies": {
+    "@jellybeanci/int": "^0.1.1",
+    "fast-equals": "^3.0.0"
+  }
+}

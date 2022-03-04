@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ESNext",
+    "sourceMap": false,
+    // default true
+    "outDir": "./patch-js",
+    "rootDir": "./patch",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "declaration": true,
+    // default false
+    "experimentalDecorators": true
+  },
+  "exclude": [
+    "node_modules",
+    "js",
+    "cte"
+  ]
+}
