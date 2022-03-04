@@ -1,19 +1,20 @@
-import {fastMap} from "./func/fast-map";
-import {abs} from "./func/abs";
-import {max} from "./func/max";
-import {min} from "./func/min";
-import {sum} from "./func/sum";
-import {prod} from "./func/prod";
-import {apply} from "./func/apply";
-import {pow} from "./func/pow";
-import {sqrt} from "./func/sqrt";
-import {exp} from "./func/exp";
-import {operation} from "./func/operation";
-import {add} from "./func/add";
-import {addBy} from "./func/add-by";
-import {sub} from "./func/sub";
-import {subBy} from "./func/sub-by";
-import {subFrom} from "./func/sub-from";
+import {fastMap} from "./func/array/fast-map";
+import {abs} from "./func/array/abs";
+import {max} from "./func/array/max";
+import {min} from "./func/array/min";
+import {sum} from "./func/array/sum";
+import {prod} from "./func/array/prod";
+import {apply} from "./func/array/apply";
+import {pow} from "./func/array/pow";
+import {sqrt} from "./func/array/sqrt";
+import {exp} from "./func/array/exp";
+import {operation} from "./func/array/operation";
+import {add} from "./func/array/add";
+import {addBy} from "./func/array/add-by";
+import {sub} from "./func/array/sub";
+import {subBy} from "./func/array/sub-by";
+import {subFrom} from "./func/array/sub-from";
+import {mult} from "./func/array/mult";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -30,16 +31,17 @@ add.monkeyPatch();
 addBy.monkeyPatch();
 sub.monkeyPatch();
 subBy.monkeyPatch();
-// subFrom
+subFrom.monkeyPatch();
+mult.monkeyPatch();
 
 const xs = [1, 2, 3, 4, 5, 6];
 const ys = [-4, 2, -5, 10, -2, 0];
 
+
 const doubler = n => n * 2;
 
-
-console.log(subFrom(xs, 10));
-console.log(subFrom(ys, 10));
+console.log(mult(xs, ys));
+console.log(xs.mult(ys));
 
 
 /*
@@ -115,21 +117,28 @@ console.log(exp(ys))
 console.log(xs.exp())
 console.log(ys.exp())
 
-console.log(operation(xs, ys, (a, b) => a + b));
-console.log(xs.operation(ys, (a, b) => a + b));
+console.log(operation(xs, ys, (a, b) => a + b))
+console.log(xs.operation(ys, (a, b) => a + b))
 
-console.log(add(xs, ys));
-console.log(xs.add(ys));
+console.log(add(xs, ys))
+console.log(xs.add(ys))
 
-console.log(sub(xs, ys));
-console.log(xs.sub(ys));
+console.log(sub(xs, ys))
+console.log(xs.sub(ys))
 
-console.log(addBy(xs, 1));
-console.log(addBy(ys, 1));
+console.log(addBy(xs, 1))
+console.log(addBy(ys, 1))
 
-console.log(subBy(xs, 2));
-console.log(subBy(ys, 2));
+console.log(subBy(xs, 2))
+console.log(subBy(ys, 2))
 
-console.log(xs.subBy(2));
-console.log(ys.subBy(2));
+console.log(xs.subBy(2))
+console.log(ys.subBy(2))
+
+console.log(subFrom(xs, 10))
+console.log(subFrom(ys, 10))
+
+console.log(xs.subFrom(10))
+console.log(ys.subFrom(10))
+
 */

@@ -2,14 +2,12 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "ESNext",
-    "sourceMap": false,
-    // default true
-    "outDir": "./patch-js",
-    "rootDir": "./patch",
+    "sourceMap": false, // default true
+    "outDir": "./yuki-js",
+    "rootDir": "./yuki",
     "moduleResolution": "node",
     "removeComments": true,
-    "declaration": true,
-    // default false
+    "declaration": true, // default false
     "experimentalDecorators": true
   },
   "exclude": [

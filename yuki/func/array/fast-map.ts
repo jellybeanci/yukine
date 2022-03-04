@@ -1,4 +1,4 @@
-import {safePrototypePatch} from "../define-prototype";
+import {safePrototypePatch} from "../../define-prototype";
 
 declare global {
     interface Array<T> {
