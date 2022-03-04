@@ -19,6 +19,7 @@ import {multBy} from "./func/array/mult-by";
 import {div} from "./func/array/div";
 import {divBy} from "./func/array/div-by";
 import {divFrom} from "./func/array/div-from";
+import {sin} from "./func/array/sin";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -41,16 +42,19 @@ multBy.monkeyPatch();
 div.monkeyPatch();
 divBy.monkeyPatch();
 divFrom.monkeyPatch();
+sin.monkeyPatch();
 
 const doubler = n => n * 2;
 
 const xs = [1, 2, 3, 4, 5, 6];
 const ys = [-4, 2, -5, 10, -2, 0];
 
+console.log(sin(xs))
+console.log(sin(ys))
 
 
-
-
+console.log(xs.sin())
+console.log(ys.sin())
 
 
 /*
