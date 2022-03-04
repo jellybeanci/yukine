@@ -15,6 +15,7 @@ import {sub} from "./func/array/sub";
 import {subBy} from "./func/array/sub-by";
 import {subFrom} from "./func/array/sub-from";
 import {mult} from "./func/array/mult";
+import {multBy} from "./func/array/mult-by";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -33,6 +34,7 @@ sub.monkeyPatch();
 subBy.monkeyPatch();
 subFrom.monkeyPatch();
 mult.monkeyPatch();
+multBy.monkeyPatch();
 
 const xs = [1, 2, 3, 4, 5, 6];
 const ys = [-4, 2, -5, 10, -2, 0];
@@ -40,8 +42,8 @@ const ys = [-4, 2, -5, 10, -2, 0];
 
 const doubler = n => n * 2;
 
-console.log(mult(xs, ys));
-console.log(xs.mult(ys));
+
+
 
 
 /*
@@ -140,5 +142,11 @@ console.log(subFrom(ys, 10))
 
 console.log(xs.subFrom(10))
 console.log(ys.subFrom(10))
+
+console.log(mult(xs, ys))
+console.log(xs.mult(ys))
+
+console.log(multBy(xs, 3))
+console.log(multBy(ys, 7))
 
 */
