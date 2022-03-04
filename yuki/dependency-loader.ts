@@ -36,7 +36,8 @@ function* iterate(array) {
     //     console.log(dependency)
     // }
     import("./func/array/abs").then(loaded => {
-        const method = Object.values(loaded)[0].monkeyPatch();
+        const method = Object.values(loaded)[0];
+        method.monkeyPatch();
         console.log([-1, 3, -5, 20, -10].abs());
     })
 })();
