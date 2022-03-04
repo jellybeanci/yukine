@@ -20,6 +20,7 @@ import {div} from "./func/array/div";
 import {divBy} from "./func/array/div-by";
 import {divFrom} from "./func/array/div-from";
 import {sin} from "./func/array/sin";
+import {cos} from "./func/array/cos";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -43,18 +44,16 @@ div.monkeyPatch();
 divBy.monkeyPatch();
 divFrom.monkeyPatch();
 sin.monkeyPatch();
+cos.monkeyPatch();
+
 
 const doubler = n => n * 2;
 
 const xs = [1, 2, 3, 4, 5, 6];
 const ys = [-4, 2, -5, 10, -2, 0];
 
-console.log(sin(xs))
-console.log(sin(ys))
 
 
-console.log(xs.sin())
-console.log(ys.sin())
 
 
 /*
@@ -178,4 +177,19 @@ console.log(divFrom(ys,-5))
 
 console.log(xs.divFrom(4))
 console.log(ys.divFrom(-5))
+
+console.log(sin(xs))
+console.log(sin(ys))
+
+console.log(xs.sin())
+console.log(ys.sin())
+
+console.log(cos(xs))
+console.log(cos(ys))
+
+console.log(xs.cos())
+console.log(ys.cos())
+
+console.log(xs.cos().pow(2).add(xs.sin().pow(2)))
+
 */
