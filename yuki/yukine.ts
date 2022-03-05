@@ -24,6 +24,7 @@ import {cos} from "./func/array/cos";
 import {tan} from "./func/array/tan";
 import {arrayEquals} from "./func/array/array-equals";
 import {deepEquals} from "./func/array/deep-equals";
+import {swap} from "./func/array/swap";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -51,6 +52,7 @@ cos.monkeyPatch();
 tan.monkeyPatch();
 arrayEquals.monkeyPatch();
 deepEquals.monkeyPatch();
+swap.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -60,7 +62,6 @@ const zs = [1, 2, 3, 4, 5, 6];
 
 const ls = [1, 2, 3, [4, 5], 6, 7];
 const ms = [1, 2, 3, [4, 5], 6, 7];
-
 
 
 /*
@@ -218,4 +219,16 @@ console.log("arrayEquals:", zs.equals(xs), "\t===:", zs === xs)
 console.log("===:", ls === ms)
 console.log("deepEquals:", deepEquals(ls, ms))
 console.log("Array.deepEquals:", ls.deepEquals(ms))
+
+console.log("xs, before swap:", xs)
+swap(xs, 0, 1);
+console.log("xs, after swap: ", xs)
+
+console.log("ls, before swap:", ls)
+swap(ls, 3, 0);
+console.log("ls, after swap: ", ls)
+
+console.log("xs, before swap:", xs)
+xs.swap(0, 1);
+console.log("xs, after swap: ", xs)
 */
