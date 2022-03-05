@@ -27,6 +27,7 @@ import {deepEquals} from "./func/array/deep-equals";
 import {swap} from "./func/array/swap";
 import {PrimitiveType} from "./func/array/types/primitive-type";
 import {zip} from "./func/array/zip";
+import {binarize} from "./func/array/binarize";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -56,6 +57,9 @@ arrayEquals.monkeyPatch();
 deepEquals.monkeyPatch();
 swap.monkeyPatch();
 zip.monkeyPatch();
+binarize.monkeyPatch();
+
+
 
 const doubler = n => n * 2;
 
@@ -71,9 +75,17 @@ const zfs: PrimitiveType[][] = [
     ["b", 2, "y"],
     ["c", 3, "z"]
 ];
-console.log(zfs)
-console.log(zip(zfs))
-console.log(zfs.zip())
+
+const bitStr = [true, false, false, true, false, false, false, false, true, true, false, true];
+const garbageArray = [true, 1, 0, "", NaN, Infinity, 5000, 42, "meaning of life"];
+
+console.log("bitStr:", binarize(bitStr));
+console.log("garbageArray:", binarize(garbageArray));
+
+
+console.log("bitStr:", bitStr.binarize());
+console.log("garbageArray:", garbageArray.binarize());
+
 /*
 // DEBUG
 
@@ -241,4 +253,8 @@ console.log("ls, after swap: ", ls)
 console.log("xs, before swap:", xs)
 xs.swap(0, 1);
 console.log("xs, after swap: ", xs)
+
+console.log(zfs)
+console.log(zip(zfs))
+console.log(zfs.zip())
 */
