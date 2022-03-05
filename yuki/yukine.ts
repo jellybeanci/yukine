@@ -25,6 +25,8 @@ import {tan} from "./func/array/tan";
 import {arrayEquals} from "./func/array/array-equals";
 import {deepEquals} from "./func/array/deep-equals";
 import {swap} from "./func/array/swap";
+import {PrimitiveType} from "./func/array/types/primitive-type";
+import {zip} from "./func/array/zip";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -53,6 +55,7 @@ tan.monkeyPatch();
 arrayEquals.monkeyPatch();
 deepEquals.monkeyPatch();
 swap.monkeyPatch();
+zip.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -63,7 +66,14 @@ const zs = [1, 2, 3, 4, 5, 6];
 const ls = [1, 2, 3, [4, 5], 6, 7];
 const ms = [1, 2, 3, [4, 5], 6, 7];
 
-
+const zfs: PrimitiveType[][] = [
+    ["a", 1, "x"],
+    ["b", 2, "y"],
+    ["c", 3, "z"]
+];
+console.log(zfs)
+console.log(zip(zfs))
+console.log(zfs.zip())
 /*
 // DEBUG
 

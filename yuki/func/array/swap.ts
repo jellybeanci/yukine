@@ -1,4 +1,3 @@
-import {PrimitiveType} from "./types/primitive-type";
 import {safePrototypePatch} from "../../define-prototype";
 
 declare global {
