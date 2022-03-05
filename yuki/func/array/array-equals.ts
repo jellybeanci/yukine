@@ -7,15 +7,15 @@ declare global {
     }
 }
 
-equals.monkeyPatch = (): void => {
-    safePrototypePatch(Array, 'equals',
+arrayEquals.monkeyPatch = (): void => {
+    safePrototypePatch(Array, 'arrayEquals',
         function (other: PrimitiveType[]) {
-            return equals(this, other);
+            return arrayEquals(this, other);
         }
     );
 }
 
-export function equals(thisArray: PrimitiveType[], other: PrimitiveType[]): boolean {
+export function arrayEquals(thisArray: PrimitiveType[], other: PrimitiveType[]): boolean {
     if (thisArray.length !== other.length) return false;
     for (let i = 0, len = thisArray.length; i < len; i++) {
         if (thisArray[i] !== other[i]) return false;
