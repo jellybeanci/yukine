@@ -22,6 +22,7 @@ import {divFrom} from "./func/array/div-from";
 import {sin} from "./func/array/sin";
 import {cos} from "./func/array/cos";
 import {tan} from "./func/array/tan";
+import {equals} from "./func/array/equals";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -47,17 +48,19 @@ divFrom.monkeyPatch();
 sin.monkeyPatch();
 cos.monkeyPatch();
 tan.monkeyPatch();
+equals.monkeyPatch();
 
 const doubler = n => n * 2;
 
 const xs = [1, 2, 3, 4, 5, 6];
 const ys = [-4, 2, -5, 10, -2, 1];
+const zs = [1, 2, 3, 4, 5, 6];
 
 
-//`tan` Implemented and Tested.
 
 
-// DEBUB
+/*
+// DEBUG
 
 console.log(fastMap(xs, doubler))
 console.log(xs.fastMap(doubler))
@@ -199,3 +202,13 @@ console.log(xs.tan())
 console.log(ys.tan())
 
 console.log(xs.sin().div(xs.cos()).div(xs.tan())) // sinx / cosx * tanx = 1
+
+console.log("equals:", equals(xs, ys), "\t===:", xs === ys)
+console.log("equals:", equals(ys, zs), "\t===:", ys === zs)
+console.log("equals:", equals(zs, xs), "\t===:", zs === xs)
+console.log("~~~~")
+console.log("equals:", xs.equals(ys), "\t===:", xs === ys)
+console.log("equals:", ys.equals(zs), "\t===:", ys === zs)
+console.log("equals:", zs.equals(xs), "\t===:", zs === xs)
+
+*/
