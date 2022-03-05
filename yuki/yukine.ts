@@ -56,7 +56,7 @@ const ys = [-4, 2, -5, 10, -2, 1];
 
 //`tan` Implemented and Tested.
 
-/*
+
 // DEBUB
 
 console.log(fastMap(xs, doubler))
@@ -199,4 +199,3 @@ console.log(xs.tan())
 console.log(ys.tan())
 
 console.log(xs.sin().div(xs.cos()).div(xs.tan())) // sinx / cosx * tanx = 1
-*/

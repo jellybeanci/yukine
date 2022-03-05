@@ -1,0 +1,1 @@
+export type CallbackfnOP = (thisValue: number, otherValue: number) => number

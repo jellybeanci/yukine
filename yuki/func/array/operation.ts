@@ -1,13 +1,10 @@
 import {safePrototypePatch} from "../../define-prototype";
 import {fastMap} from "./fast-map";
+import {CallbackfnOP} from "./types/callback-op";
 
 fastMap.monkeyPatch();
 
 declare global {
-    interface CallbackfnOP {
-        (thisValue: number, otherValue: number): number;
-    }
-
     interface Array<T> {
         operation(other: number[], callbackfn: CallbackfnOP): number[];
     }
