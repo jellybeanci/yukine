@@ -8,7 +8,7 @@ declare global {
 }
 
 arrayEquals.monkeyPatch = (): void => {
-    safePrototypePatch(Array, 'arrayEquals',
+    safePrototypePatch(Array, 'equals',
         function (other: PrimitiveType[]) {
             return arrayEquals(this, other);
         }
