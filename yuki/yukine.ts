@@ -28,6 +28,7 @@ import {swap} from "./func/array/swap";
 import {zip} from "./func/array/zip";
 import {binarize} from "./func/array/binarize";
 import {PrimitiveType} from "./func/array/types/primitive-type";
+import {toInt} from "./func/array/to-int";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -45,7 +46,6 @@ addBy.monkeyPatch();
 sub.monkeyPatch();
 subBy.monkeyPatch();
 subFrom.monkeyPatch();
-
 mult.monkeyPatch();
 multBy.monkeyPatch();
 div.monkeyPatch();
@@ -59,7 +59,7 @@ deepEquals.monkeyPatch();
 swap.monkeyPatch();
 zip.monkeyPatch();
 binarize.monkeyPatch();
-
+toInt.monkeyPatch();
 
 
 const doubler = n => n * 2;
@@ -68,6 +68,8 @@ const xs = [1, 2, 3, 4, 5, 6];
 const ys = [-4, 2, -5, 10, -2, 1];
 
 const zs = [1, 2, 3, 4, 5, 6];
+
+const ks = [1.2, 2.3, 3.4, 4.5, -5.6, 0];
 
 const ls = [1, 2, 3, [4, 5], 6, 7];
 const ms = [1, 2, 3, [4, 5], 6, 7];
@@ -80,6 +82,14 @@ const zfs: PrimitiveType[][] = [
 
 const bitStr = [true, false, false, true, false, false, false, false, true, true, false, true];
 const garbageArray = [true, 1, 0, "", NaN, Infinity, 5000, 42, "meaning of life"];
+
+
+console.log(toInt(ks))
+console.log(toInt(ks.multBy(Math.PI)))
+
+ks.toInt()
+ks.multBy(Math.PI).toInt()
+
 
 /*
 // DEBUG
@@ -261,4 +271,20 @@ console.log("garbageArray:", binarize(garbageArray))
 
 console.log("bitStr:", bitStr.binarize())
 console.log("garbageArray:", garbageArray.binarize())
+*/
+
+/*
+```js
+
+```
+
+```console
+
+```
+
+Implemented with commit .
+ */
+
+/*
+Implement `mod` method into `Array<T>` prototype.
 */
