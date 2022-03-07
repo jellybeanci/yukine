@@ -35,6 +35,7 @@ import {mod} from "./func/array/mod";
 import {round} from "./func/array/round";
 import {ceil} from "./func/array/ceil";
 import {floor} from "./func/array/floor";
+import {cbrt} from "./func/array/cbrt";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -72,7 +73,7 @@ mod.monkeyPatch();
 round.monkeyPatch();
 ceil.monkeyPatch();
 floor.monkeyPatch();
-
+cbrt.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -80,6 +81,8 @@ const xs = [1, 2, 3, 4, 5, 6];
 const ys = [-4, 2, -5, 10, -2, 1];
 
 const zs = [1, 2, 3, 4, 5, 6];
+
+const hs = [1, 8, 27, 64, 125, 216, 343, 512];
 
 const ks = [1.2, 2.3, 3.4, 4.5, -5.6, 0];
 
@@ -95,8 +98,6 @@ const zfs: PrimitiveType[][] = [
 const bitStr = [true, false, false, true, false, false, false, false, true, true, false, true];
 const garbageArray = [true, 1, 0, "", NaN, Infinity, 5000, 42, "meaning of life"];
 
-console.log(floor(ks))
-console.log(ks.floor())
 
 
 
@@ -304,6 +305,11 @@ console.log(ks.round())
 console.log(ceil(ks))
 console.log(ks.ceil())
 
+console.log(floor(ks))
+console.log(ks.floor())
+
+console.log(cbrt(hs))
+console.log(hs.cbrt())
 */
 
 /*
