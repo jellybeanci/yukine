@@ -32,6 +32,7 @@ import {PrimitiveType} from "./func/array/types/primitive-type";
 import {square} from "./func/array/square";
 import {cube} from "./func/array/cube";
 import {mod} from "./func/array/mod";
+import {round} from "./func/array/round";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -66,6 +67,7 @@ toInt.monkeyPatch();
 square.monkeyPatch();
 cube.monkeyPatch();
 mod.monkeyPatch();
+round.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -88,8 +90,8 @@ const zfs: PrimitiveType[][] = [
 const bitStr = [true, false, false, true, false, false, false, false, true, true, false, true];
 const garbageArray = [true, 1, 0, "", NaN, Infinity, 5000, 42, "meaning of life"];
 
-console.log(mod(xs, 3));
-console.log(xs.mod(3));
+console.log(round(ks))
+console.log(ks.round())
 
 
 // const fizBuzz = [...Array(100)].fastMap((v, i) => i % 15 === 0 ? "fizbuz" : i % 3 === 0 ? "fiz" : i % 5 === 0 ? "buz" : "" + i);
@@ -284,9 +286,11 @@ console.log(ks.multBy(Math.PI).toInt())
 console.log(square(xs))
 console.log(xs.square())
 
-console.log(cube(xs));
-console.log(xs.cube());
+console.log(cube(xs))
+console.log(xs.cube())
 
+console.log(mod(xs, 3))
+console.log(xs.mod(3))
 
 */
 
