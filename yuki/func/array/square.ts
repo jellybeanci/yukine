@@ -8,7 +8,7 @@ declare global {
 
 square.monkeyPatch = (): void => {
     safePrototypePatch(Array, 'square',
-        function (initialValue?: number) {
+        function () {
             return square(this);
         }
     );
