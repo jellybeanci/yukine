@@ -30,6 +30,7 @@ import {binarize} from "./func/array/binarize";
 import {toInt} from "./func/array/to-int";
 import {PrimitiveType} from "./func/array/types/primitive-type";
 import {square} from "./func/array/square";
+import {cube} from "./func/array/cube";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -62,6 +63,7 @@ zip.monkeyPatch();
 binarize.monkeyPatch();
 toInt.monkeyPatch();
 square.monkeyPatch();
+cube.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -84,8 +86,9 @@ const zfs: PrimitiveType[][] = [
 const bitStr = [true, false, false, true, false, false, false, false, true, true, false, true];
 const garbageArray = [true, 1, 0, "", NaN, Infinity, 5000, 42, "meaning of life"];
 
-console.log(square(xs))
-console.log(xs.square())
+
+console.log(cube(xs));
+console.log(xs.cube());
 
 
 
