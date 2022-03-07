@@ -34,6 +34,7 @@ import {cube} from "./func/array/cube";
 import {mod} from "./func/array/mod";
 import {round} from "./func/array/round";
 import {ceil} from "./func/array/ceil";
+import {floor} from "./func/array/floor";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -70,6 +71,7 @@ cube.monkeyPatch();
 mod.monkeyPatch();
 round.monkeyPatch();
 ceil.monkeyPatch();
+floor.monkeyPatch();
 
 
 const doubler = n => n * 2;
@@ -93,8 +95,10 @@ const zfs: PrimitiveType[][] = [
 const bitStr = [true, false, false, true, false, false, false, false, true, true, false, true];
 const garbageArray = [true, 1, 0, "", NaN, Infinity, 5000, 42, "meaning of life"];
 
-console.log(ceil(ks));
-console.log(ks.ceil());
+console.log(floor(ks))
+console.log(ks.floor())
+
+
 
 // const fizBuzz = [...Array(100)].fastMap((v, i) => i % 15 === 0 ? "fizbuz" : i % 3 === 0 ? "fiz" : i % 5 === 0 ? "buz" : "" + i);
 
@@ -297,6 +301,9 @@ console.log(xs.mod(3))
 console.log(round(ks))
 console.log(ks.round())
 
+console.log(ceil(ks))
+console.log(ks.ceil())
+
 */
 
 /*
@@ -314,3 +321,7 @@ console.log(ks.round())
 /*
 Implement `mod` method into `Array<T>` prototype.
 */
+
+/*
+Implemented with commit .
+ */

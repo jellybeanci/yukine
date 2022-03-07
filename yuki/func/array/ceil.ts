@@ -1,6 +1,5 @@
 import {safePrototypePatch} from "../../define-prototype";
 import {fastMap} from "./fast-map";
-import {int} from "@jellybeanci/int";
 
 fastMap.monkeyPatch();
 
