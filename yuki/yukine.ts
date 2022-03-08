@@ -40,6 +40,7 @@ import {stringEquals} from "./func/string/string-equals";
 import {deg2rad} from "./func/math/deg2rad";
 import {QUARTER_PI} from "./func/math/constants/quarter-pi";
 import {defineConstants} from "./func/math/define-constants";
+import {HALF_PI} from "./func/math/constants/half-pi";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -111,8 +112,7 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
-console.log(QUARTER_PI);
-console.log(Math.QUARTER_PI);
+
 
 // DEBUG
 /*
@@ -346,6 +346,12 @@ console.log(Math.deg2rad(90))
 console.log(Math.deg2rad(180))
 console.log(Math.deg2rad(-45))
 console.log(Math.deg2rad(270))
+
+console.log(QUARTER_PI)
+console.log(Math.QUARTER_PI)
+
+console.log(HALF_PI)
+console.log(Math.HALF_PI)
 */
 
 /*
