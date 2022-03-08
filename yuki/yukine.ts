@@ -49,6 +49,7 @@ import {randomGaussianRange} from "./func/math/random-gaussian-range";
 import {randomBoolean} from "./func/math/random-boolean";
 import {randomInt} from "./func/math/random-int";
 import {cot} from "./func/math/cot";
+import {cotd} from "./func/math/cotd";
 
 
 fastMap.monkeyPatch();
@@ -98,6 +99,7 @@ randomGaussianRange.monkeyPatch();
 randomBoolean.monkeyPatch();
 randomInt.monkeyPatch();
 cot.monkeyPatch();
+cotd.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -128,6 +130,13 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
+console.log(cotd(90))
+console.log(cotd(45))
+console.log(cotd(60))
+
+console.log(Math.cotd(90))
+console.log(Math.cotd(45))
+console.log(Math.cotd(60))
 
 /*
 ```js
