@@ -41,6 +41,7 @@ import {deg2rad} from "./func/math/deg2rad";
 import {QUARTER_PI} from "./func/math/constants/quarter-pi";
 import {defineConstants} from "./func/math/define-constants";
 import {HALF_PI} from "./func/math/constants/half-pi";
+import {TWO_PI} from "./func/math/constants/two-pi";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -112,7 +113,8 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
-
+console.log(TWO_PI)
+console.log(Math.TWO_PI)
 
 // DEBUG
 /*
