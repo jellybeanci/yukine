@@ -38,6 +38,8 @@ import {floor} from "./func/array/floor";
 import {cbrt} from "./func/array/cbrt";
 import {stringEquals} from "./func/string/string-equals";
 import {deg2rad} from "./func/math/deg2rad";
+import {QUARTER_PI} from "./func/math/constants/quarter-pi";
+import {defineConstants} from "./func/math/define-constants";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -78,6 +80,7 @@ floor.monkeyPatch();
 cbrt.monkeyPatch();
 stringEquals.monkeyPatch();
 deg2rad.monkeyPatch();
+defineConstants.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -108,16 +111,9 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
+console.log(QUARTER_PI);
+console.log(Math.QUARTER_PI);
 
-console.log(deg2rad(90))
-console.log(deg2rad(180))
-console.log(deg2rad(-45))
-console.log(deg2rad(270))
-console.log("~~~~")
-console.log(Math.deg2rad(90))
-console.log(Math.deg2rad(180))
-console.log(Math.deg2rad(-45))
-console.log(Math.deg2rad(270))
 // DEBUG
 /*
 
@@ -338,6 +334,18 @@ console.log("s1:", s1, "s2:", s2)
 console.log("s1 === s2:", s1 === s2)
 console.log("stringEquals(s1, s2):", stringEquals(s1, s2))
 console.log("s1.equals(s2):", s1.equals(s2))
+
+console.log(deg2rad(90))
+console.log(deg2rad(180))
+console.log(deg2rad(-45))
+console.log(deg2rad(270))
+
+console.log("~~~~")
+
+console.log(Math.deg2rad(90))
+console.log(Math.deg2rad(180))
+console.log(Math.deg2rad(-45))
+console.log(Math.deg2rad(270))
 */
 
 /*
