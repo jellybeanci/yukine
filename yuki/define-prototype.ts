@@ -1,5 +1,5 @@
 interface HasPrototype {
-    prototype: any[];
+    prototype: any[] | String | Number;
 }
 
 type ValueMember = string | number | bigint | boolean | symbol | Function;
