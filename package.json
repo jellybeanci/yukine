@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@jellybeanci/int": "^0.1.1",
+    "@jellybeanci/random": "^0.1.1",
     "fast-equals": "^3.0.0"
   }
 }

@@ -42,6 +42,7 @@ import {QUARTER_PI} from "./func/math/constants/quarter-pi";
 import {defineConstants} from "./func/math/define-constants";
 import {HALF_PI} from "./func/math/constants/half-pi";
 import {TWO_PI} from "./func/math/constants/two-pi";
+import {randomRange} from "./func/math/random-range";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -83,6 +84,7 @@ cbrt.monkeyPatch();
 stringEquals.monkeyPatch();
 deg2rad.monkeyPatch();
 defineConstants.monkeyPatch();
+randomRange.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -113,8 +115,6 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
-console.log(TWO_PI)
-console.log(Math.TWO_PI)
 
 // DEBUG
 /*
@@ -354,6 +354,12 @@ console.log(Math.QUARTER_PI)
 
 console.log(HALF_PI)
 console.log(Math.HALF_PI)
+
+console.log(TWO_PI)
+console.log(Math.TWO_PI)
+
+console.log(randomRange(69, 420))
+console.log(Math.randomRange(69, 420))
 */
 
 /*
