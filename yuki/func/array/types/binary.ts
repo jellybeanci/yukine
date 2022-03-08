@@ -1,1 +1,1 @@
-export type Binary = 0 | 1;
+export type Binary = 0 | 1

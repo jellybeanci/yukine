@@ -1,1 +1,1 @@
-export type PrimitiveType = number | string | bigint | boolean; // no symbols because symbols are mostly unique by design
+export type PrimitiveType = number | string | bigint | boolean // no symbols because symbols are unique by design
