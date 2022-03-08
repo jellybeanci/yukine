@@ -1,3 +1,4 @@
+import {PrimitiveType} from "./func/array/types/primitive-type";
 import {fastMap} from "./func/array/fast-map";
 import {abs} from "./func/array/abs";
 import {max} from "./func/array/max";
@@ -27,8 +28,32 @@ import {deepEquals} from "./func/array/deep-equals";
 import {swap} from "./func/array/swap";
 import {zip} from "./func/array/zip";
 import {binarize} from "./func/array/binarize";
-import {PrimitiveType} from "./func/array/types/primitive-type";
 import {toInt} from "./func/array/to-int";
+import {arraySquare} from "./func/array/array-square";
+import {arrayCube} from "./func/array/array-cube";
+import {mod} from "./func/array/mod";
+import {round} from "./func/array/round";
+import {ceil} from "./func/array/ceil";
+import {floor} from "./func/array/floor";
+import {cbrt} from "./func/array/cbrt";
+import {stringEquals} from "./func/string/string-equals";
+import {deg2rad} from "./func/math/deg2rad";
+import {QUARTER_PI} from "./func/math/constants/quarter-pi";
+import {HALF_PI} from "./func/math/constants/half-pi";
+import {TWO_PI} from "./func/math/constants/two-pi";
+import {defineConstants} from "./func/math/define-constants";
+import {randomRange} from "./func/math/random-range";
+import {rad2deg} from "./func/math/rad2deg";
+import {randomGaussian} from "./func/math/random-gaussian";
+import {randomGaussianRange} from "./func/math/random-gaussian-range";
+import {randomBoolean} from "./func/math/random-boolean";
+import {randomInt} from "./func/math/random-int";
+import {cot} from "./func/math/cot";
+import {cotd} from "./func/math/cotd";
+import {cube} from "./func/math/cube";
+import {square} from "./func/math/square";
+import {numberEquals} from "./func/number/number-equals";
+
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -60,7 +85,27 @@ swap.monkeyPatch();
 zip.monkeyPatch();
 binarize.monkeyPatch();
 toInt.monkeyPatch();
-
+arraySquare.monkeyPatch();
+arrayCube.monkeyPatch();
+mod.monkeyPatch();
+round.monkeyPatch();
+ceil.monkeyPatch();
+floor.monkeyPatch();
+cbrt.monkeyPatch();
+stringEquals.monkeyPatch();
+defineConstants.monkeyPatch();
+deg2rad.monkeyPatch();
+rad2deg.monkeyPatch();
+randomRange.monkeyPatch();
+randomGaussian.monkeyPatch();
+randomGaussianRange.monkeyPatch();
+randomBoolean.monkeyPatch();
+randomInt.monkeyPatch();
+cot.monkeyPatch();
+cotd.monkeyPatch();
+square.monkeyPatch();
+cube.monkeyPatch();
+numberEquals.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -68,6 +113,8 @@ const xs = [1, 2, 3, 4, 5, 6];
 const ys = [-4, 2, -5, 10, -2, 1];
 
 const zs = [1, 2, 3, 4, 5, 6];
+
+const hs = [1, 8, 27, 64, 125, 216, 343, 512];
 
 const ks = [1.2, 2.3, 3.4, 4.5, -5.6, 0];
 
@@ -83,17 +130,43 @@ const zfs: PrimitiveType[][] = [
 const bitStr = [true, false, false, true, false, false, false, false, true, true, false, true];
 const garbageArray = [true, 1, 0, "", NaN, Infinity, 5000, 42, "meaning of life"];
 
+const s1 = '\u00F1'; // ñ
+const s2 = '\u006E\u0303'; // ñ = n + ̃
 
-console.log(toInt(ks))
-console.log(toInt(ks.multBy(Math.PI)))
+const str1 = new String("Ohh, Hi Mark!");
+const str2 = new String("Ohh, Hi Mark!");
 
-ks.toInt()
-ks.multBy(Math.PI).toInt()
 
+console.log(numberEquals(0, 1e-15, 1e-5))
+console.log(numberEquals(0, 1e-150))
+console.log(numberEquals(5, 5.005, 0.2))
+console.log("~~~~")
+const x = 0;
+const y = 5;
+console.log(x.equals(1e-15, 1e-5))
+console.log(x.equals(1e-150))
+console.log(y.equals(5.005, 0.2))
 
 /*
-// DEBUG
+```js
 
+```
+
+```console
+
+```
+ */
+
+/*
+Implement `mod` method into `Array<T>` prototype.
+*/
+
+/*
+Implemented with commit .
+ */
+
+// DEBUG
+/*
 console.log(fastMap(xs, doubler))
 console.log(xs.fastMap(doubler))
 
@@ -271,20 +344,122 @@ console.log("garbageArray:", binarize(garbageArray))
 
 console.log("bitStr:", bitStr.binarize())
 console.log("garbageArray:", garbageArray.binarize())
-*/
 
-/*
-```js
+console.log(toInt(ks))
+console.log(toInt(ks.multBy(Math.PI)))
 
-```
+console.log(ks.toInt())
+console.log(ks.multBy(Math.PI).toInt())
 
-```console
+console.log(arraySquare(xs))
+console.log(xs.square())
 
-```
+console.log(arrayCube(xs))
+console.log(xs.cube())
 
-Implemented with commit .
- */
+console.log(mod(xs, 3))
+console.log(xs.mod(3))
 
-/*
-Implement `mod` method into `Array<T>` prototype.
+console.log(round(ks))
+console.log(ks.round())
+
+console.log(ceil(ks))
+console.log(ks.ceil())
+
+console.log(floor(ks))
+console.log(ks.floor())
+
+console.log(cbrt(hs))
+console.log(hs.cbrt())
+
+console.log("str1:", str1, "str2:", str2)
+console.log("str1 === str2:", str1 === str2)
+console.log("stringEquals(str1, str2):", stringEquals(str1, str2))
+console.log("str1.equals(str2):", str1.equals(str2))
+
+console.log("~~~~~")
+
+console.log("s1:", s1, "s2:", s2)
+// @ts-ignore
+console.log("s1 === s2:", s1 === s2)
+console.log("stringEquals(s1, s2):", stringEquals(s1, s2))
+console.log("s1.equals(s2):", s1.equals(s2))
+
+console.log(deg2rad(90))
+console.log(deg2rad(180))
+console.log(deg2rad(-45))
+console.log(deg2rad(270))
+
+console.log("~~~~")
+
+console.log(Math.deg2rad(90))
+console.log(Math.deg2rad(180))
+console.log(Math.deg2rad(-45))
+console.log(Math.deg2rad(270))
+
+console.log(QUARTER_PI)
+console.log(Math.QUARTER_PI)
+
+console.log(HALF_PI)
+console.log(Math.HALF_PI)
+
+console.log(TWO_PI)
+console.log(Math.TWO_PI)
+
+console.log(randomRange(69, 420))
+console.log(Math.randomRange(69, 420))
+
+console.log(rad2deg(Math.PI))
+console.log(rad2deg(Math.TWO_PI))
+console.log(rad2deg(Math.HALF_PI))
+console.log(rad2deg(Math.QUARTER_PI))
+console.log(rad2deg(Math.HALF_PI + Math.QUARTER_PI))
+
+console.log("~~~")
+
+console.log(rad2deg(deg2rad(90)))
+console.log(rad2deg(deg2rad(136)))
+console.log(rad2deg(deg2rad(42)))
+
+console.log(randomGaussian())
+console.log(randomGaussian(5))
+console.log(Math.randomGaussian())
+console.log(Math.randomGaussian(5))
+
+console.log(randomGaussianRange(5, 20))
+console.log(randomGaussianRange(5, 20, 3))
+console.log(Math.randomGaussianRange(5, 20))
+console.log(Math.randomGaussianRange(5, 20, 5))
+
+console.log(randomBoolean())
+console.log(randomBoolean())
+console.log(Math.randomBoolean())
+console.log(Math.randomBoolean())
+
+console.log(randomInt(10, 20))
+console.log(randomInt(-5, 5))
+console.log(Math.randomInt(10, 20))
+console.log(Math.randomInt(-5, 5))
+
+console.log(cot(Math.QUARTER_PI))
+console.log(cot(Math.HALF_PI))
+console.log(cot(Math.HALF_PI + Math.QUARTER_PI))
+
+console.log(Math.cot(Math.QUARTER_PI))
+console.log(Math.cot(Math.HALF_PI))
+console.log(Math.cot(Math.HALF_PI + Math.QUARTER_PI))
+
+console.log(cotd(90))
+console.log(cotd(45))
+console.log(cotd(60))
+
+console.log(Math.cotd(90))
+console.log(Math.cotd(45))
+console.log(Math.cotd(60))
+
+console.log(square(16))
+console.log(Math.square(16))
+
+console.log(cube(3))
+console.log(Math.cube(3))
 */

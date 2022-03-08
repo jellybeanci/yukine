@@ -15,10 +15,12 @@
   "license": "MIT",
   "devDependencies": {
     "@types/abbrev": "^1.1.2",
-    "abbrev": "^1.1.1"
+    "abbrev": "^1.1.1",
+    "ts-node": "^10.7.0"
   },
   "dependencies": {
     "@jellybeanci/int": "^0.1.1",
+    "@jellybeanci/random": "^0.1.1",
     "fast-equals": "^3.0.0"
   }
 }

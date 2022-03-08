@@ -1,5 +1,5 @@
 interface HasPrototype {
-    prototype: any[];
+    prototype: any[] | String | Number;
 }
 
 type ValueMember = string | number | bigint | boolean | symbol | Function;
@@ -10,8 +10,12 @@ function isDefined(prototypeObject: unknown, name: string, callback: () => void)
 }
 
 export function safePrototypePatch(target: HasPrototype, name: string, value: ValueMember): void {
-    isDefined(target.prototype[name], name, () => {
-        Object.defineProperty(target.prototype, name, {
+    safePatch(target.prototype, name, value);
+}
+
+export function safePatch(target: object, name: string, value: ValueMember): void {
+    isDefined(target[name], name, () => {
+        Object.defineProperty(target, name, {
             value: value, enumerable: false, configurable: true, writable: true
         });
     });
