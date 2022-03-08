@@ -1,3 +1,4 @@
+import {PrimitiveType} from "./func/array/types/primitive-type";
 import {fastMap} from "./func/array/fast-map";
 import {abs} from "./func/array/abs";
 import {max} from "./func/array/max";
@@ -28,7 +29,6 @@ import {swap} from "./func/array/swap";
 import {zip} from "./func/array/zip";
 import {binarize} from "./func/array/binarize";
 import {toInt} from "./func/array/to-int";
-import {PrimitiveType} from "./func/array/types/primitive-type";
 import {square} from "./func/array/square";
 import {cube} from "./func/array/cube";
 import {mod} from "./func/array/mod";
@@ -36,6 +36,7 @@ import {round} from "./func/array/round";
 import {ceil} from "./func/array/ceil";
 import {floor} from "./func/array/floor";
 import {cbrt} from "./func/array/cbrt";
+import {stringEquals} from "./func/string/string-equals";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -74,6 +75,7 @@ round.monkeyPatch();
 ceil.monkeyPatch();
 floor.monkeyPatch();
 cbrt.monkeyPatch();
+stringEquals.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -98,10 +100,15 @@ const zfs: PrimitiveType[][] = [
 const bitStr = [true, false, false, true, false, false, false, false, true, true, false, true];
 const garbageArray = [true, 1, 0, "", NaN, Infinity, 5000, 42, "meaning of life"];
 
+const s1 = '\u00F1'; // ñ
+const s2 = '\u006E\u0303'; // ñ = n + ̃
+
+const str1 = new String("Ohh, Hi Mark!");
+const str2 = new String("Ohh, Hi Mark!");
 
 
 
-// const fizBuzz = [...Array(100)].fastMap((v, i) => i % 15 === 0 ? "fizbuz" : i % 3 === 0 ? "fiz" : i % 5 === 0 ? "buz" : "" + i);
+
 
 /*
 // DEBUG
@@ -310,6 +317,21 @@ console.log(ks.floor())
 
 console.log(cbrt(hs))
 console.log(hs.cbrt())
+
+console.log("str1:", str1, "str2:", str2)
+console.log("str1 === str2:", str1 === str2)
+console.log("stringEquals(str1, str2):", stringEquals(str1, str2))
+console.log("str1.equals(str2):", str1.equals(str2))
+
+console.log("~~~~~")
+
+console.log("s1:", s1, "s2:", s2)
+// @ts-ignore
+console.log("s1 === s2:", s1 === s2)
+console.log("stringEquals(s1, s2):", stringEquals(s1, s2))
+console.log("s1.equals(s2):", s1.equals(s2))
+
+
 */
 
 /*
@@ -320,8 +342,6 @@ console.log(hs.cbrt())
 ```console
 
 ```
-
-
  */
 
 /*
