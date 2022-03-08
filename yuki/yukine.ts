@@ -48,6 +48,7 @@ import {randomGaussian} from "./func/math/random-gaussian";
 import {randomGaussianRange} from "./func/math/random-gaussian-range";
 import {randomBoolean} from "./func/math/random-boolean";
 import {randomInt} from "./func/math/random-int";
+import {cot} from "./func/math/cot";
 
 
 fastMap.monkeyPatch();
@@ -96,6 +97,7 @@ randomGaussian.monkeyPatch();
 randomGaussianRange.monkeyPatch();
 randomBoolean.monkeyPatch();
 randomInt.monkeyPatch();
+cot.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -126,11 +128,6 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
-
-console.log(randomInt(10, 20))
-console.log(randomInt(-5, 5))
-console.log(Math.randomInt(10, 20))
-console.log(Math.randomInt(-5, 5))
 
 /*
 ```js
@@ -420,4 +417,17 @@ console.log(randomBoolean())
 console.log(randomBoolean())
 console.log(Math.randomBoolean())
 console.log(Math.randomBoolean())
+
+console.log(randomInt(10, 20))
+console.log(randomInt(-5, 5))
+console.log(Math.randomInt(10, 20))
+console.log(Math.randomInt(-5, 5))
+
+console.log(cot(Math.QUARTER_PI))
+console.log(cot(Math.HALF_PI))
+console.log(cot(Math.HALF_PI + Math.QUARTER_PI))
+
+console.log(Math.cot(Math.QUARTER_PI))
+console.log(Math.cot(Math.HALF_PI))
+console.log(Math.cot(Math.HALF_PI + Math.QUARTER_PI))
 */
