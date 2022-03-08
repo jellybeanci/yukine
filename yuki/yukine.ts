@@ -39,11 +39,12 @@ import {cbrt} from "./func/array/cbrt";
 import {stringEquals} from "./func/string/string-equals";
 import {deg2rad} from "./func/math/deg2rad";
 import {QUARTER_PI} from "./func/math/constants/quarter-pi";
-import {defineConstants} from "./func/math/define-constants";
 import {HALF_PI} from "./func/math/constants/half-pi";
 import {TWO_PI} from "./func/math/constants/two-pi";
+import {defineConstants} from "./func/math/define-constants";
 import {randomRange} from "./func/math/random-range";
 import {rad2deg} from "./func/math/rad2deg";
+import {randomGaussian} from "./func/math/random-gaussian";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -83,9 +84,11 @@ ceil.monkeyPatch();
 floor.monkeyPatch();
 cbrt.monkeyPatch();
 stringEquals.monkeyPatch();
-deg2rad.monkeyPatch();
 defineConstants.monkeyPatch();
+deg2rad.monkeyPatch();
+rad2deg.monkeyPatch();
 randomRange.monkeyPatch();
+randomGaussian.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -116,18 +119,28 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
-console.log(rad2deg(Math.PI))
-console.log(rad2deg(Math.TWO_PI))
-console.log(rad2deg(Math.HALF_PI))
-console.log(rad2deg(Math.QUARTER_PI))
-console.log(rad2deg(Math.HALF_PI + Math.QUARTER_PI))
+console.log(randomGaussian())
+console.log(randomGaussian(5))
+console.log(Math.randomGaussian())
+console.log(Math.randomGaussian(5))
 
-console.log("~~~")
+/*
+```js
 
-console.log(rad2deg(deg2rad(90)))
-console.log(rad2deg(deg2rad(136)))
-console.log(rad2deg(deg2rad(42)))
+```
 
+```console
+
+```
+ */
+
+/*
+Implement `mod` method into `Array<T>` prototype.
+*/
+
+/*
+Implemented with commit .
+ */
 
 // DEBUG
 /*
@@ -372,22 +385,17 @@ console.log(Math.TWO_PI)
 
 console.log(randomRange(69, 420))
 console.log(Math.randomRange(69, 420))
+
+console.log(rad2deg(Math.PI))
+console.log(rad2deg(Math.TWO_PI))
+console.log(rad2deg(Math.HALF_PI))
+console.log(rad2deg(Math.QUARTER_PI))
+console.log(rad2deg(Math.HALF_PI + Math.QUARTER_PI))
+
+console.log("~~~")
+
+console.log(rad2deg(deg2rad(90)))
+console.log(rad2deg(deg2rad(136)))
+console.log(rad2deg(deg2rad(42)))
+
 */
-
-/*
-```js
-
-```
-
-```console
-
-```
- */
-
-/*
-Implement `mod` method into `Array<T>` prototype.
-*/
-
-/*
-Implemented with commit .
- */
