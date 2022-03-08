@@ -52,6 +52,7 @@ import {cot} from "./func/math/cot";
 import {cotd} from "./func/math/cotd";
 import {cube} from "./func/math/cube";
 import {square} from "./func/math/square";
+import {numberEquals} from "./func/number/number-equals";
 
 
 fastMap.monkeyPatch();
@@ -104,6 +105,7 @@ cot.monkeyPatch();
 cotd.monkeyPatch();
 square.monkeyPatch();
 cube.monkeyPatch();
+numberEquals.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -134,6 +136,16 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
+
+console.log(numberEquals(0, 1e-15, 1e-5))
+console.log(numberEquals(0, 1e-150))
+console.log(numberEquals(5, 5.005, 0.2))
+console.log("~~~~")
+const x = 0;
+const y = 5;
+console.log(x.equals(1e-15, 1e-5))
+console.log(x.equals(1e-150))
+console.log(y.equals(5.005, 0.2))
 
 /*
 ```js
