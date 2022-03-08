@@ -46,6 +46,7 @@ import {randomRange} from "./func/math/random-range";
 import {rad2deg} from "./func/math/rad2deg";
 import {randomGaussian} from "./func/math/random-gaussian";
 import {randomGaussianRange} from "./func/math/random-gaussian-range";
+import {randomBoolean} from "./func/math/random-boolean";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -91,6 +92,7 @@ rad2deg.monkeyPatch();
 randomRange.monkeyPatch();
 randomGaussian.monkeyPatch();
 randomGaussianRange.monkeyPatch();
+randomBoolean.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -121,11 +123,11 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
+console.log(randomBoolean())
+console.log(randomBoolean())
+console.log(Math.randomBoolean())
+console.log(Math.randomBoolean())
 
-console.log(randomGaussianRange(5, 20))
-console.log(randomGaussianRange(5, 20, 3))
-console.log(Math.randomGaussianRange(5, 20))
-console.log(Math.randomGaussianRange(5, 20, 5))
 
 /*
 ```js
@@ -405,4 +407,9 @@ console.log(randomGaussian())
 console.log(randomGaussian(5))
 console.log(Math.randomGaussian())
 console.log(Math.randomGaussian(5))
+
+console.log(randomGaussianRange(5, 20))
+console.log(randomGaussianRange(5, 20, 3))
+console.log(Math.randomGaussianRange(5, 20))
+console.log(Math.randomGaussianRange(5, 20, 5))
 */
