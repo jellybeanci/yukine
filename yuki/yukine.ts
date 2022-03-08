@@ -29,8 +29,8 @@ import {swap} from "./func/array/swap";
 import {zip} from "./func/array/zip";
 import {binarize} from "./func/array/binarize";
 import {toInt} from "./func/array/to-int";
-import {square} from "./func/array/square";
-import {cube} from "./func/array/cube";
+import {arraySquare} from "./func/array/array-square";
+import {arrayCube} from "./func/array/array-cube";
 import {mod} from "./func/array/mod";
 import {round} from "./func/array/round";
 import {ceil} from "./func/array/ceil";
@@ -50,6 +50,8 @@ import {randomBoolean} from "./func/math/random-boolean";
 import {randomInt} from "./func/math/random-int";
 import {cot} from "./func/math/cot";
 import {cotd} from "./func/math/cotd";
+import {cube} from "./func/math/cube";
+import {square} from "./func/math/square";
 
 
 fastMap.monkeyPatch();
@@ -82,8 +84,8 @@ swap.monkeyPatch();
 zip.monkeyPatch();
 binarize.monkeyPatch();
 toInt.monkeyPatch();
-square.monkeyPatch();
-cube.monkeyPatch();
+arraySquare.monkeyPatch();
+arrayCube.monkeyPatch();
 mod.monkeyPatch();
 round.monkeyPatch();
 ceil.monkeyPatch();
@@ -100,6 +102,8 @@ randomBoolean.monkeyPatch();
 randomInt.monkeyPatch();
 cot.monkeyPatch();
 cotd.monkeyPatch();
+square.monkeyPatch();
+cube.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -130,13 +134,6 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
-console.log(cotd(90))
-console.log(cotd(45))
-console.log(cotd(60))
-
-console.log(Math.cotd(90))
-console.log(Math.cotd(45))
-console.log(Math.cotd(60))
 
 /*
 ```js
@@ -342,10 +339,10 @@ console.log(toInt(ks.multBy(Math.PI)))
 console.log(ks.toInt())
 console.log(ks.multBy(Math.PI).toInt())
 
-console.log(square(xs))
+console.log(arraySquare(xs))
 console.log(xs.square())
 
-console.log(cube(xs))
+console.log(arrayCube(xs))
 console.log(xs.cube())
 
 console.log(mod(xs, 3))
@@ -439,4 +436,18 @@ console.log(cot(Math.HALF_PI + Math.QUARTER_PI))
 console.log(Math.cot(Math.QUARTER_PI))
 console.log(Math.cot(Math.HALF_PI))
 console.log(Math.cot(Math.HALF_PI + Math.QUARTER_PI))
+
+console.log(cotd(90))
+console.log(cotd(45))
+console.log(cotd(60))
+
+console.log(Math.cotd(90))
+console.log(Math.cotd(45))
+console.log(Math.cotd(60))
+
+console.log(square(16))
+console.log(Math.square(16))
+
+console.log(cube(3))
+console.log(Math.cube(3))
 */
