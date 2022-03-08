@@ -43,6 +43,7 @@ import {defineConstants} from "./func/math/define-constants";
 import {HALF_PI} from "./func/math/constants/half-pi";
 import {TWO_PI} from "./func/math/constants/two-pi";
 import {randomRange} from "./func/math/random-range";
+import {rad2deg} from "./func/math/rad2deg";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -115,10 +116,21 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
+console.log(rad2deg(Math.PI))
+console.log(rad2deg(Math.TWO_PI))
+console.log(rad2deg(Math.HALF_PI))
+console.log(rad2deg(Math.QUARTER_PI))
+console.log(rad2deg(Math.HALF_PI + Math.QUARTER_PI))
+
+console.log("~~~")
+
+console.log(rad2deg(deg2rad(90)))
+console.log(rad2deg(deg2rad(136)))
+console.log(rad2deg(deg2rad(42)))
+
 
 // DEBUG
 /*
-
 console.log(fastMap(xs, doubler))
 console.log(xs.fastMap(doubler))
 
