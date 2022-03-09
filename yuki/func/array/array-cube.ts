@@ -1,6 +1,8 @@
 import {safePrototypePatch} from "../../define-prototype";
+import {fastMap} from "./fast-map";
 import {cube} from "../math/cube";
 
+fastMap.monkeyPatch();
 cube.monkeyPatch();
 
 declare global {
