@@ -14,6 +14,6 @@ cube.monkeyPatch = (): void => {
     );
 }
 
-export function cube(x: number) {
+export function cube(x: number): number {
     return x * x * x;
 }

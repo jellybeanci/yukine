@@ -15,6 +15,6 @@ randomBoolean.monkeyPatch = (): void => {
     );
 }
 
-export function randomBoolean() {
+export function randomBoolean(): boolean {
     return RANDOM_BOOLEAN();
 }

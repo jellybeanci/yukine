@@ -14,6 +14,6 @@ isValid.monkeyPatch = (): void => {
     );
 }
 
-export function isValid(thisNumber: number) {
+export function isValid(thisNumber: number): boolean {
     return !Number.isNaN(thisNumber) && Number.isFinite(thisNumber);
 }

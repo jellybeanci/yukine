@@ -17,6 +17,6 @@ cosd.monkeyPatch = (): void => {
     );
 }
 
-export function cosd(x: number) {
+export function cosd(x: number): number {
     return Math.cos(Math.deg2rad(x));
 }

@@ -19,6 +19,6 @@ cotd.monkeyPatch = (): void => {
     );
 }
 
-export function cotd(x: number) {
+export function cotd(x: number): number {
     return Math.cot(Math.deg2rad(x));
 }

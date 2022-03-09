@@ -15,6 +15,6 @@ randomRange.monkeyPatch = (): void => {
     );
 }
 
-export function randomRange(start: number, end?: number) {
+export function randomRange(start: number, end?: number): number {
     return RANDOM_RANGE(start, end);
 }

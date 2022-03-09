@@ -8,6 +8,6 @@ declare global {
     }
 }
 
-export function monkeyPatch_TWO_PI() {
+export function monkeyPatch_TWO_PI(): void {
     safePatch(Math, "TWO_PI", TWO_PI);
 }

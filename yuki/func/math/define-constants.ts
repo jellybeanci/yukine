@@ -8,6 +8,6 @@ defineConstants.monkeyPatch = (): void => {
     monkeyPatch_TWO_PI();
 }
 
-export function defineConstants() {
+export function defineConstants(): string {
     return "Math is fun :)";
 }

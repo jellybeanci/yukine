@@ -16,6 +16,6 @@ deg2rad.monkeyPatch = (): void => {
     );
 }
 
-export function deg2rad(degree: number) {
+export function deg2rad(degree: number): number {
     return degree * DEGREE_AS_RADIAN;
 }

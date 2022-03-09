@@ -17,6 +17,6 @@ sind.monkeyPatch = (): void => {
     );
 }
 
-export function sind(x: number) {
+export function sind(x: number): number {
     return Math.sin(Math.deg2rad(x));
 }

@@ -15,6 +15,6 @@ randomGaussian.monkeyPatch = (): void => {
     );
 }
 
-export function randomGaussian(degree?: number) {
+export function randomGaussian(degree?: number): number {
     return RANDOM_GAUSSIAN(degree);
 }

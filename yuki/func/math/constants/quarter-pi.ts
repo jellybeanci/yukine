@@ -8,6 +8,6 @@ declare global {
     }
 }
 
-export function monkeyPatch_QUARTER_PI() {
+export function monkeyPatch_QUARTER_PI(): void {
     safePatch(Math, "QUARTER_PI", QUARTER_PI);
 }

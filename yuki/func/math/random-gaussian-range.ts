@@ -15,6 +15,6 @@ randomGaussianRange.monkeyPatch = (): void => {
     );
 }
 
-export function randomGaussianRange(start: number, end?: number, degree?: number) {
+export function randomGaussianRange(start: number, end?: number, degree?: number): number {
     return RANDOM_GAUSSIAN_RANGE(start, end, degree);
 }

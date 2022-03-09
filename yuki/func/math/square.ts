@@ -14,6 +14,6 @@ square.monkeyPatch = (): void => {
     );
 }
 
-export function square(x: number) {
+export function square(x: number): number {
     return x * x;
 }

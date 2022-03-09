@@ -17,6 +17,6 @@ tand.monkeyPatch = (): void => {
     );
 }
 
-export function tand(x: number) {
+export function tand(x: number): number {
     return Math.tan(Math.deg2rad(x));
 }
