@@ -62,6 +62,7 @@ import {arraySind} from "./func/array/array-sind";
 import {arrayCosd} from "./func/array/array-cosd";
 import {arrayTand} from "./func/array/array-tand";
 import {arrayCotd} from "./func/array/array-cotd";
+import {toBitString} from "./func/array/to-bit-string";
 
 
 fastMap.monkeyPatch();
@@ -124,6 +125,8 @@ arraySind.monkeyPatch();
 arrayCosd.monkeyPatch();
 arrayTand.monkeyPatch();
 arrayCotd.monkeyPatch();
+toBitString.monkeyPatch();
+
 
 const doubler = n => n * 2;
 
@@ -147,6 +150,7 @@ const zfs: PrimitiveType[][] = [
     ["c", 3, "z"]
 ];
 
+const bStr = [true, false, false, true, true, true, true, false, false, true];
 const bitStr = [true, false, false, true, false, false, false, false, true, true, false, true];
 const garbageArray = [true, 1, 0, "", NaN, Infinity, 5000, 42, "meaning of life"];
 
@@ -157,8 +161,6 @@ const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
 
-console.log(arrayCotd(ns))
-console.log(ns.cotd())
 
 /*
 ```js
@@ -546,4 +548,22 @@ console.log("zubizeratta:", zubizeratta, "isValid:", isValid(zubizeratta), "prot
 console.log(arraySind(ns))
 console.log(ns.sind())
 
+console.log(arrayCosd(ns))
+console.log(ns.cosd())
+
+console.log(arrayTand(ns))
+console.log(ns.tand())
+
+console.log(arrayCotd(ns))
+console.log(ns.cotd())
+
+console.log(toBitString(bStr))
+console.log(toBitString(bitStr))
+console.log(toBitString(garbageArray))
+console.log(toBitString(bitStr, ", "))
+
+console.log(bStr.toBitString())
+console.log(bitStr.toBitString())
+console.log(garbageArray.toBitString())
+console.log(bitStr.toBitString(", "))
 */
