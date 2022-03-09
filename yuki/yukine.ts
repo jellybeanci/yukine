@@ -56,6 +56,8 @@ import {numberEquals} from "./func/number/number-equals";
 import {sind} from "./func/math/sind";
 import {cosd} from "./func/math/cosd";
 import {tand} from "./func/math/tand";
+import {arrayCot} from "./func/array/array-cot";
+import {isValid} from "./func/number/is-valid";
 
 
 fastMap.monkeyPatch();
@@ -112,6 +114,8 @@ numberEquals.monkeyPatch();
 sind.monkeyPatch();
 cosd.monkeyPatch();
 tand.monkeyPatch();
+arrayCot.monkeyPatch();
+isValid.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -141,6 +145,19 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
+
+// @ts-ignore
+const watashi = "Göksel" / "Küçükşahin";
+const questionable = 0 / 0;
+const myAwesomeness = 1 / 0;
+const negativeZero = -0;
+const zubizeratta = -420 / 0;
+
+console.log("watashi:", watashi, "isValid:", isValid(watashi), "prototype:", watashi.isValid())
+console.log("questionable:", questionable, "isValid:", isValid(questionable), "prototype:", questionable.isValid())
+console.log("myAwesomeness:", myAwesomeness, "isValid:", isValid(myAwesomeness), "prototype:", myAwesomeness.isValid())
+console.log("negativeZero:", negativeZero, "isValid:", isValid(negativeZero), "prototype:", negativeZero.isValid())
+console.log("zubizeratta:", zubizeratta, "isValid:", isValid(zubizeratta), "prototype:", zubizeratta.isValid())
 
 /*
 ```js
@@ -287,24 +304,24 @@ console.log(ys.divFrom(-5))
 console.log(arraySin(xs))
 console.log(arraySin(ys))
 
-console.log(xs.arraySin())
-console.log(ys.arraySin())
+console.log(xs.sin())
+console.log(ys.sin())
 
 console.log(arrayCos(xs))
 console.log(arrayCos(ys))
 
-console.log(xs.arrayCos())
-console.log(ys.arrayCos())
+console.log(xs.cos())
+console.log(ys.cos())
 
-console.log(xs.arrayCos().pow(2).add(xs.arraySin().pow(2)))
+console.log(xs.cos().pow(2).add(xs.sin().pow(2)))
 
 console.log(arrayTan(xs))
 console.log(arrayTan(ys))
 
-console.log(xs.arrayTan())
-console.log(ys.arrayTan())
+console.log(xs.tan())
+console.log(ys.tan())
 
-console.log(xs.arraySin().div(xs.arrayCos()).div(xs.arrayTan())) // sinx / cosx * tanx = 1
+console.log(xs.sin().div(xs.cos()).div(xs.tan())) // sinx / cosx * tanx = 1
 
 console.log("arrayEquals:", arrayEquals(xs, ys), "\t===:", xs === ys)
 console.log("arrayEquals:", arrayEquals(ys, zs), "\t===:", ys === zs)
@@ -503,4 +520,12 @@ console.log("~~~~")
 console.log(Math.tand(45))
 console.log(Math.tand(30))
 console.log(Math.tand(60))
+
+console.log(arrayCot(xs))
+console.log(arrayCot(ys))
+
+console.log("~~~~")
+
+console.log(xs.cot())
+console.log(ys.cot())
 */
