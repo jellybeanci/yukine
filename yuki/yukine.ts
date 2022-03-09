@@ -54,6 +54,7 @@ import {cube} from "./func/math/cube";
 import {square} from "./func/math/square";
 import {numberEquals} from "./func/number/number-equals";
 import {sind} from "./func/math/sind";
+import {cosd} from "./func/math/cosd";
 
 
 fastMap.monkeyPatch();
@@ -108,6 +109,7 @@ square.monkeyPatch();
 cube.monkeyPatch();
 numberEquals.monkeyPatch();
 sind.monkeyPatch();
+cosd.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -138,18 +140,17 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
-console.log(sind(90))
-console.log(sind(45))
-console.log(sind(30))
-console.log(sind(60))
+console.log(cosd(90))
+console.log(cosd(45))
+console.log(cosd(30))
+console.log(cosd(60))
 
 console.log("~~~~")
 
-console.log(Math.sind(90))
-console.log(Math.sind(45))
-console.log(Math.sind(30))
-console.log(Math.sind(60))
-
+console.log(Math.cosd(90))
+console.log(Math.cosd(45))
+console.log(Math.cosd(30))
+console.log(Math.cosd(60))
 
 
 /*
@@ -479,5 +480,17 @@ const y = 5;
 console.log(x.equals(1e-15, 1e-5))
 console.log(x.equals(1e-150))
 console.log(y.equals(5.005, 0.2))
+
+console.log(sind(90))
+console.log(sind(45))
+console.log(sind(30))
+console.log(sind(60))
+
+console.log("~~~~")
+
+console.log(Math.sind(90))
+console.log(Math.sind(45))
+console.log(Math.sind(30))
+console.log(Math.sind(60))
 
 */
