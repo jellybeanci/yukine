@@ -58,6 +58,7 @@ import {cosd} from "./func/math/cosd";
 import {tand} from "./func/math/tand";
 import {arrayCot} from "./func/array/array-cot";
 import {isValid} from "./func/number/is-valid";
+import {arraySind} from "./func/array/array-sind";
 
 
 fastMap.monkeyPatch();
@@ -116,6 +117,7 @@ cosd.monkeyPatch();
 tand.monkeyPatch();
 arrayCot.monkeyPatch();
 isValid.monkeyPatch();
+arraySind.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -130,6 +132,8 @@ const ks = [1.2, 2.3, 3.4, 4.5, -5.6, 0];
 
 const ls = [1, 2, 3, [4, 5], 6, 7];
 const ms = [1, 2, 3, [4, 5], 6, 7];
+
+const ns = [15, 30, 45, 60, 90, 135, 210];
 
 const zfs: PrimitiveType[][] = [
     ["a", 1, "x"],
@@ -146,18 +150,10 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
-// @ts-ignore
-const watashi = "Göksel" / "Küçükşahin";
-const questionable = 0 / 0;
-const myAwesomeness = 1 / 0;
-const negativeZero = -0;
-const zubizeratta = -420 / 0;
 
-console.log("watashi:", watashi, "isValid:", isValid(watashi), "prototype:", watashi.isValid())
-console.log("questionable:", questionable, "isValid:", isValid(questionable), "prototype:", questionable.isValid())
-console.log("myAwesomeness:", myAwesomeness, "isValid:", isValid(myAwesomeness), "prototype:", myAwesomeness.isValid())
-console.log("negativeZero:", negativeZero, "isValid:", isValid(negativeZero), "prototype:", negativeZero.isValid())
-console.log("zubizeratta:", zubizeratta, "isValid:", isValid(zubizeratta), "prototype:", zubizeratta.isValid())
+console.log(arraySind(ns))
+console.log(ns.sind())
+
 
 /*
 ```js
@@ -528,4 +524,21 @@ console.log("~~~~")
 
 console.log(xs.cot())
 console.log(ys.cot())
+
+// @ts-ignore
+const watashi = "Göksel" / "Küçükşahin";
+const questionable = 0 / 0;
+const myAwesomeness = 1 / 0;
+const negativeZero = -0;
+const zubizeratta = -420 / 0;
+
+console.log("watashi:", watashi, "isValid:", isValid(watashi), "prototype:", watashi.isValid())
+console.log("questionable:", questionable, "isValid:", isValid(questionable), "prototype:", questionable.isValid())
+console.log("myAwesomeness:", myAwesomeness, "isValid:", isValid(myAwesomeness), "prototype:", myAwesomeness.isValid())
+console.log("negativeZero:", negativeZero, "isValid:", isValid(negativeZero), "prototype:", negativeZero.isValid())
+console.log("zubizeratta:", zubizeratta, "isValid:", isValid(zubizeratta), "prototype:", zubizeratta.isValid())
+
+console.log(arraySind(ns))
+console.log(ns.sind())
+
 */
