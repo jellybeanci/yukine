@@ -59,6 +59,7 @@ import {tand} from "./func/math/tand";
 import {arrayCot} from "./func/array/array-cot";
 import {isValid} from "./func/number/is-valid";
 import {arraySind} from "./func/array/array-sind";
+import {arrayCosd} from "./func/array/array-cosd";
 
 
 fastMap.monkeyPatch();
@@ -118,6 +119,7 @@ tand.monkeyPatch();
 arrayCot.monkeyPatch();
 isValid.monkeyPatch();
 arraySind.monkeyPatch();
+arrayCosd.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -151,9 +153,8 @@ const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
 
-console.log(arraySind(ns))
-console.log(ns.sind())
-
+console.log(arrayCosd(ns))
+console.log(ns.cosd())
 
 /*
 ```js
