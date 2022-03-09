@@ -55,6 +55,7 @@ import {square} from "./func/math/square";
 import {numberEquals} from "./func/number/number-equals";
 import {sind} from "./func/math/sind";
 import {cosd} from "./func/math/cosd";
+import {tand} from "./func/math/tand";
 
 
 fastMap.monkeyPatch();
@@ -110,6 +111,7 @@ cube.monkeyPatch();
 numberEquals.monkeyPatch();
 sind.monkeyPatch();
 cosd.monkeyPatch();
+tand.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -139,19 +141,6 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
-
-console.log(cosd(90))
-console.log(cosd(45))
-console.log(cosd(30))
-console.log(cosd(60))
-
-console.log("~~~~")
-
-console.log(Math.cosd(90))
-console.log(Math.cosd(45))
-console.log(Math.cosd(30))
-console.log(Math.cosd(60))
-
 
 /*
 ```js
@@ -493,4 +482,25 @@ console.log(Math.sind(45))
 console.log(Math.sind(30))
 console.log(Math.sind(60))
 
+console.log(cosd(90))
+console.log(cosd(45))
+console.log(cosd(30))
+console.log(cosd(60))
+
+console.log("~~~~")
+
+console.log(Math.cosd(90))
+console.log(Math.cosd(45))
+console.log(Math.cosd(30))
+console.log(Math.cosd(60))
+
+console.log(tand(45))
+console.log(tand(30))
+console.log(tand(60))
+
+console.log("~~~~")
+
+console.log(Math.tand(45))
+console.log(Math.tand(30))
+console.log(Math.tand(60))
 */
