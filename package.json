@@ -4,18 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node patch-js/test.js",
-    "build": "date +\"%T\" && echo \"Cleaning...\" && rm -rf ./patch-js && echo \"Compiling...\" && tsc && echo \"Done!\" && date +\"%T\" && echo \"~~~~~~~~~~~~~~~~\n\"",
-    "bundle": "npm run build && browserify --node --ignore-missing patch-js/test.ts | terser > bundle.js",
+    "start": "node yuki-js/yukine.js",
+    "build": "date +\"%T\" && echo \"Cleaning...\" && rm -rf ./yuki-js && echo \"Compiling...\" && tsc && echo \"Done!\" && date +\"%T\" && echo ~~~~~~~~~~~~~~~~\n",
+    "bundle": "npm run build && browserify --node --ignore-missing yuki-js/yukine.js | terser > bundle.js",
     "compile": "npm run build && npm run start",
     "run-on-ts-node": "ts-node yuki/yukine.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Göksel Küçükşahin",
   "license": "MIT",
   "devDependencies": {
-    "@types/abbrev": "^1.1.2",
-    "abbrev": "^1.1.1",
+    "browserify": "^17.0.0",
+    "terser": "^5.12.0",
     "ts-node": "^10.7.0"
   },
   "dependencies": {
