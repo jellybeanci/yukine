@@ -20,9 +20,9 @@ const dependencies = [
     "./func/array/div",
     "./func/array/div-by",
     "./func/array/div-from",
-    "./func/array/cos",
-    "./func/array/tan",
-    "./func/array/sin"
+    "./func/array/arrayCos",
+    "./func/array/arrayTan",
+    "./func/array/arraySin"
 ];
 
 function* iterate(array) {

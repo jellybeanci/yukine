@@ -9,14 +9,14 @@ declare global {
     }
 }
 
-tan.monkeyPatch = (): void => {
+arrayTan.monkeyPatch = (): void => {
     safePrototypePatch(Array, 'tan',
         function () {
-            return tan(this);
+            return arrayTan(this);
         }
     );
 }
 
-export function tan(thisArray: number[]): number[] {
+export function arrayTan(thisArray: number[]): number[] {
     return thisArray.fastMap(Math.tan);
 }

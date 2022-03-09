@@ -9,14 +9,14 @@ declare global {
     }
 }
 
-sin.monkeyPatch = (): void => {
+arraySin.monkeyPatch = (): void => {
     safePrototypePatch(Array, 'sin',
         function () {
-            return sin(this);
+            return arraySin(this);
         }
     );
 }
 
-export function sin(thisArray: number[]): number[] {
+export function arraySin(thisArray: number[]): number[] {
     return thisArray.fastMap(Math.sin);
 }

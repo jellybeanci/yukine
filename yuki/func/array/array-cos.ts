@@ -9,14 +9,14 @@ declare global {
     }
 }
 
-cos.monkeyPatch = (): void => {
+arrayCos.monkeyPatch = (): void => {
     safePrototypePatch(Array, 'cos',
         function () {
-            return cos(this);
+            return arrayCos(this);
         }
     );
 }
 
-export function cos(thisArray: number[]): number[] {
+export function arrayCos(thisArray: number[]): number[] {
     return thisArray.fastMap(Math.cos);
 }
