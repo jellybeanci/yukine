@@ -20,9 +20,9 @@ import {multBy} from "./func/array/mult-by";
 import {div} from "./func/array/div";
 import {divBy} from "./func/array/div-by";
 import {divFrom} from "./func/array/div-from";
-import {sin} from "./func/array/sin";
-import {cos} from "./func/array/cos";
-import {tan} from "./func/array/tan";
+import {arraySin} from "./func/array/array-sin";
+import {arrayCos} from "./func/array/array-cos";
+import {arrayTan} from "./func/array/array-tan";
 import {arrayEquals} from "./func/array/array-equals";
 import {deepEquals} from "./func/array/deep-equals";
 import {swap} from "./func/array/swap";
@@ -53,6 +53,7 @@ import {cotd} from "./func/math/cotd";
 import {cube} from "./func/math/cube";
 import {square} from "./func/math/square";
 import {numberEquals} from "./func/number/number-equals";
+import {sind} from "./func/math/sind";
 
 
 fastMap.monkeyPatch();
@@ -76,9 +77,9 @@ multBy.monkeyPatch();
 div.monkeyPatch();
 divBy.monkeyPatch();
 divFrom.monkeyPatch();
-sin.monkeyPatch();
-cos.monkeyPatch();
-tan.monkeyPatch();
+arraySin.monkeyPatch();
+arrayCos.monkeyPatch();
+arrayTan.monkeyPatch();
 arrayEquals.monkeyPatch();
 deepEquals.monkeyPatch();
 swap.monkeyPatch();
@@ -106,6 +107,7 @@ cotd.monkeyPatch();
 square.monkeyPatch();
 cube.monkeyPatch();
 numberEquals.monkeyPatch();
+sind.monkeyPatch();
 
 const doubler = n => n * 2;
 
@@ -136,16 +138,19 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
+console.log(sind(90))
+console.log(sind(45))
+console.log(sind(30))
+console.log(sind(60))
 
-console.log(numberEquals(0, 1e-15, 1e-5))
-console.log(numberEquals(0, 1e-150))
-console.log(numberEquals(5, 5.005, 0.2))
 console.log("~~~~")
-const x = 0;
-const y = 5;
-console.log(x.equals(1e-15, 1e-5))
-console.log(x.equals(1e-150))
-console.log(y.equals(5.005, 0.2))
+
+console.log(Math.sind(90))
+console.log(Math.sind(45))
+console.log(Math.sind(30))
+console.log(Math.sind(60))
+
+
 
 /*
 ```js
@@ -289,27 +294,27 @@ console.log(divFrom(ys,-5))
 console.log(xs.divFrom(4))
 console.log(ys.divFrom(-5))
 
-console.log(sin(xs))
-console.log(sin(ys))
+console.log(arraySin(xs))
+console.log(arraySin(ys))
 
-console.log(xs.sin())
-console.log(ys.sin())
+console.log(xs.arraySin())
+console.log(ys.arraySin())
 
-console.log(cos(xs))
-console.log(cos(ys))
+console.log(arrayCos(xs))
+console.log(arrayCos(ys))
 
-console.log(xs.cos())
-console.log(ys.cos())
+console.log(xs.arrayCos())
+console.log(ys.arrayCos())
 
-console.log(xs.cos().pow(2).add(xs.sin().pow(2)))
+console.log(xs.arrayCos().pow(2).add(xs.arraySin().pow(2)))
 
-console.log(tan(xs))
-console.log(tan(ys))
+console.log(arrayTan(xs))
+console.log(arrayTan(ys))
 
-console.log(xs.tan())
-console.log(ys.tan())
+console.log(xs.arrayTan())
+console.log(ys.arrayTan())
 
-console.log(xs.sin().div(xs.cos()).div(xs.tan())) // sinx / cosx * tanx = 1
+console.log(xs.arraySin().div(xs.arrayCos()).div(xs.arrayTan())) // sinx / cosx * tanx = 1
 
 console.log("arrayEquals:", arrayEquals(xs, ys), "\t===:", xs === ys)
 console.log("arrayEquals:", arrayEquals(ys, zs), "\t===:", ys === zs)
@@ -462,4 +467,17 @@ console.log(Math.square(16))
 
 console.log(cube(3))
 console.log(Math.cube(3))
+
+console.log(numberEquals(0, 1e-15, 1e-5))
+console.log(numberEquals(0, 1e-150))
+console.log(numberEquals(5, 5.005, 0.2))
+
+console.log("~~~~")
+
+const x = 0;
+const y = 5;
+console.log(x.equals(1e-15, 1e-5))
+console.log(x.equals(1e-150))
+console.log(y.equals(5.005, 0.2))
+
 */
