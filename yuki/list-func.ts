@@ -36,7 +36,7 @@ function tabber(tabCount: number = 1) {
 }
 
 class Node extends Object {
-    private head: string;
+    private readonly head: string;
     private childeren: Node[] = undefined;
 
     constructor(head: string, child?: Node[]) {
@@ -58,6 +58,15 @@ class Node extends Object {
         return header + sub;
     }
 
+    [Symbol.iterator] = function* () {
+        yield this.head;
+        if (this.childeren) {
+            for (const child of this.childeren) {
+                yield* child[Symbol.iterator]();
+            }
+        }
+    }
+
     override toString(): string {
         return this.printTree(1)
     }
@@ -73,9 +82,7 @@ async function dumpDirObject(entryPoint: string): Promise<Node[]> {
     );
 }
 
-
 const isTypeScriptFile = /^([a-z0-9_-]+)\.(ts)$/gi;
-
 
 const neg = (callback: (args: any) => boolean) => (args: any) => !callback(args);
 
@@ -83,6 +90,7 @@ const fx = (x) => x > 25;
 const nfx = neg(fx);
 
 const numbers = range(1, 50);
+
 // console.log(numbers.filter(nfx))
 
 // for (const file of files) {
@@ -97,19 +105,26 @@ async function getTypeScriptFiles(fileArray: (string | string[])[]): Promise<str
     return files.filter(matcher);
 }
 
-
+async function autoImporter(fileList: string[]) {
+    const imported = Promise.all(fileList.map(async file => import(file)));
+    console.log(await imported);
+}
 
 (async main => {
     const entryPoint = join(__dirname, "func");
     const dirArray = await dumpDirObject(entryPoint);
     const root = new Node("func", dirArray);
 
+    for (const rootElement of root) {
+        console.log(rootElement)
+    }
+
     // console.log(root.toString())
     // console.dir(dirArray, {'depth': null});
-    // console.log(JSON.stringify(dirArray));
+    // console.log(JSON.stringify(root));
 
-    const dirArr = await dumpDir(entryPoint);
-    const typeScriptFiles = await getTypeScriptFiles(dirArr);
-    console.log(typeScriptFiles);
-
+    // const dirArr = await dumpDir(entryPoint);
+    // const typeScriptFiles = await getTypeScriptFiles(dirArr);
+    // console.log(typeScriptFiles);
+    // await autoImporter(typeScriptFiles);
 })();

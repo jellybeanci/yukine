@@ -161,27 +161,7 @@ const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
 
-
-/*
-```js
-
-```
-
-```console
-
-```
- */
-
-/*
-Implement `mod` method into `Array<T>` prototype.
-*/
-
-/*
-Implemented with commit .
- */
-
 // DEBUG
-/*
 console.log(fastMap(xs, doubler))
 console.log(xs.fastMap(doubler))
 
@@ -566,4 +546,3 @@ console.log(bStr.toBitString())
 console.log(bitStr.toBitString())
 console.log(garbageArray.toBitString())
 console.log(bitStr.toBitString(", "))
-*/
