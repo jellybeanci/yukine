@@ -1,5 +1,6 @@
 import {Dirent, PathLike, promises} from "fs";
 import {join} from "path";
+import {range} from "@jellybeanci/range";
 
 const {readdir} = promises;
 
@@ -72,13 +73,43 @@ async function dumpDirObject(entryPoint: string): Promise<Node[]> {
     );
 }
 
+
+const isTypeScriptFile = /^([a-z0-9_-]+)\.(ts)$/gi;
+
+
+const neg = (callback: (args: any) => boolean) => (args: any) => !callback(args);
+
+const fx = (x) => x > 25;
+const nfx = neg(fx);
+
+const numbers = range(1, 50);
+// console.log(numbers.filter(nfx))
+
+// for (const file of files) {
+//     const matches = file.match(isTypeScriptFile)?.length > 0;
+//     console.log(file, ":", matches)
+// }
+
+const matcher = (str: string) => str.match(isTypeScriptFile) !== null;
+
+async function getTypeScriptFiles(fileArray: (string | string[])[]): Promise<string[]> {
+    const files = <string[]>fileArray.flat(Number.POSITIVE_INFINITY).filter(matcher);
+    return files.filter(matcher);
+}
+
+
+
 (async main => {
     const entryPoint = join(__dirname, "func");
     const dirArray = await dumpDirObject(entryPoint);
     const root = new Node("func", dirArray);
+
+    // console.log(root.toString())
     // console.dir(dirArray, {'depth': null});
     // console.log(JSON.stringify(dirArray));
-    console.log(root.toString())
 
+    const dirArr = await dumpDir(entryPoint);
+    const typeScriptFiles = await getTypeScriptFiles(dirArr);
+    console.log(typeScriptFiles);
 
 })();
