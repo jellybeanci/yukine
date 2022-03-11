@@ -126,8 +126,7 @@ async function getTypeScriptPaths(root: Node): Promise<string[]> {
 
 
 async function autoImporter(fileList: string[]) {
-    const imported = Promise.all(fileList.map(async file => import(`./${file}`)));
-    console.log(await imported);
+    return Promise.all(fileList.map(async file => import(`./${file}`)));
 }
 
 (async main => {
@@ -136,7 +135,6 @@ async function autoImporter(fileList: string[]) {
     const tsPaths = await getTypeScriptPaths(root);
     console.log(tsPaths);
     await autoImporter(tsPaths);
-
 
     // for (const rootElement of root.pathIterator()) {
     //     console.log(rootElement)
