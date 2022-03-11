@@ -1,4 +1,4 @@
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
 
 declare global {
     interface Number {
@@ -14,6 +14,6 @@ numberEquals.monkeyPatch = (): void => {
     );
 }
 
-export function numberEquals(thisNumber: number, other: number, epsilon: number = Number.EPSILON) {
+export function numberEquals(thisNumber: number, other: number, epsilon: number = Number.EPSILON): boolean {
     return Math.abs(thisNumber - other) < Math.abs(epsilon);
 }

@@ -1,4 +1,4 @@
-import {safePatch} from "../../define-prototype";
+import {safePatch} from "../../safe-patcher";
 import {cot} from "./cot";
 import {deg2rad} from "./deg2rad";
 
@@ -19,6 +19,6 @@ cotd.monkeyPatch = (): void => {
     );
 }
 
-export function cotd(x: number) {
+export function cotd(x: number): number {
     return Math.cot(Math.deg2rad(x));
 }

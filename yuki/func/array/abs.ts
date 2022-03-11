@@ -1,4 +1,5 @@
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 
 fastMap.monkeyPatch();
@@ -15,6 +16,10 @@ abs.monkeyPatch = (): void => {
             return abs(this);
         }
     );
+}
+
+abs.removePatch = (): void => {
+    removePatch(Array.prototype, 'abs');
 }
 
 export function abs(thisArray: number[]): number[] {

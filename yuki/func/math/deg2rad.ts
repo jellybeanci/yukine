@@ -1,4 +1,4 @@
-import {safePatch} from "../../define-prototype";
+import {safePatch} from "../../safe-patcher";
 
 const DEGREE_AS_RADIAN = 0.017453292519943295;
 
@@ -16,6 +16,6 @@ deg2rad.monkeyPatch = (): void => {
     );
 }
 
-export function deg2rad(degree: number) {
+export function deg2rad(degree: number): number {
     return degree * DEGREE_AS_RADIAN;
 }

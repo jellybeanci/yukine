@@ -1,4 +1,5 @@
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 
 declare global {
     interface Array<T> {
@@ -12,6 +13,10 @@ prod.monkeyPatch = (): void => {
             return prod(this, initialValue);
         }
     );
+}
+
+prod.removePatch = (): void => {
+    removePatch(Array.prototype, 'prod');
 }
 
 export function prod(thisArray: number[], initialValue = 1): number {

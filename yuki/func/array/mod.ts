@@ -1,4 +1,5 @@
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 
 declare global {
     interface Array<T> {
@@ -12,6 +13,10 @@ mod.monkeyPatch = (): void => {
             return mod(this, modulo);
         }
     );
+}
+
+mod.removePatch = (): void => {
+    removePatch(Array.prototype, 'mod');
 }
 
 export function mod(thisArray: number[], modulo: number): number[] {

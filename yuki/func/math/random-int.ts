@@ -1,4 +1,4 @@
-import {safePatch} from "../../define-prototype";
+import {safePatch} from "../../safe-patcher";
 import {randomInt as RANDOM_INT} from "@jellybeanci/random";
 
 declare global {
@@ -15,6 +15,6 @@ randomInt.monkeyPatch = (): void => {
     );
 }
 
-export function randomInt(start: number, end?: number) {
+export function randomInt(start: number, end?: number): number {
     return RANDOM_INT(start, end);
 }

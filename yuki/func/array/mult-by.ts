@@ -1,4 +1,5 @@
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {apply} from "./apply";
 
 apply.monkeyPatch();
@@ -15,6 +16,10 @@ multBy.monkeyPatch = (): void => {
             return multBy(this, other);
         }
     );
+}
+
+multBy.removePatch = (): void => {
+    removePatch(Array.prototype, 'multBy');
 }
 
 export function multBy(thisArray: number[], other: number): number[] {

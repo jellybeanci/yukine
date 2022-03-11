@@ -20,9 +20,9 @@ import {multBy} from "./func/array/mult-by";
 import {div} from "./func/array/div";
 import {divBy} from "./func/array/div-by";
 import {divFrom} from "./func/array/div-from";
-import {sin} from "./func/array/sin";
-import {cos} from "./func/array/cos";
-import {tan} from "./func/array/tan";
+import {arraySin} from "./func/array/array-sin";
+import {arrayCos} from "./func/array/array-cos";
+import {arrayTan} from "./func/array/array-tan";
 import {arrayEquals} from "./func/array/array-equals";
 import {deepEquals} from "./func/array/deep-equals";
 import {swap} from "./func/array/swap";
@@ -53,7 +53,16 @@ import {cotd} from "./func/math/cotd";
 import {cube} from "./func/math/cube";
 import {square} from "./func/math/square";
 import {numberEquals} from "./func/number/number-equals";
-
+import {sind} from "./func/math/sind";
+import {cosd} from "./func/math/cosd";
+import {tand} from "./func/math/tand";
+import {arrayCot} from "./func/array/array-cot";
+import {isValid} from "./func/number/is-valid";
+import {arraySind} from "./func/array/array-sind";
+import {arrayCosd} from "./func/array/array-cosd";
+import {arrayTand} from "./func/array/array-tand";
+import {arrayCotd} from "./func/array/array-cotd";
+import {toBitString} from "./func/array/to-bit-string";
 
 fastMap.monkeyPatch();
 abs.monkeyPatch();
@@ -76,9 +85,9 @@ multBy.monkeyPatch();
 div.monkeyPatch();
 divBy.monkeyPatch();
 divFrom.monkeyPatch();
-sin.monkeyPatch();
-cos.monkeyPatch();
-tan.monkeyPatch();
+arraySin.monkeyPatch();
+arrayCos.monkeyPatch();
+arrayTan.monkeyPatch();
 arrayEquals.monkeyPatch();
 deepEquals.monkeyPatch();
 swap.monkeyPatch();
@@ -106,6 +115,17 @@ cotd.monkeyPatch();
 square.monkeyPatch();
 cube.monkeyPatch();
 numberEquals.monkeyPatch();
+sind.monkeyPatch();
+cosd.monkeyPatch();
+tand.monkeyPatch();
+arrayCot.monkeyPatch();
+isValid.monkeyPatch();
+arraySind.monkeyPatch();
+arrayCosd.monkeyPatch();
+arrayTand.monkeyPatch();
+arrayCotd.monkeyPatch();
+toBitString.monkeyPatch();
+
 
 const doubler = n => n * 2;
 
@@ -121,12 +141,15 @@ const ks = [1.2, 2.3, 3.4, 4.5, -5.6, 0];
 const ls = [1, 2, 3, [4, 5], 6, 7];
 const ms = [1, 2, 3, [4, 5], 6, 7];
 
+const ns = [15, 30, 45, 60, 90, 135, 210];
+
 const zfs: PrimitiveType[][] = [
     ["a", 1, "x"],
     ["b", 2, "y"],
     ["c", 3, "z"]
 ];
 
+const bStr = [true, false, false, true, true, true, true, false, false, true];
 const bitStr = [true, false, false, true, false, false, false, false, true, true, false, true];
 const garbageArray = [true, 1, 0, "", NaN, Infinity, 5000, 42, "meaning of life"];
 
@@ -136,34 +159,7 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
-
-console.log(numberEquals(0, 1e-15, 1e-5))
-console.log(numberEquals(0, 1e-150))
-console.log(numberEquals(5, 5.005, 0.2))
-console.log("~~~~")
-const x = 0;
-const y = 5;
-console.log(x.equals(1e-15, 1e-5))
-console.log(x.equals(1e-150))
-console.log(y.equals(5.005, 0.2))
-
-/*
-```js
-
-```
-
-```console
-
-```
- */
-
-/*
-Implement `mod` method into `Array<T>` prototype.
-*/
-
-/*
-Implemented with commit .
- */
+console.log(xs.div(ys))
 
 // DEBUG
 /*
@@ -289,22 +285,22 @@ console.log(divFrom(ys,-5))
 console.log(xs.divFrom(4))
 console.log(ys.divFrom(-5))
 
-console.log(sin(xs))
-console.log(sin(ys))
+console.log(arraySin(xs))
+console.log(arraySin(ys))
 
 console.log(xs.sin())
 console.log(ys.sin())
 
-console.log(cos(xs))
-console.log(cos(ys))
+console.log(arrayCos(xs))
+console.log(arrayCos(ys))
 
 console.log(xs.cos())
 console.log(ys.cos())
 
 console.log(xs.cos().pow(2).add(xs.sin().pow(2)))
 
-console.log(tan(xs))
-console.log(tan(ys))
+console.log(arrayTan(xs))
+console.log(arrayTan(ys))
 
 console.log(xs.tan())
 console.log(ys.tan())
@@ -462,4 +458,93 @@ console.log(Math.square(16))
 
 console.log(cube(3))
 console.log(Math.cube(3))
+
+console.log(numberEquals(0, 1e-15, 1e-5))
+console.log(numberEquals(0, 1e-150))
+console.log(numberEquals(5, 5.005, 0.2))
+
+console.log("~~~~")
+
+const x = 0;
+const y = 5;
+console.log(x.equals(1e-15, 1e-5))
+console.log(x.equals(1e-150))
+console.log(y.equals(5.005, 0.2))
+
+console.log(sind(90))
+console.log(sind(45))
+console.log(sind(30))
+console.log(sind(60))
+
+console.log("~~~~")
+
+console.log(Math.sind(90))
+console.log(Math.sind(45))
+console.log(Math.sind(30))
+console.log(Math.sind(60))
+
+console.log(cosd(90))
+console.log(cosd(45))
+console.log(cosd(30))
+console.log(cosd(60))
+
+console.log("~~~~")
+
+console.log(Math.cosd(90))
+console.log(Math.cosd(45))
+console.log(Math.cosd(30))
+console.log(Math.cosd(60))
+
+console.log(tand(45))
+console.log(tand(30))
+console.log(tand(60))
+
+console.log("~~~~")
+
+console.log(Math.tand(45))
+console.log(Math.tand(30))
+console.log(Math.tand(60))
+
+console.log(arrayCot(xs))
+console.log(arrayCot(ys))
+
+console.log("~~~~")
+
+console.log(xs.cot())
+console.log(ys.cot())
+
+// @ts-ignore
+const watashi = "Göksel" / "Küçükşahin";
+const questionable = 0 / 0;
+const myAwesomeness = 1 / 0;
+const negativeZero = -0;
+const zubizeratta = -420 / 0;
+
+console.log("watashi:", watashi, "isValid:", isValid(watashi), "prototype:", watashi.isValid())
+console.log("questionable:", questionable, "isValid:", isValid(questionable), "prototype:", questionable.isValid())
+console.log("myAwesomeness:", myAwesomeness, "isValid:", isValid(myAwesomeness), "prototype:", myAwesomeness.isValid())
+console.log("negativeZero:", negativeZero, "isValid:", isValid(negativeZero), "prototype:", negativeZero.isValid())
+console.log("zubizeratta:", zubizeratta, "isValid:", isValid(zubizeratta), "prototype:", zubizeratta.isValid())
+
+console.log(arraySind(ns))
+console.log(ns.sind())
+
+console.log(arrayCosd(ns))
+console.log(ns.cosd())
+
+console.log(arrayTand(ns))
+console.log(ns.tand())
+
+console.log(arrayCotd(ns))
+console.log(ns.cotd())
+
+console.log(toBitString(bStr))
+console.log(toBitString(bitStr))
+console.log(toBitString(garbageArray))
+console.log(toBitString(bitStr, ", "))
+
+console.log(bStr.toBitString())
+console.log(bitStr.toBitString())
+console.log(garbageArray.toBitString())
+console.log(bitStr.toBitString(", "))
 */

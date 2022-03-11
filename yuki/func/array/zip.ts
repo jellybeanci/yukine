@@ -1,4 +1,5 @@
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {PrimitiveType} from "./types/primitive-type";
 
 declare global {
@@ -13,6 +14,10 @@ zip.monkeyPatch = (): void => {
             return zip(this);
         }
     );
+}
+
+zip.removePatch = (): void => {
+    removePatch(Array.prototype, 'zip');
 }
 
 export function zip(thisArray: PrimitiveType[][]): PrimitiveType[][] {

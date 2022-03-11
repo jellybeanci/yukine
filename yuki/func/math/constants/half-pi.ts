@@ -1,4 +1,4 @@
-import {safePatch} from "../../../define-prototype";
+import {safePatch} from "../../../safe-patcher";
 
 export const HALF_PI: number = 1.5707963267948966;
 
@@ -8,6 +8,6 @@ declare global {
     }
 }
 
-export function monkeyPatch_HALF_PI() {
+export function monkeyPatch_HALF_PI(): void {
     safePatch(Math, "HALF_PI", HALF_PI);
 }

@@ -1,4 +1,5 @@
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 import {CallbackfnOP} from "./types/callback-op";
 
@@ -16,6 +17,10 @@ apply.monkeyPatch = (): void => {
             return apply(this, value, callbackfn);
         }
     );
+}
+
+apply.removePatch = (): void => {
+    removePatch(Array.prototype, 'apply');
 }
 
 export function apply(thisArray: number[], value: number, callbackfn: CallbackfnOP): number[] {

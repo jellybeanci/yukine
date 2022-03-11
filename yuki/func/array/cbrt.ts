@@ -1,4 +1,5 @@
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 
 fastMap.monkeyPatch();
@@ -15,6 +16,10 @@ cbrt.monkeyPatch = (): void => {
             return cbrt(this);
         }
     );
+}
+
+cbrt.removePatch = (): void => {
+    removePatch(Array.prototype, 'cbrt');
 }
 
 export function cbrt(thisArray: number[]): number[] {

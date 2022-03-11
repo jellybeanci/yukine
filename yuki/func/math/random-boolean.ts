@@ -1,4 +1,4 @@
-import {safePatch} from "../../define-prototype";
+import {safePatch} from "../../safe-patcher";
 import {randomBoolean as RANDOM_BOOLEAN} from "@jellybeanci/random";
 
 declare global {
@@ -15,6 +15,6 @@ randomBoolean.monkeyPatch = (): void => {
     );
 }
 
-export function randomBoolean() {
+export function randomBoolean(): boolean {
     return RANDOM_BOOLEAN();
 }

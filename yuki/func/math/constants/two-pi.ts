@@ -1,4 +1,4 @@
-import {safePatch} from "../../../define-prototype";
+import {safePatch} from "../../../safe-patcher";
 
 export const TWO_PI: number = 6.283185307179586;
 
@@ -8,6 +8,6 @@ declare global {
     }
 }
 
-export function monkeyPatch_TWO_PI() {
+export function monkeyPatch_TWO_PI(): void {
     safePatch(Math, "TWO_PI", TWO_PI);
 }

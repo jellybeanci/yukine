@@ -1,4 +1,5 @@
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {apply} from "./apply";
 
 apply.monkeyPatch();
@@ -15,6 +16,10 @@ addBy.monkeyPatch = (): void => {
             return addBy(this, other);
         }
     );
+}
+
+addBy.removePatch = (): void => {
+    removePatch(Array.prototype, 'addBy');
 }
 
 export function addBy(thisArray: number[], other: number): number[] {

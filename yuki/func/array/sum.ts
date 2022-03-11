@@ -1,4 +1,5 @@
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 
 declare global {
     interface Array<T> {
@@ -12,6 +13,10 @@ sum.monkeyPatch = (): void => {
             return sum(this, initialValue);
         }
     );
+}
+
+sum.removePatch = (): void => {
+    removePatch(Array.prototype, 'sum');
 }
 
 export function sum(thisArray: number[], initialValue = 0): number {

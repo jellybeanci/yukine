@@ -1,4 +1,5 @@
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {operation} from "./operation";
 
 operation.monkeyPatch();
@@ -15,6 +16,10 @@ mult.monkeyPatch = (): void => {
             return mult(this, other);
         }
     );
+}
+
+mult.removePatch = (): void => {
+    removePatch(Array.prototype, 'mult');
 }
 
 export function mult(thisArray: number[], other: number[]): number[] {

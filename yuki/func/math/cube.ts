@@ -1,4 +1,4 @@
-import {safePatch} from "../../define-prototype";
+import {safePatch} from "../../safe-patcher";
 
 declare global {
     interface Math {
@@ -14,6 +14,6 @@ cube.monkeyPatch = (): void => {
     );
 }
 
-export function cube(x: number) {
+export function cube(x: number): number {
     return x * x * x;
 }
