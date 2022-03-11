@@ -1,9 +1,9 @@
 import {Dirent, PathLike, promises} from "fs";
 import {join} from "path";
-import {range} from "@jellybeanci/range";
 
 const {readdir} = promises;
 
+const TAB = "  ";
 
 async function deepDirList(path: PathLike): Promise<Dirent[]> {
     return await readdir(path, {withFileTypes: true, encoding: "utf-8"});
@@ -32,7 +32,7 @@ async function dumpDir(entryPoint: string): Promise<any> {
 }
 
 function tabber(tabCount: number = 1) {
-    return "  ".repeat(tabCount);
+    return TAB.repeat(tabCount);
 }
 
 class Node extends Object {
@@ -58,7 +58,18 @@ class Node extends Object {
         return header + sub;
     }
 
-    [Symbol.iterator] = function* () {
+    * pathIterator(parentPath: string = "") {
+        const path = join(parentPath, this.head);
+        if (this.childeren) {
+            for (const child of this.childeren) {
+                yield* child.pathIterator(path);
+            }
+        } else {
+            yield path;
+        }
+    }
+
+    * [Symbol.iterator]() {
         yield this.head;
         if (this.childeren) {
             for (const child of this.childeren) {
@@ -82,42 +93,56 @@ async function dumpDirObject(entryPoint: string): Promise<Node[]> {
     );
 }
 
-const isTypeScriptFile = /^([a-z0-9_-]+)\.(ts)$/gi;
+async function dumpPaths(path: string, from: string = __dirname): Promise<Node> {
+    const entryPoint = join(from, path);
+    const dirArray = await dumpDirObject(entryPoint);
+    return new Node(path, dirArray);
+}
 
 const neg = (callback: (args: any) => boolean) => (args: any) => !callback(args);
 
-const fx = (x) => x > 25;
-const nfx = neg(fx);
+// const fx = (x) => x > 25;
+//
+// const nfx = neg(fx);
 
-const numbers = range(1, 50);
+const isTypeScriptFile = /^([a-z0-9_-]+)\.(ts)$/gi;
+const isTypeScriptPath = /^(\/?[a-z0-9_-]+)*(\.ts)$/gi;
 
-// console.log(numbers.filter(nfx))
-
-// for (const file of files) {
-//     const matches = file.match(isTypeScriptFile)?.length > 0;
-//     console.log(file, ":", matches)
-// }
-
-const matcher = (str: string) => str.match(isTypeScriptFile) !== null;
+const matcher = (expression: RegExp) => (str: string) => str.match(expression) !== null;
 
 async function getTypeScriptFiles(fileArray: (string | string[])[]): Promise<string[]> {
-    const files = <string[]>fileArray.flat(Number.POSITIVE_INFINITY).filter(matcher);
-    return files.filter(matcher);
+    return <string[]>fileArray.flat(Number.POSITIVE_INFINITY).filter(matcher(isTypeScriptFile));
 }
 
+async function getTypeScriptPaths(root: Node): Promise<string[]> {
+    const filtered: string[] = [];
+    for (const filePath of root.pathIterator()) {
+        if (matcher(isTypeScriptPath)(filePath)) {
+            filtered.push(filePath);
+        }
+    }
+    return filtered;
+}
+
+
 async function autoImporter(fileList: string[]) {
-    const imported = Promise.all(fileList.map(async file => import(file)));
+    const imported = Promise.all(fileList.map(async file => import(`./${file}`)));
     console.log(await imported);
 }
 
 (async main => {
-    const entryPoint = join(__dirname, "func");
-    const dirArray = await dumpDirObject(entryPoint);
-    const root = new Node("func", dirArray);
 
-    for (const rootElement of root) {
-        console.log(rootElement)
-    }
+    const root = await dumpPaths("func");
+    const tsPaths = await getTypeScriptPaths(root);
+    console.log(tsPaths);
+    await autoImporter(tsPaths);
+
+
+    // for (const rootElement of root.pathIterator()) {
+    //     console.log(rootElement)
+    // }
+
+    // await getTypeScriptPaths(root);
 
     // console.log(root.toString())
     // console.dir(dirArray, {'depth': null});
