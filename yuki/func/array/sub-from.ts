@@ -1,5 +1,6 @@
 import {safePrototypePatch} from "../../safe-patcher";
 import {apply} from "./apply";
+import {removePatch} from "../../remove-patch";
 
 apply.monkeyPatch();
 
@@ -15,6 +16,10 @@ subFrom.monkeyPatch = (): void => {
             return subFrom(this, other);
         }
     );
+}
+
+subFrom.removePatch = (): void => {
+    removePatch(Array.prototype, 'subFrom');
 }
 
 export function subFrom(thisArray: number[], other: number): number[] {

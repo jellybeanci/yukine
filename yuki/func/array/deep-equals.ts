@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {deepEqual} from "fast-equals";
 
 declare global {
@@ -13,6 +14,10 @@ deepEquals.monkeyPatch = (): void => {
             return deepEquals(this, other);
         }
     );
+}
+
+deepEquals.removePatch = (): void => {
+    removePatch(Array.prototype, 'deepEquals');
 }
 
 export function deepEquals(thisArray: any[], other: any[]): boolean {

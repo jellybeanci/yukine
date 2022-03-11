@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 import {int} from "@jellybeanci/int";
 
@@ -16,6 +17,10 @@ toInt.monkeyPatch = (): void => {
             return toInt(this);
         }
     );
+}
+
+toInt.removePatch = (): void => {
+    removePatch(Array.prototype, 'toInt');
 }
 
 export function toInt(thisArray: number[]): number[] {

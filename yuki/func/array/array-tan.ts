@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 
 fastMap.monkeyPatch();
@@ -15,6 +16,10 @@ arrayTan.monkeyPatch = (): void => {
             return arrayTan(this);
         }
     );
+}
+
+arrayTan.removePatch = (): void => {
+    removePatch(Array.prototype, 'tan');
 }
 
 export function arrayTan(thisArray: number[]): number[] {

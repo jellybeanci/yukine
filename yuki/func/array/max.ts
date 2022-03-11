@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 
 fastMap.monkeyPatch();
@@ -15,6 +16,10 @@ max.monkeyPatch = (): void => {
             return max(this);
         }
     );
+}
+
+max.removePatch = (): void => {
+    removePatch(Array.prototype, 'max');
 }
 
 export function max(thisArray: number[]): number {

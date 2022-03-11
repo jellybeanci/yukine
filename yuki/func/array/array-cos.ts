@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 
 fastMap.monkeyPatch();
@@ -15,6 +16,10 @@ arrayCos.monkeyPatch = (): void => {
             return arrayCos(this);
         }
     );
+}
+
+arrayCos.removePatch = (): void => {
+    removePatch(Array.prototype, 'cos');
 }
 
 export function arrayCos(thisArray: number[]): number[] {

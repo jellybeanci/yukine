@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 
 declare global {
     interface Array<T> {
@@ -12,6 +13,10 @@ swap.monkeyPatch = (): void => {
             return swap(this, s1, s2);
         }
     );
+}
+
+swap.removePatch = (): void => {
+    removePatch(Array.prototype, 'swap');
 }
 
 export function swap(thisArray: any[], s1: number, s2: number): void {

@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 
 fastMap.monkeyPatch();
@@ -15,6 +16,10 @@ pow.monkeyPatch = (): void => {
             return pow(this, power);
         }
     );
+}
+
+pow.removePatch = (): void => {
+    removePatch(Array.prototype, 'pow');
 }
 
 export function pow(thisArray: number[], power: number): number[] {

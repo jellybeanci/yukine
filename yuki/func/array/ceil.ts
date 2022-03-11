@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 
 fastMap.monkeyPatch();
@@ -15,6 +16,10 @@ ceil.monkeyPatch = (): void => {
             return ceil(this);
         }
     );
+}
+
+ceil.removePatch = (): void => {
+    removePatch(Array.prototype, 'ceil');
 }
 
 export function ceil(thisArray: number[]): number[] {

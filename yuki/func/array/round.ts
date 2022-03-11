@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 
 fastMap.monkeyPatch();
@@ -15,6 +16,10 @@ round.monkeyPatch = (): void => {
             return round(this);
         }
     );
+}
+
+round.removePatch = (): void => {
+    removePatch(Array.prototype, 'round');
 }
 
 export function round(thisArray: number[]): number[] {

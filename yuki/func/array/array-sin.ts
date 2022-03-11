@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 
 fastMap.monkeyPatch();
@@ -15,6 +16,10 @@ arraySin.monkeyPatch = (): void => {
             return arraySin(this);
         }
     );
+}
+
+arraySin.removePatch = (): void => {
+    removePatch(Array.prototype, 'sin');
 }
 
 export function arraySin(thisArray: number[]): number[] {

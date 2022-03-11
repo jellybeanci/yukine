@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {apply} from "./apply";
 
 apply.monkeyPatch();
@@ -15,6 +16,10 @@ divBy.monkeyPatch = (): void => {
             return divBy(this, other);
         }
     );
+}
+
+divBy.removePatch = (): void => {
+    removePatch(Array.prototype, 'divBy');
 }
 
 export function divBy(thisArray: number[], other: number): number[] {

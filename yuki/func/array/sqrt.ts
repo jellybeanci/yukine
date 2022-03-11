@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 
 fastMap.monkeyPatch();
@@ -15,6 +16,10 @@ sqrt.monkeyPatch = (): void => {
             return sqrt(this);
         }
     );
+}
+
+sqrt.removePatch = (): void => {
+    removePatch(Array.prototype, 'sqrt');
 }
 
 export function sqrt(thisArray: number[]): number[] {

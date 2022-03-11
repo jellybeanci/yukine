@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {PrimitiveType} from "./types/primitive-type";
 
 declare global {
@@ -13,6 +14,10 @@ arrayEquals.monkeyPatch = (): void => {
             return arrayEquals(this, other);
         }
     );
+}
+
+arrayEquals.removePatch = (): void => {
+    removePatch(Array.prototype, 'equals');
 }
 
 export function arrayEquals(thisArray: PrimitiveType[], other: PrimitiveType[]): boolean {

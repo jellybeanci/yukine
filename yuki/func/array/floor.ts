@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 
 fastMap.monkeyPatch();
@@ -15,6 +16,10 @@ floor.monkeyPatch = (): void => {
             return floor(this);
         }
     );
+}
+
+floor.removePatch = (): void => {
+    removePatch(Array.prototype, 'floor');
 }
 
 export function floor(thisArray: number[]): number[] {

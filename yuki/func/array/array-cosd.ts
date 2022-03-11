@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 import {cosd} from "../math/cosd";
 
@@ -17,6 +18,10 @@ arrayCosd.monkeyPatch = (): void => {
             return arrayCosd(this);
         }
     );
+}
+
+arrayCosd.removePatch = (): void => {
+    removePatch(Array.prototype, 'cosd');
 }
 
 export function arrayCosd(thisArray: number[]): number[] {

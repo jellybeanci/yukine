@@ -37,31 +37,31 @@ function tabber(tabCount: number = 1) {
 
 class Node extends Object {
     private readonly head: string;
-    private childeren: Node[] = undefined;
+    private children: Node[] = undefined;
 
     constructor(head: string, child?: Node[]) {
         super();
         this.head = head;
-        this.childeren = child;
+        this.children = child;
     }
 
-    setChilderen(childeren: Node[]): void {
-        this.childeren = childeren;
+    setChildren(children: Node[]): void {
+        this.children = children;
     }
 
     printTree(tabCount: number): string {
         const header = `${this.head}`;
         let sub = "";
-        if (this.childeren) {
-            sub += `\n${tabber(tabCount)}║\n${tabber(tabCount)}╚ ${this.childeren.map(child => child.printTree(tabCount + 1)).join("\n" + tabber(tabCount + 1))}`
+        if (this.children) {
+            sub += `\n${tabber(tabCount)}║\n${tabber(tabCount)}╚ ${this.children.map(child => child.printTree(tabCount + 1)).join("\n" + tabber(tabCount + 1))}`
         }
         return header + sub;
     }
 
     * pathIterator(parentPath: string = "") {
         const path = join(parentPath, this.head);
-        if (this.childeren) {
-            for (const child of this.childeren) {
+        if (this.children) {
+            for (const child of this.children) {
                 yield* child.pathIterator(path);
             }
         } else {
@@ -71,8 +71,8 @@ class Node extends Object {
 
     * [Symbol.iterator]() {
         yield this.head;
-        if (this.childeren) {
-            for (const child of this.childeren) {
+        if (this.children) {
+            for (const child of this.children) {
                 yield* child[Symbol.iterator]();
             }
         }
@@ -87,7 +87,7 @@ async function dumpDirObject(entryPoint: string): Promise<Node[]> {
     const currentDir = await readdir(entryPoint, {withFileTypes: true, encoding: "utf-8"});
     return Promise.all(currentDir.map(async dirent => {
             const node = new Node(dirent.name);
-            if (dirent.isDirectory()) node.setChilderen(await dumpDirObject(join(entryPoint, dirent.name)));
+            if (dirent.isDirectory()) node.setChildren(await dumpDirObject(join(entryPoint, dirent.name)));
             return node;
         })
     );

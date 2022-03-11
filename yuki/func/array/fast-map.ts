@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 
 declare global {
     interface Array<T> {
@@ -13,6 +14,10 @@ fastMap.monkeyPatch = (): void => {
             return fastMap(this, callbackfn);
         }
     );
+}
+
+fastMap.removePatch = (): void => {
+    removePatch(Array.prototype, 'fastMap');
 }
 
 export function fastMap<T, U>(array: T[], callbackfn: (value: T, index: number, array: T[]) => U): U[] {

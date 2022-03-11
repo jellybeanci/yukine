@@ -1,4 +1,5 @@
 import {binarize} from "./binarize";
+import {removePatch} from "../../remove-patch";
 import {safePrototypePatch} from "../../safe-patcher";
 
 binarize.monkeyPatch();
@@ -15,6 +16,10 @@ toBitString.monkeyPatch = (): void => {
             return toBitString(this, seperator);
         }
     );
+}
+
+toBitString.removePatch = (): void => {
+    removePatch(Array.prototype, 'toBitString');
 }
 
 export function toBitString(thisArray: any[], seperator: string = ""): string {

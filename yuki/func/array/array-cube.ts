@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {fastMap} from "./fast-map";
 import {cube} from "../math/cube";
 
@@ -17,6 +18,10 @@ arrayCube.monkeyPatch = (): void => {
             return arrayCube(this);
         }
     );
+}
+
+arrayCube.removePatch = (): void => {
+    removePatch(Array.prototype, 'cube');
 }
 
 export function arrayCube(thisArray: number[]): number[] {
