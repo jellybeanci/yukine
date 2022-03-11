@@ -1,4 +1,4 @@
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
 import {StringLike} from "./types/string-like";
 
 declare global {

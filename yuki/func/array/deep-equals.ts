@@ -1,4 +1,4 @@
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
 import {deepEqual} from "fast-equals";
 
 declare global {

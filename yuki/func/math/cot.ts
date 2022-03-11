@@ -1,4 +1,4 @@
-import {safePatch} from "../../define-prototype";
+import {safePatch} from "../../safe-patcher";
 
 declare global {
     interface Math {

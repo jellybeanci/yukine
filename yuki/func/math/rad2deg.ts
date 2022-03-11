@@ -1,4 +1,4 @@
-import {safePatch} from "../../define-prototype";
+import {safePatch} from "../../safe-patcher";
 
 const RADIAN_AS_DEGREE = 57.29577951308232;
 

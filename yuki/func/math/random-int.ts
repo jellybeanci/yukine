@@ -1,4 +1,4 @@
-import {safePatch} from "../../define-prototype";
+import {safePatch} from "../../safe-patcher";
 import {randomInt as RANDOM_INT} from "@jellybeanci/random";
 
 declare global {

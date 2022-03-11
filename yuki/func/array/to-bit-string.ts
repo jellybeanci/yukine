@@ -1,5 +1,5 @@
 import {binarize} from "./binarize";
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
 
 binarize.monkeyPatch();
 

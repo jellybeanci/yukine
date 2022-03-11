@@ -1,4 +1,4 @@
-import {safePatch} from "../../../define-prototype";
+import {safePatch} from "../../../safe-patcher";
 
 export const QUARTER_PI: number = 0.7853981633974483;
 

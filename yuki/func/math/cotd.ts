@@ -1,4 +1,4 @@
-import {safePatch} from "../../define-prototype";
+import {safePatch} from "../../safe-patcher";
 import {cot} from "./cot";
 import {deg2rad} from "./deg2rad";
 

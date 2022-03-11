@@ -1,4 +1,4 @@
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
 import {fastMap} from "./fast-map";
 import {cube} from "../math/cube";
 

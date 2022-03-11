@@ -1,6 +1,6 @@
 import {fastMap} from "./fast-map";
 import {Binary} from "./types/binary";
-import {safePrototypePatch} from "../../define-prototype";
+import {safePrototypePatch} from "../../safe-patcher";
 
 fastMap.monkeyPatch();
 

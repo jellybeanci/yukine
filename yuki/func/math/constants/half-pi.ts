@@ -1,4 +1,4 @@
-import {safePatch} from "../../../define-prototype";
+import {safePatch} from "../../../safe-patcher";
 
 export const HALF_PI: number = 1.5707963267948966;
 

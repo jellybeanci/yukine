@@ -1,4 +1,4 @@
-import {safePatch} from "../../define-prototype";
+import {safePatch} from "../../safe-patcher";
 import {randomGaussianRange as RANDOM_GAUSSIAN_RANGE} from "@jellybeanci/random";
 
 declare global {
