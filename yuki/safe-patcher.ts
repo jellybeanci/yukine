@@ -1,4 +1,4 @@
-import {isDefined} from "./is-defined";
+import {doIfNotDefined} from "./do-if-not-defined";
 
 interface HasPrototype {
     prototype: any[] | String | Number;
@@ -11,7 +11,7 @@ export function safePrototypePatch(target: HasPrototype, name: string, value: Va
 }
 
 export function safePatch(target: object, name: string, value: ValueMember): void {
-    isDefined(target[name], name, () => {
+    doIfNotDefined(target[name], name, () => {
         Object.defineProperty(target, name, {
             value: value, enumerable: false, configurable: true, writable: true
         });

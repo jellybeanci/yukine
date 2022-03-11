@@ -64,7 +64,6 @@ import {arrayTand} from "./func/array/array-tand";
 import {arrayCotd} from "./func/array/array-cotd";
 import {toBitString} from "./func/array/to-bit-string";
 
-
 fastMap.monkeyPatch();
 abs.monkeyPatch();
 max.monkeyPatch();
@@ -159,6 +158,8 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
+
+console.log(xs.div(ys))
 
 // DEBUG
 /*
