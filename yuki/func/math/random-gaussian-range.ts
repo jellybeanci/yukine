@@ -1,4 +1,5 @@
 import {safePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {randomGaussianRange as RANDOM_GAUSSIAN_RANGE} from "@jellybeanci/random";
 
 declare global {
@@ -13,6 +14,10 @@ randomGaussianRange.monkeyPatch = (): void => {
             return randomGaussianRange(start, end, degree);
         }
     );
+}
+
+randomGaussianRange.removePatch = (): void => {
+    removePatch(Math, "randomGaussianRange");
 }
 
 export function randomGaussianRange(start: number, end?: number, degree?: number): number {

@@ -1,4 +1,5 @@
 import {safePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {deg2rad} from "./deg2rad";
 
 deg2rad.monkeyPatch();
@@ -15,6 +16,10 @@ sind.monkeyPatch = (): void => {
             return sind(x);
         }
     );
+}
+
+sind.removePatch = (): void => {
+    removePatch(Math, "sind");
 }
 
 export function sind(x: number): number {

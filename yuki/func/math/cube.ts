@@ -1,4 +1,5 @@
 import {safePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 
 declare global {
     interface Math {
@@ -12,6 +13,10 @@ cube.monkeyPatch = (): void => {
             return cube(x);
         }
     );
+}
+
+cube.removePatch = (): void => {
+    removePatch(Math, "cube");
 }
 
 export function cube(x: number): number {

@@ -1,6 +1,7 @@
 import {safePatch} from "../../safe-patcher";
-import {cot} from "./cot";
+import {removePatch} from "../../remove-patch";
 import {deg2rad} from "./deg2rad";
+import {cot} from "./cot";
 
 cot.monkeyPatch();
 deg2rad.monkeyPatch();
@@ -17,6 +18,10 @@ cotd.monkeyPatch = (): void => {
             return cotd(x);
         }
     );
+}
+
+cotd.removePatch = (): void => {
+    removePatch(Math, "cotd");
 }
 
 export function cotd(x: number): number {

@@ -1,4 +1,5 @@
 import {safePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 
 const RADIAN_AS_DEGREE = 57.29577951308232;
 
@@ -14,6 +15,10 @@ rad2deg.monkeyPatch = (): void => {
             return rad2deg(radian);
         }
     );
+}
+
+rad2deg.removePatch = (): void => {
+    removePatch(Math, "rad2deg");
 }
 
 export function rad2deg(radian: number): number {

@@ -1,4 +1,5 @@
 import {safePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {deg2rad} from "./deg2rad";
 
 deg2rad.monkeyPatch();
@@ -15,6 +16,10 @@ tand.monkeyPatch = (): void => {
             return tand(x);
         }
     );
+}
+
+tand.removePatch = (): void => {
+    removePatch(Math, "tand");
 }
 
 export function tand(x: number): number {

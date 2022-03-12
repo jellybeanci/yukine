@@ -1,4 +1,5 @@
 import {safePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {randomInt as RANDOM_INT} from "@jellybeanci/random";
 
 declare global {
@@ -13,6 +14,10 @@ randomInt.monkeyPatch = (): void => {
             return randomInt(start, end);
         }
     );
+}
+
+randomInt.removePatch = (): void => {
+    removePatch(Math, "randomInt");
 }
 
 export function randomInt(start: number, end?: number): number {
