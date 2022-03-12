@@ -1,6 +1,6 @@
 import {Dirent, PathLike, promises} from "fs";
 import {join} from "path";
-import {isDefined} from "./is-defined";
+import {mod} from "./func/array/mod";
 
 const {readdir} = promises;
 
@@ -107,7 +107,7 @@ const neg = (callback: (args: any) => boolean) => (args: any) => !callback(args)
 // const nfx = neg(fx);
 
 const isTypeScriptFile = /^([a-z0-9_-]+)\.(ts)$/gi;
-const isTypeScriptPath = /^(\/?[a-z0-9_-]+)*(\.ts)$/gi;
+const isTypeScriptPath = /^((\/|\\)?[a-z0-9_-]+)*(\.ts)$/gi;
 
 const matcher = (expression: RegExp) => (str: string) => str.match(expression) !== null;
 
@@ -125,7 +125,6 @@ async function getTypeScriptPaths(root: Node): Promise<string[]> {
     return filtered;
 }
 
-
 async function autoImporter(fileList: string[]) {
     return Promise.all(fileList.map(async file => import(`./${file}`)));
 }
@@ -135,19 +134,28 @@ function extractFunction(property: unknown, name: string): Function | undefined 
     return value ? value[name] : undefined;
 }
 
-function getPatch() {
+type Monkey = { monkeyPatch: Function; removePatch: Function };
 
+const exist = x => !!x;
+
+function getPatch(module: object): Monkey {
+    const monkeyPatch = extractFunction(module, "monkeyPatch");
+    const removePatch = extractFunction(module, "removePatch");
+    if (monkeyPatch === undefined || removePatch === undefined) return void 0;
+    return {monkeyPatch, removePatch};
+}
+
+function filterModules(modules: object[]): Monkey[] {
+    return modules.map(getPatch).filter(exist);
 }
 
 (async main => {
-
     const root = await dumpPaths("func");
     const tsPaths = await getTypeScriptPaths(root);
     const imports = await autoImporter(tsPaths);
-    imports.forEach(im => {
-        console.log(im, "monkey:", isDefined(extractFunction(im, "monkeyPatch")), "remove:", isDefined(extractFunction(im, "removePatch")));
-    });
-
+    filterModules(imports).forEach(monkey => {
+        console.log(monkey);
+    })
 
     // console.log(imports);
     // for (const rootElement of root.pathIterator()) {
