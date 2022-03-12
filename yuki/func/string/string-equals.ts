@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 import {StringLike} from "./types/string-like";
 
 declare global {
@@ -13,6 +14,10 @@ stringEquals.monkeyPatch = (): void => {
             return stringEquals(this, other);
         }
     );
+}
+
+stringEquals.removePatch = (): void => {
+    removePatch(String, 'equals');
 }
 
 export function stringEquals(thisString: StringLike, other: StringLike): boolean {
