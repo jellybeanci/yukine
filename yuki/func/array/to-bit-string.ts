@@ -1,6 +1,6 @@
 import {binarize} from "./binarize";
-import {removePatch} from "../../remove-patch";
-import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../patch/remove-patch";
+import {safePrototypePatch} from "../../patch/safe-patcher";
 
 binarize.monkeyPatch();
 

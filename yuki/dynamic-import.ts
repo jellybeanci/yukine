@@ -1,13 +1,13 @@
 import {promises} from "fs";
 import {join} from "path";
-import {exist} from "./exist";
+import {exist} from "./utils/exist";
 import {matcher} from "./func/matcher";
 import {Monkey} from "./types/monkey";
-import {FileNode} from "./file-node";
+import {FileNode} from "./utils/file-node";
 
 const {readdir} = promises;
 
-const isTypeScriptPath = /^((\/|\\)?[a-z0-9_-]+)*(\.ts)$/gi;
+const isTypeScriptPath = /^(([\/\\])?[a-z0-9_-]+)*(\.ts)$/gi;
 
 async function dumpDirObject(entryPoint: string): Promise<FileNode[]> {
     const currentDir = await readdir(entryPoint, {withFileTypes: true, encoding: "utf-8"});
@@ -55,13 +55,24 @@ function filterModules(modules: object[]): Monkey[] {
     return modules.map(getPatch).filter(exist);
 }
 
-(async main => {
-    const root = await dumpPaths("func");
+export async function activateMonkeyPatch(funcPath: string = "func") {
+    const root = await dumpPaths(funcPath);
     const tsPaths = await getTypeScriptPaths(root);
+    console.log(tsPaths)
     const imports = await autoImporter(tsPaths);
-    filterModules(imports).forEach(monkey => {
-        console.log(monkey);
-    })
+    for (const module of filterModules(imports)) {
+        module.monkeyPatch();
+    }
+}
+
+
+(async main => {
+    // const root = await dumpPaths("func");
+    // const tsPaths = await getTypeScriptPaths(root);
+    // const imports = await autoImporter(tsPaths);
+    // filterModules(imports).forEach(monkey => {
+    //     console.log(monkey);
+    // })
 
     // console.log(imports);
     // for (const rootElement of root.pathIterator()) {

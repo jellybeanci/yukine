@@ -1,4 +1,4 @@
-import {doIfNotDefined} from "./do-if-not-defined";
+import {doIfNotDefined} from "../utils/do-if-not-defined";
 
 interface HasPrototype {
     prototype: any[] | String | Number;

@@ -1,5 +1,5 @@
-import {safePatch} from "../../../safe-patcher";
-import {removePatch} from "../../../remove-patch";
+import {safePatch} from "../../../patch/safe-patcher";
+import {removePatch} from "../../../patch/remove-patch";
 
 export const QUARTER_PI: number = 0.7853981633974483;
 

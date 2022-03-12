@@ -1,5 +1,5 @@
-import {safePatch} from "../../../safe-patcher";
-import {removePatch} from "../../../remove-patch";
+import {safePatch} from "../../../patch/safe-patcher";
+import {removePatch} from "../../../patch/remove-patch";
 
 export const TWO_PI: number = 6.283185307179586;
 

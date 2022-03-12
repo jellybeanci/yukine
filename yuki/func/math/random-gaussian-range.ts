@@ -1,5 +1,5 @@
-import {safePatch} from "../../safe-patcher";
-import {removePatch} from "../../remove-patch";
+import {safePatch} from "../../patch/safe-patcher";
+import {removePatch} from "../../patch/remove-patch";
 import {randomGaussianRange as RANDOM_GAUSSIAN_RANGE} from "@jellybeanci/random";
 
 declare global {

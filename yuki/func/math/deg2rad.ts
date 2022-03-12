@@ -1,5 +1,5 @@
-import {safePatch} from "../../safe-patcher";
-import {removePatch} from "../../remove-patch";
+import {safePatch} from "../../patch/safe-patcher";
+import {removePatch} from "../../patch/remove-patch";
 
 const DEGREE_AS_RADIAN = 0.017453292519943295;
 
