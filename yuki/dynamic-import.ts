@@ -1,5 +1,6 @@
 import {Dirent, PathLike, promises} from "fs";
 import {join} from "path";
+import {isDefined} from "./is-defined";
 
 const {readdir} = promises;
 
@@ -129,13 +130,22 @@ async function autoImporter(fileList: string[]) {
     return Promise.all(fileList.map(async file => import(`./${file}`)));
 }
 
+function extractFunction(property: unknown, name: string): Function | undefined {
+    const value = Object.values(property)[0];
+    return value ? value[name] : undefined;
+}
+
 (async main => {
 
     const root = await dumpPaths("func");
     const tsPaths = await getTypeScriptPaths(root);
-    console.log(tsPaths);
-    await autoImporter(tsPaths);
+    const imports = await autoImporter(tsPaths);
+    imports.forEach(im => {
+        console.log(im, "monkey:", isDefined(extractFunction(im, "monkeyPatch")), "remove:", isDefined(extractFunction(im, "removePatch")));
+    });
 
+
+    // console.log(imports);
     // for (const rootElement of root.pathIterator()) {
     //     console.log(rootElement)
     // }
