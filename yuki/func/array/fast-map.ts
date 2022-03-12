@@ -9,7 +9,7 @@ declare global {
 
 fastMap.monkeyPatch = (): void => {
     safePrototypePatch(
-        Array, "fastMap",
+        Array, 'fastMap',
         function (callbackfn: (value: any, index: number, array: any[]) => any) {
             return fastMap(this, callbackfn);
         }

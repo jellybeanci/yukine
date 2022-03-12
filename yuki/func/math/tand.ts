@@ -11,7 +11,7 @@ declare global {
 }
 
 tand.monkeyPatch = (): void => {
-    safePatch(Math, "tand",
+    safePatch(Math, 'tand',
         function (x: number) {
             return tand(x);
         }
@@ -19,7 +19,7 @@ tand.monkeyPatch = (): void => {
 }
 
 tand.removePatch = (): void => {
-    removePatch(Math, "tand");
+    removePatch(Math, 'tand');
 }
 
 export function tand(x: number): number {

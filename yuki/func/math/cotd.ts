@@ -13,7 +13,7 @@ declare global {
 }
 
 cotd.monkeyPatch = (): void => {
-    safePatch(Math, "cotd",
+    safePatch(Math, 'cotd',
         function (x: number) {
             return cotd(x);
         }
@@ -21,7 +21,7 @@ cotd.monkeyPatch = (): void => {
 }
 
 cotd.removePatch = (): void => {
-    removePatch(Math, "cotd");
+    removePatch(Math, 'cotd');
 }
 
 export function cotd(x: number): number {

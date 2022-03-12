@@ -9,7 +9,7 @@ declare global {
 }
 
 randomGaussian.monkeyPatch = (): void => {
-    safePatch(Math, "randomGaussian",
+    safePatch(Math, 'randomGaussian',
         function (degree?: number) {
             return randomGaussian(degree);
         }
@@ -17,7 +17,7 @@ randomGaussian.monkeyPatch = (): void => {
 }
 
 randomGaussian.removePatch = (): void => {
-    removePatch(Math, "randomGaussian");
+    removePatch(Math, 'randomGaussian');
 }
 
 export function randomGaussian(degree?: number): number {

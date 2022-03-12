@@ -10,7 +10,7 @@ declare global {
 }
 
 deg2rad.monkeyPatch = (): void => {
-    safePatch(Math, "deg2rad",
+    safePatch(Math, 'deg2rad',
         function (degree: number) {
             return deg2rad(degree);
         }
@@ -18,7 +18,7 @@ deg2rad.monkeyPatch = (): void => {
 }
 
 deg2rad.removePatch = (): void => {
-    removePatch(Math, "deg2rad");
+    removePatch(Math, 'deg2rad');
 }
 
 export function deg2rad(degree: number): number {

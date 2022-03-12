@@ -11,7 +11,7 @@ declare global {
 }
 
 sind.monkeyPatch = (): void => {
-    safePatch(Math, "sind",
+    safePatch(Math, 'sind',
         function (x: number) {
             return sind(x);
         }
@@ -19,7 +19,7 @@ sind.monkeyPatch = (): void => {
 }
 
 sind.removePatch = (): void => {
-    removePatch(Math, "sind");
+    removePatch(Math, 'sind');
 }
 
 export function sind(x: number): number {

@@ -9,7 +9,7 @@ declare global {
 }
 
 randomBoolean.monkeyPatch = (): void => {
-    safePatch(Math, "randomBoolean",
+    safePatch(Math, 'randomBoolean',
         function () {
             return randomBoolean();
         }
@@ -17,7 +17,7 @@ randomBoolean.monkeyPatch = (): void => {
 }
 
 randomBoolean.removePatch = (): void => {
-    removePatch(Math, "randomBoolean");
+    removePatch(Math, 'randomBoolean');
 }
 
 export function randomBoolean(): boolean {

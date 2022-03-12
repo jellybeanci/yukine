@@ -8,7 +8,7 @@ declare global {
 }
 
 swap.monkeyPatch = (): void => {
-    safePrototypePatch(Array, "swap",
+    safePrototypePatch(Array, 'swap',
         function (s1: number, s2: number) {
             return swap(this, s1, s2);
         }

@@ -11,7 +11,7 @@ declare global {
 }
 
 toBitString.monkeyPatch = (): void => {
-    safePrototypePatch(Array, "toBitString",
+    safePrototypePatch(Array, 'toBitString',
         function (seperator?: string) {
             return toBitString(this, seperator);
         }

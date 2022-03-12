@@ -8,7 +8,7 @@ declare global {
 }
 
 square.monkeyPatch = (): void => {
-    safePatch(Math, "square",
+    safePatch(Math, 'square',
         function (x: number) {
             return square(x);
         }
@@ -16,7 +16,7 @@ square.monkeyPatch = (): void => {
 }
 
 square.removePatch = (): void => {
-    removePatch(Math, "square");
+    removePatch(Math, 'square');
 }
 
 export function square(x: number): number {

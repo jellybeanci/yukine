@@ -8,7 +8,7 @@ declare global {
 }
 
 cot.monkeyPatch = (): void => {
-    safePatch(Math, "cot",
+    safePatch(Math, 'cot',
         function (x: number) {
             return cot(x);
         }
@@ -16,7 +16,7 @@ cot.monkeyPatch = (): void => {
 }
 
 cot.removePatch = (): void => {
-    removePatch(Math, "cot");
+    removePatch(Math, 'cot');
 }
 
 export function cot(x: number): number {

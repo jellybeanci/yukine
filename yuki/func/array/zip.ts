@@ -9,7 +9,7 @@ declare global {
 }
 
 zip.monkeyPatch = (): void => {
-    safePrototypePatch(Array, "zip",
+    safePrototypePatch(Array, 'zip',
         function () {
             return zip(this);
         }

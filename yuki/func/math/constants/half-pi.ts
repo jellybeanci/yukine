@@ -10,9 +10,9 @@ declare global {
 }
 
 export function monkeyPatch_HALF_PI(): void {
-    safePatch(Math, "HALF_PI", HALF_PI);
+    safePatch(Math, 'HALF_PI', HALF_PI);
 }
 
 export function removePatch_HALF_PI(): void {
-    removePatch(Math, "HALF_PI");
+    removePatch(Math, 'HALF_PI');
 }

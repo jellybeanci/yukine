@@ -12,7 +12,7 @@ declare global {
 }
 
 binarize.monkeyPatch = (): void => {
-    safePrototypePatch(Array, "binarize",
+    safePrototypePatch(Array, 'binarize',
         function () {
             return binarize(this);
         }

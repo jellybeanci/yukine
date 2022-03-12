@@ -11,7 +11,7 @@ declare global {
 }
 
 cosd.monkeyPatch = (): void => {
-    safePatch(Math, "cosd",
+    safePatch(Math, 'cosd',
         function (x: number) {
             return cosd(x);
         }
@@ -19,7 +19,7 @@ cosd.monkeyPatch = (): void => {
 }
 
 cosd.removePatch = (): void => {
-    removePatch(Math, "cosd");
+    removePatch(Math, 'cosd');
 }
 
 export function cosd(x: number): number {

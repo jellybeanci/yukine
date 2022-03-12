@@ -9,7 +9,7 @@ declare global {
 }
 
 randomInt.monkeyPatch = (): void => {
-    safePatch(Math, "randomInt",
+    safePatch(Math, 'randomInt',
         function (start: number, end?: number) {
             return randomInt(start, end);
         }
@@ -17,7 +17,7 @@ randomInt.monkeyPatch = (): void => {
 }
 
 randomInt.removePatch = (): void => {
-    removePatch(Math, "randomInt");
+    removePatch(Math, 'randomInt');
 }
 
 export function randomInt(start: number, end?: number): number {

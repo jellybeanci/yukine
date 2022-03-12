@@ -8,7 +8,7 @@ declare global {
 }
 
 isValid.monkeyPatch = (): void => {
-    safePrototypePatch(Number, "isValid",
+    safePrototypePatch(Number, 'isValid',
         function () {
             return isValid(this);
         }
@@ -16,7 +16,7 @@ isValid.monkeyPatch = (): void => {
 }
 
 isValid.removePatch = (): void => {
-    removePatch(Number, "isValid");
+    removePatch(Number, 'isValid');
 }
 
 export function isValid(thisNumber: number): boolean {

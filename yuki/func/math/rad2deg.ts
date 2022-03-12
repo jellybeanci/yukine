@@ -10,7 +10,7 @@ declare global {
 }
 
 rad2deg.monkeyPatch = (): void => {
-    safePatch(Math, "rad2deg",
+    safePatch(Math, 'rad2deg',
         function (radian: number) {
             return rad2deg(radian);
         }
@@ -18,7 +18,7 @@ rad2deg.monkeyPatch = (): void => {
 }
 
 rad2deg.removePatch = (): void => {
-    removePatch(Math, "rad2deg");
+    removePatch(Math, 'rad2deg');
 }
 
 export function rad2deg(radian: number): number {

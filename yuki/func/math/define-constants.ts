@@ -15,5 +15,5 @@ defineConstants.removePatch = (): void => {
 }
 
 export function defineConstants(): string {
-    return "Math is fun :)";
+    return 'Math is fun :)';
 }

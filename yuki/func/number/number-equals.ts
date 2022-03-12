@@ -8,7 +8,7 @@ declare global {
 }
 
 numberEquals.monkeyPatch = (): void => {
-    safePrototypePatch(Number, "equals",
+    safePrototypePatch(Number, 'equals',
         function (number: number, epsilon: number = Number.EPSILON) {
             return numberEquals(this, number, epsilon);
         }
@@ -16,7 +16,7 @@ numberEquals.monkeyPatch = (): void => {
 }
 
 numberEquals.removePatch = (): void => {
-    removePatch(Number, "equals");
+    removePatch(Number, 'equals');
 }
 
 export function numberEquals(thisNumber: number, other: number, epsilon: number = Number.EPSILON): boolean {
