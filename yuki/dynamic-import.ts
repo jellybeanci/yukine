@@ -135,6 +135,10 @@ function extractFunction(property: unknown, name: string): Function | undefined 
     return value ? value[name] : undefined;
 }
 
+function getPatch() {
+
+}
+
 (async main => {
 
     const root = await dumpPaths("func");
