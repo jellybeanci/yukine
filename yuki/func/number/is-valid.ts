@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 
 declare global {
     interface Number {
@@ -12,6 +13,10 @@ isValid.monkeyPatch = (): void => {
             return isValid(this);
         }
     );
+}
+
+isValid.removePatch = (): void => {
+    removePatch(Number, "isValid");
 }
 
 export function isValid(thisNumber: number): boolean {

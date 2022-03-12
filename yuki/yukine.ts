@@ -159,8 +159,6 @@ const s2 = '\u006E\u0303'; // ñ = n + ̃
 const str1 = new String("Ohh, Hi Mark!");
 const str2 = new String("Ohh, Hi Mark!");
 
-console.log(xs.div(ys))
-
 // DEBUG
 /*
 console.log(fastMap(xs, doubler))

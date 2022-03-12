@@ -1,4 +1,5 @@
 import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../remove-patch";
 
 declare global {
     interface Number {
@@ -12,6 +13,10 @@ numberEquals.monkeyPatch = (): void => {
             return numberEquals(this, number, epsilon);
         }
     );
+}
+
+numberEquals.removePatch = (): void => {
+    removePatch(Number, "equals");
 }
 
 export function numberEquals(thisNumber: number, other: number, epsilon: number = Number.EPSILON): boolean {
