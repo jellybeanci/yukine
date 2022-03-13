@@ -1,4 +1,4 @@
-import {isDefined} from "./is-defined";
+import {isDefined} from "../utils/is-defined";
 
 export function removePatch(target: object, propertyName: string): void {
     if (target === undefined || target === null) return;

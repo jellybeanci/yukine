@@ -1,6 +1,6 @@
-import {safePrototypePatch} from "../../safe-patcher";
+import {safePrototypePatch} from "../../patch/safe-patcher";
 import {apply} from "./apply";
-import {removePatch} from "../../remove-patch";
+import {removePatch} from "../../patch/remove-patch";
 
 apply.monkeyPatch();
 

@@ -1,5 +1,5 @@
-import {safePrototypePatch} from "../../safe-patcher";
-import {removePatch} from "../../remove-patch";
+import {safePrototypePatch} from "../../patch/safe-patcher";
+import {removePatch} from "../../patch/remove-patch";
 
 declare global {
     interface Array<T> {
@@ -9,7 +9,7 @@ declare global {
 
 fastMap.monkeyPatch = (): void => {
     safePrototypePatch(
-        Array, "fastMap",
+        Array, 'fastMap',
         function (callbackfn: (value: any, index: number, array: any[]) => any) {
             return fastMap(this, callbackfn);
         }

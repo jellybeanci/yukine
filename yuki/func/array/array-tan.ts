@@ -1,5 +1,5 @@
-import {safePrototypePatch} from "../../safe-patcher";
-import {removePatch} from "../../remove-patch";
+import {safePrototypePatch} from "../../patch/safe-patcher";
+import {removePatch} from "../../patch/remove-patch";
 import {fastMap} from "./fast-map";
 
 fastMap.monkeyPatch();

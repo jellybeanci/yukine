@@ -1,6 +1,6 @@
 import {binarize} from "./binarize";
-import {removePatch} from "../../remove-patch";
-import {safePrototypePatch} from "../../safe-patcher";
+import {removePatch} from "../../patch/remove-patch";
+import {safePrototypePatch} from "../../patch/safe-patcher";
 
 binarize.monkeyPatch();
 
@@ -11,7 +11,7 @@ declare global {
 }
 
 toBitString.monkeyPatch = (): void => {
-    safePrototypePatch(Array, "toBitString",
+    safePrototypePatch(Array, 'toBitString',
         function (seperator?: string) {
             return toBitString(this, seperator);
         }

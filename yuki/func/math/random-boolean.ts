@@ -1,4 +1,5 @@
-import {safePatch} from "../../safe-patcher";
+import {safePatch} from "../../patch/safe-patcher";
+import {removePatch} from "../../patch/remove-patch";
 import {randomBoolean as RANDOM_BOOLEAN} from "@jellybeanci/random";
 
 declare global {
@@ -8,11 +9,15 @@ declare global {
 }
 
 randomBoolean.monkeyPatch = (): void => {
-    safePatch(Math, "randomBoolean",
+    safePatch(Math, 'randomBoolean',
         function () {
             return randomBoolean();
         }
     );
+}
+
+randomBoolean.removePatch = (): void => {
+    removePatch(Math, 'randomBoolean');
 }
 
 export function randomBoolean(): boolean {

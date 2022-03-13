@@ -1,5 +1,5 @@
-import {safePrototypePatch} from "../../safe-patcher";
-import {removePatch} from "../../remove-patch";
+import {safePrototypePatch} from "../../patch/safe-patcher";
+import {removePatch} from "../../patch/remove-patch";
 import {PrimitiveType} from "./types/primitive-type";
 
 declare global {
@@ -9,7 +9,7 @@ declare global {
 }
 
 zip.monkeyPatch = (): void => {
-    safePrototypePatch(Array, "zip",
+    safePrototypePatch(Array, 'zip',
         function () {
             return zip(this);
         }

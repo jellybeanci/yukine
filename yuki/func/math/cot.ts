@@ -1,4 +1,5 @@
-import {safePatch} from "../../safe-patcher";
+import {safePatch} from "../../patch/safe-patcher";
+import {removePatch} from "../../patch/remove-patch";
 
 declare global {
     interface Math {
@@ -7,11 +8,15 @@ declare global {
 }
 
 cot.monkeyPatch = (): void => {
-    safePatch(Math, "cot",
+    safePatch(Math, 'cot',
         function (x: number) {
             return cot(x);
         }
     );
+}
+
+cot.removePatch = (): void => {
+    removePatch(Math, 'cot');
 }
 
 export function cot(x: number): number {

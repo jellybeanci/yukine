@@ -1,0 +1,1 @@
+export type Monkey = { monkeyPatch: Function; removePatch: Function };

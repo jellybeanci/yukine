@@ -41,7 +41,6 @@ import {deg2rad} from "./func/math/deg2rad";
 import {QUARTER_PI} from "./func/math/constants/quarter-pi";
 import {HALF_PI} from "./func/math/constants/half-pi";
 import {TWO_PI} from "./func/math/constants/two-pi";
-import {defineConstants} from "./func/math/define-constants";
 import {randomRange} from "./func/math/random-range";
 import {rad2deg} from "./func/math/rad2deg";
 import {randomGaussian} from "./func/math/random-gaussian";
@@ -63,7 +62,10 @@ import {arrayCosd} from "./func/array/array-cosd";
 import {arrayTand} from "./func/array/array-tand";
 import {arrayCotd} from "./func/array/array-cotd";
 import {toBitString} from "./func/array/to-bit-string";
+import {patchFactory} from "./dynamic-import";
+import {Patch} from "./enums/patch";
 
+/*
 fastMap.monkeyPatch();
 abs.monkeyPatch();
 max.monkeyPatch();
@@ -125,426 +127,429 @@ arrayCosd.monkeyPatch();
 arrayTand.monkeyPatch();
 arrayCotd.monkeyPatch();
 toBitString.monkeyPatch();
+*/
 
 
-const doubler = n => n * 2;
+(async _ => {
 
-const xs = [1, 2, 3, 4, 5, 6];
-const ys = [-4, 2, -5, 10, -2, 1];
 
-const zs = [1, 2, 3, 4, 5, 6];
+    const doubler = n => n * 2;
 
-const hs = [1, 8, 27, 64, 125, 216, 343, 512];
+    const xs = [1, 2, 3, 4, 5, 6];
+    const ys = [-4, 2, -5, 10, -2, 1];
 
-const ks = [1.2, 2.3, 3.4, 4.5, -5.6, 0];
+    const zs = [1, 2, 3, 4, 5, 6];
 
-const ls = [1, 2, 3, [4, 5], 6, 7];
-const ms = [1, 2, 3, [4, 5], 6, 7];
+    const hs = [1, 8, 27, 64, 125, 216, 343, 512];
 
-const ns = [15, 30, 45, 60, 90, 135, 210];
+    const ks = [1.2, 2.3, 3.4, 4.5, -5.6, 0];
 
-const zfs: PrimitiveType[][] = [
-    ["a", 1, "x"],
-    ["b", 2, "y"],
-    ["c", 3, "z"]
-];
+    const ls = [1, 2, 3, [4, 5], 6, 7];
+    const ms = [1, 2, 3, [4, 5], 6, 7];
 
-const bStr = [true, false, false, true, true, true, true, false, false, true];
-const bitStr = [true, false, false, true, false, false, false, false, true, true, false, true];
-const garbageArray = [true, 1, 0, "", NaN, Infinity, 5000, 42, "meaning of life"];
+    const ns = [15, 30, 45, 60, 90, 135, 210];
 
-const s1 = '\u00F1'; // ñ
-const s2 = '\u006E\u0303'; // ñ = n + ̃
+    const zfs: PrimitiveType[][] = [
+        ["a", 1, "x"],
+        ["b", 2, "y"],
+        ["c", 3, "z"]
+    ];
 
-const str1 = new String("Ohh, Hi Mark!");
-const str2 = new String("Ohh, Hi Mark!");
+    const bStr = [true, false, false, true, true, true, true, false, false, true];
+    const bitStr = [true, false, false, true, false, false, false, false, true, true, false, true];
+    const garbageArray = [true, 1, 0, "", NaN, Infinity, 5000, 42, "meaning of life"];
 
-console.log(xs.div(ys))
+    const s1 = '\u00F1'; // ñ
+    const s2 = '\u006E\u0303'; // ñ = n + ̃
+
+    const str1 = new String("Ohh, Hi Mark!");
+    const str2 = new String("Ohh, Hi Mark!");
 
 // DEBUG
-/*
-console.log(fastMap(xs, doubler))
-console.log(xs.fastMap(doubler))
 
-console.log("xs:", abs(xs))
-console.log("ys:", abs(ys))
+    console.log(fastMap(xs, doubler))
+    console.log(xs.fastMap(doubler))
 
-console.log("xs:", xs.abs())
-console.log("ys:", ys.abs())
+    console.log("xs:", abs(xs))
+    console.log("ys:", abs(ys))
 
-console.log(max(xs))
-console.log(max(ys))
+    console.log("xs:", xs.abs())
+    console.log("ys:", ys.abs())
 
-console.log(xs.max())
-console.log(ys.max())
+    console.log(max(xs))
+    console.log(max(ys))
 
-console.log(min(xs))
-console.log(min(ys))
+    console.log(xs.max())
+    console.log(ys.max())
 
-console.log(xs.min())
-console.log(ys.min())
+    console.log(min(xs))
+    console.log(min(ys))
 
-console.log(sum(xs))
-console.log(sum(ys))
+    console.log(xs.min())
+    console.log(ys.min())
 
-console.log(xs.sum())
-console.log(ys.sum())
+    console.log(sum(xs))
+    console.log(sum(ys))
 
-console.log(sum(xs, 5))
-console.log(sum(ys, 5))
+    console.log(xs.sum())
+    console.log(ys.sum())
 
-console.log(xs.sum())
-console.log(ys.sum(5))
+    console.log(sum(xs, 5))
+    console.log(sum(ys, 5))
 
-console.log([].sum())
+    console.log(xs.sum())
+    console.log(ys.sum(5))
 
-console.log(prod(xs))
-console.log(prod(ys))
+    console.log([].sum())
 
-console.log(xs.prod())
-console.log(ys.prod())
+    console.log(prod(xs))
+    console.log(prod(ys))
 
-console.log([].prod())
+    console.log(xs.prod())
+    console.log(ys.prod())
 
-console.log(apply(xs, 5, (a, b) => a + b))
-console.log(xs.apply(5, (a, b) => a + b))
+    console.log([].prod())
 
-console.log(apply(ys, 5, (a, b) => a * b))
-console.log(xs.apply(5, (a, b) => a * b))
+    console.log(apply(xs, 5, (a, b) => a + b))
+    console.log(xs.apply(5, (a, b) => a + b))
 
-console.log(apply(ys, 5, (a, b) => b / a))
-console.log(ys.apply(5, (a, b) => b / a))
+    console.log(apply(ys, 5, (a, b) => a * b))
+    console.log(xs.apply(5, (a, b) => a * b))
 
-console.log(pow(xs, 2))
-console.log(xs.pow(2))
+    console.log(apply(ys, 5, (a, b) => b / a))
+    console.log(ys.apply(5, (a, b) => b / a))
 
-console.log(pow(ys, 2))
-console.log(ys.pow(2))
+    console.log(pow(xs, 2))
+    console.log(xs.pow(2))
 
-console.log(sqrt(xs))
-console.log(sqrt(ys))
+    console.log(pow(ys, 2))
+    console.log(ys.pow(2))
 
-console.log(xs.sqrt())
-console.log(ys.sqrt())
+    console.log(sqrt(xs))
+    console.log(sqrt(ys))
 
-console.log(exp(xs))
-console.log(exp(ys))
+    console.log(xs.sqrt())
+    console.log(ys.sqrt())
 
-console.log(xs.exp())
-console.log(ys.exp())
+    console.log(exp(xs))
+    console.log(exp(ys))
 
-console.log(operation(xs, ys, (a, b) => a + b))
-console.log(xs.operation(ys, (a, b) => a + b))
+    console.log(xs.exp())
+    console.log(ys.exp())
 
-console.log(add(xs, ys))
-console.log(xs.add(ys))
+    console.log(operation(xs, ys, (a, b) => a + b))
+    console.log(xs.operation(ys, (a, b) => a + b))
 
-console.log(sub(xs, ys))
-console.log(xs.sub(ys))
+    console.log(add(xs, ys))
+    console.log(xs.add(ys))
 
-console.log(addBy(xs, 1))
-console.log(addBy(ys, 1))
+    console.log(sub(xs, ys))
+    console.log(xs.sub(ys))
 
-console.log(xs.addBy(15))
-console.log(ys.addBy(3))
+    console.log(addBy(xs, 1))
+    console.log(addBy(ys, 1))
 
-console.log(subBy(xs, 2))
-console.log(subBy(ys, 2))
+    console.log(xs.addBy(15))
+    console.log(ys.addBy(3))
 
-console.log(xs.subBy(2))
-console.log(ys.subBy(2))
+    console.log(subBy(xs, 2))
+    console.log(subBy(ys, 2))
 
-console.log(subFrom(xs, 10))
-console.log(subFrom(ys, 10))
+    console.log(xs.subBy(2))
+    console.log(ys.subBy(2))
 
-console.log(xs.subFrom(10))
-console.log(ys.subFrom(10))
+    console.log(subFrom(xs, 10))
+    console.log(subFrom(ys, 10))
 
-console.log(mult(xs, ys))
-console.log(xs.mult(ys))
+    console.log(xs.subFrom(10))
+    console.log(ys.subFrom(10))
 
-console.log(multBy(xs, 3))
-console.log(multBy(ys, 7))
+    console.log(mult(xs, ys))
+    console.log(xs.mult(ys))
 
-console.log(div(xs, ys))
-console.log(div(ys, xs))
+    console.log(multBy(xs, 3))
+    console.log(multBy(ys, 7))
 
-console.log(xs.div(ys))
-console.log(ys.div(xs))
-console.log(xs.div(xs))
+    console.log(div(xs, ys))
+    console.log(div(ys, xs))
 
-console.log(divBy(xs, 5))
-console.log(divBy(ys, 3))
+    console.log(xs.div(ys))
+    console.log(ys.div(xs))
+    console.log(xs.div(xs))
 
-console.log(xs.divBy(5))
-console.log(ys.divBy(3))
+    console.log(divBy(xs, 5))
+    console.log(divBy(ys, 3))
 
-console.log(divFrom(xs,4))
-console.log(divFrom(ys,-5))
+    console.log(xs.divBy(5))
+    console.log(ys.divBy(3))
 
-console.log(xs.divFrom(4))
-console.log(ys.divFrom(-5))
+    console.log(divFrom(xs, 4))
+    console.log(divFrom(ys, -5))
 
-console.log(arraySin(xs))
-console.log(arraySin(ys))
+    console.log(xs.divFrom(4))
+    console.log(ys.divFrom(-5))
 
-console.log(xs.sin())
-console.log(ys.sin())
+    console.log(arraySin(xs))
+    console.log(arraySin(ys))
 
-console.log(arrayCos(xs))
-console.log(arrayCos(ys))
+    console.log(xs.sin())
+    console.log(ys.sin())
 
-console.log(xs.cos())
-console.log(ys.cos())
+    console.log(arrayCos(xs))
+    console.log(arrayCos(ys))
 
-console.log(xs.cos().pow(2).add(xs.sin().pow(2)))
+    console.log(xs.cos())
+    console.log(ys.cos())
 
-console.log(arrayTan(xs))
-console.log(arrayTan(ys))
+    console.log(xs.cos().pow(2).add(xs.sin().pow(2)))
 
-console.log(xs.tan())
-console.log(ys.tan())
+    console.log(arrayTan(xs))
+    console.log(arrayTan(ys))
 
-console.log(xs.sin().div(xs.cos()).div(xs.tan())) // sinx / cosx * tanx = 1
+    console.log(xs.tan())
+    console.log(ys.tan())
 
-console.log("arrayEquals:", arrayEquals(xs, ys), "\t===:", xs === ys)
-console.log("arrayEquals:", arrayEquals(ys, zs), "\t===:", ys === zs)
-console.log("arrayEquals:", arrayEquals(zs, xs), "\t===:", zs === xs)
-console.log("~~~~")
-console.log("arrayEquals:", xs.equals(ys), "\t===:", xs === ys)
-console.log("arrayEquals:", ys.equals(zs), "\t===:", ys === zs)
-console.log("arrayEquals:", zs.equals(xs), "\t===:", zs === xs)
+    console.log(xs.sin().div(xs.cos()).div(xs.tan())) // sinx / cosx * tanx = 1
 
-console.log("===:", ls === ms)
-console.log("deepEquals:", deepEquals(ls, ms))
-console.log("Array.deepEquals:", ls.deepEquals(ms))
+    console.log("arrayEquals:", arrayEquals(xs, ys), "\t===:", xs === ys)
+    console.log("arrayEquals:", arrayEquals(ys, zs), "\t===:", ys === zs)
+    console.log("arrayEquals:", arrayEquals(zs, xs), "\t===:", zs === xs)
+    console.log("~~~~")
+    console.log("arrayEquals:", xs.equals(ys), "\t===:", xs === ys)
+    console.log("arrayEquals:", ys.equals(zs), "\t===:", ys === zs)
+    console.log("arrayEquals:", zs.equals(xs), "\t===:", zs === xs)
 
-console.log("xs, before swap:", xs)
-swap(xs, 0, 1)
-console.log("xs, after swap: ", xs)
+    console.log("===:", ls === ms)
+    console.log("deepEquals:", deepEquals(ls, ms))
+    console.log("Array.deepEquals:", ls.deepEquals(ms))
 
-console.log("ls, before swap:", ls)
-swap(ls, 3, 0)
-console.log("ls, after swap: ", ls)
+    console.log("xs, before swap:", xs)
+    swap(xs, 0, 1)
+    console.log("xs, after swap: ", xs)
 
-console.log("xs, before swap:", xs)
-xs.swap(0, 1)
-console.log("xs, after swap: ", xs)
+    console.log("ls, before swap:", ls)
+    swap(ls, 3, 0)
+    console.log("ls, after swap: ", ls)
 
-console.log(zfs)
-console.log(zip(zfs))
-console.log(zfs.zip())
+    console.log("xs, before swap:", xs)
+    xs.swap(0, 1)
+    console.log("xs, after swap: ", xs)
 
-console.log("bitStr:", binarize(bitStr))
-console.log("garbageArray:", binarize(garbageArray))
+    console.log(zfs)
+    console.log(zip(zfs))
+    console.log(zfs.zip())
 
-console.log("bitStr:", bitStr.binarize())
-console.log("garbageArray:", garbageArray.binarize())
+    console.log("bitStr:", binarize(bitStr))
+    console.log("garbageArray:", binarize(garbageArray))
 
-console.log(toInt(ks))
-console.log(toInt(ks.multBy(Math.PI)))
+    console.log("bitStr:", bitStr.binarize())
+    console.log("garbageArray:", garbageArray.binarize())
 
-console.log(ks.toInt())
-console.log(ks.multBy(Math.PI).toInt())
+    console.log(toInt(ks))
+    console.log(toInt(ks.multBy(Math.PI)))
 
-console.log(arraySquare(xs))
-console.log(xs.square())
+    console.log(ks.toInt())
+    console.log(ks.multBy(Math.PI).toInt())
 
-console.log(arrayCube(xs))
-console.log(xs.cube())
+    console.log(arraySquare(xs))
+    console.log(xs.square())
 
-console.log(mod(xs, 3))
-console.log(xs.mod(3))
+    console.log(arrayCube(xs))
+    console.log(xs.cube())
 
-console.log(round(ks))
-console.log(ks.round())
+    console.log(mod(xs, 3))
+    console.log(xs.mod(3))
 
-console.log(ceil(ks))
-console.log(ks.ceil())
+    console.log(round(ks))
+    console.log(ks.round())
 
-console.log(floor(ks))
-console.log(ks.floor())
+    console.log(ceil(ks))
+    console.log(ks.ceil())
 
-console.log(cbrt(hs))
-console.log(hs.cbrt())
+    console.log(floor(ks))
+    console.log(ks.floor())
 
-console.log("str1:", str1, "str2:", str2)
-console.log("str1 === str2:", str1 === str2)
-console.log("stringEquals(str1, str2):", stringEquals(str1, str2))
-console.log("str1.equals(str2):", str1.equals(str2))
+    console.log(cbrt(hs))
+    console.log(hs.cbrt())
 
-console.log("~~~~~")
+    console.log("str1:", str1, "str2:", str2)
+    console.log("str1 === str2:", str1 === str2)
+    console.log("stringEquals(str1, str2):", stringEquals(str1, str2))
+    console.log("str1.equals(str2):", str1.equals(str2))
 
-console.log("s1:", s1, "s2:", s2)
+    console.log("~~~~~")
+
+    console.log("s1:", s1, "s2:", s2)
 // @ts-ignore
-console.log("s1 === s2:", s1 === s2)
-console.log("stringEquals(s1, s2):", stringEquals(s1, s2))
-console.log("s1.equals(s2):", s1.equals(s2))
+    console.log("s1 === s2:", s1 === s2)
+    console.log("stringEquals(s1, s2):", stringEquals(s1, s2))
+    console.log("s1.equals(s2):", s1.equals(s2))
 
-console.log(deg2rad(90))
-console.log(deg2rad(180))
-console.log(deg2rad(-45))
-console.log(deg2rad(270))
+    console.log(deg2rad(90))
+    console.log(deg2rad(180))
+    console.log(deg2rad(-45))
+    console.log(deg2rad(270))
 
-console.log("~~~~")
+    console.log("~~~~")
 
-console.log(Math.deg2rad(90))
-console.log(Math.deg2rad(180))
-console.log(Math.deg2rad(-45))
-console.log(Math.deg2rad(270))
+    console.log(Math.deg2rad(90))
+    console.log(Math.deg2rad(180))
+    console.log(Math.deg2rad(-45))
+    console.log(Math.deg2rad(270))
 
-console.log(QUARTER_PI)
-console.log(Math.QUARTER_PI)
+    console.log(QUARTER_PI)
+    console.log(Math.QUARTER_PI)
 
-console.log(HALF_PI)
-console.log(Math.HALF_PI)
+    console.log(HALF_PI)
+    console.log(Math.HALF_PI)
 
-console.log(TWO_PI)
-console.log(Math.TWO_PI)
+    console.log(TWO_PI)
+    console.log(Math.TWO_PI)
 
-console.log(randomRange(69, 420))
-console.log(Math.randomRange(69, 420))
+    console.log(randomRange(69, 420))
+    console.log(Math.randomRange(69, 420))
 
-console.log(rad2deg(Math.PI))
-console.log(rad2deg(Math.TWO_PI))
-console.log(rad2deg(Math.HALF_PI))
-console.log(rad2deg(Math.QUARTER_PI))
-console.log(rad2deg(Math.HALF_PI + Math.QUARTER_PI))
+    console.log(rad2deg(Math.PI))
+    console.log(rad2deg(Math.TWO_PI))
+    console.log(rad2deg(Math.HALF_PI))
+    console.log(rad2deg(Math.QUARTER_PI))
+    console.log(rad2deg(Math.HALF_PI + Math.QUARTER_PI))
 
-console.log("~~~")
+    console.log("~~~")
 
-console.log(rad2deg(deg2rad(90)))
-console.log(rad2deg(deg2rad(136)))
-console.log(rad2deg(deg2rad(42)))
+    console.log(rad2deg(deg2rad(90)))
+    console.log(rad2deg(deg2rad(136)))
+    console.log(rad2deg(deg2rad(42)))
 
-console.log(randomGaussian())
-console.log(randomGaussian(5))
-console.log(Math.randomGaussian())
-console.log(Math.randomGaussian(5))
+    console.log(randomGaussian())
+    console.log(randomGaussian(5))
+    console.log(Math.randomGaussian())
+    console.log(Math.randomGaussian(5))
 
-console.log(randomGaussianRange(5, 20))
-console.log(randomGaussianRange(5, 20, 3))
-console.log(Math.randomGaussianRange(5, 20))
-console.log(Math.randomGaussianRange(5, 20, 5))
+    console.log(randomGaussianRange(5, 20))
+    console.log(randomGaussianRange(5, 20, 3))
+    console.log(Math.randomGaussianRange(5, 20))
+    console.log(Math.randomGaussianRange(5, 20, 5))
 
-console.log(randomBoolean())
-console.log(randomBoolean())
-console.log(Math.randomBoolean())
-console.log(Math.randomBoolean())
+    console.log(randomBoolean())
+    console.log(randomBoolean())
+    console.log(Math.randomBoolean())
+    console.log(Math.randomBoolean())
 
-console.log(randomInt(10, 20))
-console.log(randomInt(-5, 5))
-console.log(Math.randomInt(10, 20))
-console.log(Math.randomInt(-5, 5))
+    console.log(randomInt(10, 20))
+    console.log(randomInt(-5, 5))
+    console.log(Math.randomInt(10, 20))
+    console.log(Math.randomInt(-5, 5))
 
-console.log(cot(Math.QUARTER_PI))
-console.log(cot(Math.HALF_PI))
-console.log(cot(Math.HALF_PI + Math.QUARTER_PI))
+    console.log(cot(Math.QUARTER_PI))
+    console.log(cot(Math.HALF_PI))
+    console.log(cot(Math.HALF_PI + Math.QUARTER_PI))
 
-console.log(Math.cot(Math.QUARTER_PI))
-console.log(Math.cot(Math.HALF_PI))
-console.log(Math.cot(Math.HALF_PI + Math.QUARTER_PI))
+    console.log(Math.cot(Math.QUARTER_PI))
+    console.log(Math.cot(Math.HALF_PI))
+    console.log(Math.cot(Math.HALF_PI + Math.QUARTER_PI))
 
-console.log(cotd(90))
-console.log(cotd(45))
-console.log(cotd(60))
+    console.log(cotd(90))
+    console.log(cotd(45))
+    console.log(cotd(60))
 
-console.log(Math.cotd(90))
-console.log(Math.cotd(45))
-console.log(Math.cotd(60))
+    console.log(Math.cotd(90))
+    console.log(Math.cotd(45))
+    console.log(Math.cotd(60))
 
-console.log(square(16))
-console.log(Math.square(16))
+    console.log(square(16))
+    console.log(Math.square(16))
 
-console.log(cube(3))
-console.log(Math.cube(3))
+    console.log(cube(3))
+    console.log(Math.cube(3))
 
-console.log(numberEquals(0, 1e-15, 1e-5))
-console.log(numberEquals(0, 1e-150))
-console.log(numberEquals(5, 5.005, 0.2))
+    console.log(numberEquals(0, 1e-15, 1e-5))
+    console.log(numberEquals(0, 1e-150))
+    console.log(numberEquals(5, 5.005, 0.2))
 
-console.log("~~~~")
+    console.log("~~~~")
 
-const x = 0;
-const y = 5;
-console.log(x.equals(1e-15, 1e-5))
-console.log(x.equals(1e-150))
-console.log(y.equals(5.005, 0.2))
+    const x = 0;
+    const y = 5;
+    console.log(x.equals(1e-15, 1e-5))
+    console.log(x.equals(1e-150))
+    console.log(y.equals(5.005, 0.2))
 
-console.log(sind(90))
-console.log(sind(45))
-console.log(sind(30))
-console.log(sind(60))
+    console.log(sind(90))
+    console.log(sind(45))
+    console.log(sind(30))
+    console.log(sind(60))
 
-console.log("~~~~")
+    console.log("~~~~")
 
-console.log(Math.sind(90))
-console.log(Math.sind(45))
-console.log(Math.sind(30))
-console.log(Math.sind(60))
+    console.log(Math.sind(90))
+    console.log(Math.sind(45))
+    console.log(Math.sind(30))
+    console.log(Math.sind(60))
 
-console.log(cosd(90))
-console.log(cosd(45))
-console.log(cosd(30))
-console.log(cosd(60))
+    console.log(cosd(90))
+    console.log(cosd(45))
+    console.log(cosd(30))
+    console.log(cosd(60))
 
-console.log("~~~~")
+    console.log("~~~~")
 
-console.log(Math.cosd(90))
-console.log(Math.cosd(45))
-console.log(Math.cosd(30))
-console.log(Math.cosd(60))
+    console.log(Math.cosd(90))
+    console.log(Math.cosd(45))
+    console.log(Math.cosd(30))
+    console.log(Math.cosd(60))
 
-console.log(tand(45))
-console.log(tand(30))
-console.log(tand(60))
+    console.log(tand(45))
+    console.log(tand(30))
+    console.log(tand(60))
 
-console.log("~~~~")
+    console.log("~~~~")
 
-console.log(Math.tand(45))
-console.log(Math.tand(30))
-console.log(Math.tand(60))
+    console.log(Math.tand(45))
+    console.log(Math.tand(30))
+    console.log(Math.tand(60))
 
-console.log(arrayCot(xs))
-console.log(arrayCot(ys))
+    console.log(arrayCot(xs))
+    console.log(arrayCot(ys))
 
-console.log("~~~~")
+    console.log("~~~~")
 
-console.log(xs.cot())
-console.log(ys.cot())
+    console.log(xs.cot())
+    console.log(ys.cot())
 
 // @ts-ignore
-const watashi = "Göksel" / "Küçükşahin";
-const questionable = 0 / 0;
-const myAwesomeness = 1 / 0;
-const negativeZero = -0;
-const zubizeratta = -420 / 0;
+    const watashi = "Göksel" / "Küçükşahin";
+    const questionable = 0 / 0;
+    const myAwesomeness = 1 / 0;
+    const negativeZero = -0;
+    const zubizeratta = -420 / 0;
 
-console.log("watashi:", watashi, "isValid:", isValid(watashi), "prototype:", watashi.isValid())
-console.log("questionable:", questionable, "isValid:", isValid(questionable), "prototype:", questionable.isValid())
-console.log("myAwesomeness:", myAwesomeness, "isValid:", isValid(myAwesomeness), "prototype:", myAwesomeness.isValid())
-console.log("negativeZero:", negativeZero, "isValid:", isValid(negativeZero), "prototype:", negativeZero.isValid())
-console.log("zubizeratta:", zubizeratta, "isValid:", isValid(zubizeratta), "prototype:", zubizeratta.isValid())
+    console.log("watashi:", watashi, "isValid:", isValid(watashi), "prototype:", watashi.isValid())
+    console.log("questionable:", questionable, "isValid:", isValid(questionable), "prototype:", questionable.isValid())
+    console.log("myAwesomeness:", myAwesomeness, "isValid:", isValid(myAwesomeness), "prototype:", myAwesomeness.isValid())
+    console.log("negativeZero:", negativeZero, "isValid:", isValid(negativeZero), "prototype:", negativeZero.isValid())
+    console.log("zubizeratta:", zubizeratta, "isValid:", isValid(zubizeratta), "prototype:", zubizeratta.isValid())
 
-console.log(arraySind(ns))
-console.log(ns.sind())
+    console.log(arraySind(ns))
+    console.log(ns.sind())
 
-console.log(arrayCosd(ns))
-console.log(ns.cosd())
+    console.log(arrayCosd(ns))
+    console.log(ns.cosd())
 
-console.log(arrayTand(ns))
-console.log(ns.tand())
+    console.log(arrayTand(ns))
+    console.log(ns.tand())
 
-console.log(arrayCotd(ns))
-console.log(ns.cotd())
+    console.log(arrayCotd(ns))
+    console.log(ns.cotd())
 
-console.log(toBitString(bStr))
-console.log(toBitString(bitStr))
-console.log(toBitString(garbageArray))
-console.log(toBitString(bitStr, ", "))
+    console.log(toBitString(bStr))
+    console.log(toBitString(bitStr))
+    console.log(toBitString(garbageArray))
+    console.log(toBitString(bitStr, ", "))
 
-console.log(bStr.toBitString())
-console.log(bitStr.toBitString())
-console.log(garbageArray.toBitString())
-console.log(bitStr.toBitString(", "))
-*/
+    console.log(bStr.toBitString())
+    console.log(bitStr.toBitString())
+    console.log(garbageArray.toBitString())
+    console.log(bitStr.toBitString(", "))
+
+})();

@@ -1,5 +1,5 @@
-import {safePrototypePatch} from "../../safe-patcher";
-import {removePatch} from "../../remove-patch";
+import {safePrototypePatch} from "../../patch/safe-patcher";
+import {removePatch} from "../../patch/remove-patch";
 import {fastMap} from "./fast-map";
 import {Binary} from "./types/binary";
 
@@ -12,7 +12,7 @@ declare global {
 }
 
 binarize.monkeyPatch = (): void => {
-    safePrototypePatch(Array, "binarize",
+    safePrototypePatch(Array, 'binarize',
         function () {
             return binarize(this);
         }

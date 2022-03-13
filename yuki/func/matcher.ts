@@ -1,0 +1,1 @@
+export const matcher = (expression: RegExp) => (str: string) => str.match(expression) !== null;

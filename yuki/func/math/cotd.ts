@@ -1,6 +1,7 @@
-import {safePatch} from "../../safe-patcher";
-import {cot} from "./cot";
+import {safePatch} from "../../patch/safe-patcher";
+import {removePatch} from "../../patch/remove-patch";
 import {deg2rad} from "./deg2rad";
+import {cot} from "./cot";
 
 cot.monkeyPatch();
 deg2rad.monkeyPatch();
@@ -12,11 +13,15 @@ declare global {
 }
 
 cotd.monkeyPatch = (): void => {
-    safePatch(Math, "cotd",
+    safePatch(Math, 'cotd',
         function (x: number) {
             return cotd(x);
         }
     );
+}
+
+cotd.removePatch = (): void => {
+    removePatch(Math, 'cotd');
 }
 
 export function cotd(x: number): number {
