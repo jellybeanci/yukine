@@ -4,6 +4,7 @@ import {exist} from "./utils/exist";
 import {matcher} from "./func/matcher";
 import {Monkey} from "./types/monkey";
 import {FileNode} from "./utils/file-node";
+import {Patch} from "./enums/patch";
 
 const {readdir} = promises;
 
@@ -55,13 +56,22 @@ function filterModules(modules: object[]): Monkey[] {
     return modules.map(getPatch).filter(exist);
 }
 
-export async function activateMonkeyPatch(funcPath: string = "func") {
+export async function patchFactory(funcPath: string = "func"): Promise<(patch: Patch) => void> {
     const root = await dumpPaths(funcPath);
     const tsPaths = await getTypeScriptPaths(root);
-    console.log(tsPaths)
     const imports = await autoImporter(tsPaths);
-    for (const module of filterModules(imports)) {
-        module.monkeyPatch();
+    const filtered = filterModules(imports);
+    return function (patch: Patch) {
+        switch (patch) {
+            case Patch.ACTIVATE:
+                for (const module of filtered) module.monkeyPatch();
+                break;
+            case Patch.DEACTIVATE:
+                for (const module of filtered) module.removePatch();
+                break;
+            default:
+                throw Error("Unreachable!");
+        }
     }
 }
 

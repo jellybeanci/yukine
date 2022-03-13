@@ -41,7 +41,6 @@ import {deg2rad} from "./func/math/deg2rad";
 import {QUARTER_PI} from "./func/math/constants/quarter-pi";
 import {HALF_PI} from "./func/math/constants/half-pi";
 import {TWO_PI} from "./func/math/constants/two-pi";
-import {defineConstants} from "./func/math/define-constants";
 import {randomRange} from "./func/math/random-range";
 import {rad2deg} from "./func/math/rad2deg";
 import {randomGaussian} from "./func/math/random-gaussian";
@@ -63,8 +62,8 @@ import {arrayCosd} from "./func/array/array-cosd";
 import {arrayTand} from "./func/array/array-tand";
 import {arrayCotd} from "./func/array/array-cotd";
 import {toBitString} from "./func/array/to-bit-string";
-import {activateMonkeyPatch} from "./dynamic-import";
-
+import {patchFactory} from "./dynamic-import";
+import {Patch} from "./enums/patch";
 
 /*
 fastMap.monkeyPatch();
@@ -129,8 +128,11 @@ arrayTand.monkeyPatch();
 arrayCotd.monkeyPatch();
 toBitString.monkeyPatch();
 */
+
+
 (async _ => {
-    await activateMonkeyPatch("func");
+
+
     const doubler = n => n * 2;
 
     const xs = [1, 2, 3, 4, 5, 6];
@@ -549,4 +551,5 @@ toBitString.monkeyPatch();
     console.log(bitStr.toBitString())
     console.log(garbageArray.toBitString())
     console.log(bitStr.toBitString(", "))
+
 })();
