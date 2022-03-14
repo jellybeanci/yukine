@@ -131,6 +131,8 @@ toBitString.monkeyPatch();
 
 
 (async _ => {
+    const patcher = await patchFactory();
+    patcher(Patch.ACTIVATE);
 
 
     const doubler = n => n * 2;

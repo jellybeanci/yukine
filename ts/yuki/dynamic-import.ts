@@ -8,7 +8,7 @@ import {Patch} from "./enums/patch";
 
 const {readdir} = promises;
 
-const isTypeScriptPath = /^(([\/\\])?[a-z0-9_-]+)*(\.ts)$/gi;
+const isTypeScriptPath = /^(([\/\\])?[a-z0-9_-]+)*(\.[tj]s)$/gi;
 
 async function dumpDirObject(entryPoint: string): Promise<FileNode[]> {
     const currentDir = await readdir(entryPoint, {withFileTypes: true, encoding: "utf-8"});

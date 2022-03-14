@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node yuki-js/yukine.js",
+    "start": "node js/yuki/yukine.js",
     "build": "date +\"%T\" && echo \"Cleaning...\" && rm -rf ./yuki-js && echo \"Compiling...\" && tsc && echo \"Done!\" && date +\"%T\" && echo ~~~~~~~~~~~~~~~~\n",
     "build-w-types": "tsc --declaration",
     "bundle": "npm run build && browserify --node --ignore-missing yuki-js/yukine.js | terser > bundle.js",
     "compile": "npm run build && npm run start",
-    "run-on-ts-node": "ts-node yuki/yukine.ts",
+    "run-on-ts-node": "ts-node ts/yuki/yukine.ts",
     "test": "jest --collect-coverage --rootDir=test"
   },
   "keywords": [],

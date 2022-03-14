@@ -4,8 +4,8 @@
     "target": "ESNext",
     "sourceMap": true,
     // default true
-    "outDir": "./yuki-js",
-    "rootDir": "./yuki",
+    "outDir": "./js",
+    "rootDir": "./ts",
     "moduleResolution": "node",
     "removeComments": true,
     "declaration": false,
@@ -14,6 +14,7 @@
   },
   "exclude": [
     "node_modules",
+    "js",
     "yuki-js",
     "cte",
     "test"
