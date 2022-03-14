@@ -6,9 +6,11 @@
   "scripts": {
     "start": "node yuki-js/yukine.js",
     "build": "date +\"%T\" && echo \"Cleaning...\" && rm -rf ./yuki-js && echo \"Compiling...\" && tsc && echo \"Done!\" && date +\"%T\" && echo ~~~~~~~~~~~~~~~~\n",
+    "build-w-types": "tsc --declaration",
     "bundle": "npm run build && browserify --node --ignore-missing yuki-js/yukine.js | terser > bundle.js",
     "compile": "npm run build && npm run start",
-    "run-on-ts-node": "ts-node yuki/yukine.ts"
+    "run-on-ts-node": "ts-node yuki/yukine.ts",
+    "test": "jest --collect-coverage --rootDir=test"
   },
   "keywords": [],
   "author": "Göksel Küçükşahin",
@@ -17,6 +19,7 @@
     "@jellybeanci/range": "^0.0.2",
     "@types/node": "^17.0.21",
     "browserify": "^17.0.0",
+    "jest": "^27.5.1",
     "terser": "^5.12.0",
     "ts-node": "^10.7.0"
   },
