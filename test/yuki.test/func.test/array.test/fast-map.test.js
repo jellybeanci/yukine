@@ -26,6 +26,13 @@ test("'fastMap', is 'monkeyPatch' and 'removePatch' same?", () => {
   expect(fastMap.monkeyPatch === fastMap.removePatch).not.toBe(true);
 })
 
+test("is 'monkeyPatch' work with 'fastMap'?", () => {
+  fastMap.removePatch();
+  expect(as.add).not.toBeDefined();
+  fastMap.monkeyPatch(); // Patch 🩹
+  expect(as.fastMap).toBeDefined();
+})
+
 test("is 'fastMap' working properly?", () => {
   expect(fastMap(as, x => x * 2)).toEqual(cs);
   expect(fastMap(ds, x => x * x)).toEqual(gs);
@@ -42,4 +49,19 @@ test("is 'fastMap' working properly?", () => {
   })).toEqual(mapped);
 })
 
-// monkey patch
+test("is 'fastMap' working properly with patch?", () => {
+  expect(as.fastMap(x => x * 2)).toEqual(cs);
+  expect(ds.fastMap(x => x * x)).toEqual(gs);
+  expect([1, 2, 3].fastMap(x => x + 2)).toEqual([3, 4, 5]);
+  expect(garbageArray.fastMap(x => !!x)).toEqual([true, true, false, false, false, true, true, true, true]);
+  const array = [6, 3, 2, 1, 6, 7, 3, -4, 6];
+  const mapped = array.map(((value, i, arr) => {
+    const prev = arr[i - 1] ?? 0;
+    return value ** prev;
+  }));
+  expect(array.fastMap((value, i, arr) => {
+    const prev = arr[i - 1] ?? 0;
+    return value ** prev;
+  })).toEqual(mapped);
+  fastMap.removePatch();
+})

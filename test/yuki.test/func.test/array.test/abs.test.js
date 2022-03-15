@@ -66,4 +66,5 @@ test("is 'abs' working properly with patch?", () => {
   expect(fs.abs()).toEqual(ds);
   expect(nameArray.abs()).toEqual([NaN, NaN, NaN, NaN]);
   expect(emptyArray.abs()).toEqual([]);
+  abs.removePatch();
 })

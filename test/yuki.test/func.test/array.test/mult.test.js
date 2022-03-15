@@ -25,13 +25,12 @@ test("'mult', is 'monkeyPatch' and 'removePatch' same?", () => {
   expect(mult.monkeyPatch === mult.removePatch).not.toBe(true);
 })
 
-/*
-const xs = Object.freeze([1, 2, 3, 4, 5, 6]);
-const ys = Object.freeze([-4, 2, -5, 10, -2, 1]);
-
-const ds = Object.freeze([1, 2, 3, 4, 5, 6, 7, 6, 1]);
-const es = Object.freeze([3, 1, 4, 1, 5, 9, 2, 6, 5]);
-*/
+test("is 'monkeyPatch' work with 'mult'?", () => {
+  mult.removePatch();
+  expect(xs.add).not.toBeDefined();
+  mult.monkeyPatch(); // Patch 🩹
+  expect(xs.fastMap).toBeDefined();
+})
 
 test("is 'mult' working properly?", () => {
   expect(mult(xs, ys)).toEqual([-4, 4, -15, 40, -10, 6]);
@@ -43,4 +42,17 @@ test("is 'mult' working properly?", () => {
   expect(() => {
     mult([1, 2, 3, 4], [1, 2, 3]);
   }).toThrowErrorMatchingSnapshot("Array lengths must agree.");
+})
+
+test("is 'mult' working properly with patch?", () => {
+  expect(xs.mult(ys)).toEqual([-4, 4, -15, 40, -10, 6]);
+  expect(ds.mult(es)).toEqual([3, 2, 12, 4, 25, 54, 14, 36, 5]);
+  expect([1, 2, 3, 4].mult([5, 6, 7, 8])).toEqual([5, 12, 21, 32]);
+  expect(() => {
+    [1, 2, 3, 4].mult([1, 2, 3]);
+  }).toThrow(Error);
+  expect(() => {
+    [1, 2, 3, 4].mult([1, 2, 3]);
+  }).toThrowErrorMatchingSnapshot("Array lengths must agree.");
+  mult.removePatch();
 })

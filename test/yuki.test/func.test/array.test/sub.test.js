@@ -25,6 +25,13 @@ test("'sub', is 'monkeyPatch' and 'removePatch' same?", () => {
   expect(sub.monkeyPatch === sub.removePatch).not.toBe(true);
 })
 
+test("is 'monkeyPatch' work with 'sub'?", () => {
+  sub.removePatch();
+  expect(xs.add).not.toBeDefined();
+  sub.monkeyPatch(); // Patch 🩹
+  expect(xs.fastMap).toBeDefined();
+})
+
 test("is 'sub' working properly?", () => {
   expect(sub(ys, xs)).toEqual([-5, 0, -8, 6, -7, -5]);
   expect(sub(ds, es)).toEqual([-2, 1, -1, 3, 0, -3, 5, 0, -4]);
@@ -35,4 +42,17 @@ test("is 'sub' working properly?", () => {
   expect(() => {
     sub([1, 2, 3, 4], [1, 2, 3]);
   }).toThrowErrorMatchingSnapshot("Array lengths must agree.");
+})
+
+test("is 'sub' working properly with patch?", () => {
+  expect(ys.sub(xs)).toEqual([-5, 0, -8, 6, -7, -5]);
+  expect(ds.sub(es)).toEqual([-2, 1, -1, 3, 0, -3, 5, 0, -4]);
+  expect([1, 2, 3, 4].sub([5, 6, 7, 8])).toEqual([-4, -4, -4, -4]);
+  expect(() => {
+    [1, 2, 3, 4].sub([1, 2, 3]);
+  }).toThrow(Error);
+  expect(() => {
+    [1, 2, 3, 4].sub([1, 2, 3]);
+  }).toThrowErrorMatchingSnapshot("Array lengths must agree.");
+  sub.removePatch();
 })
