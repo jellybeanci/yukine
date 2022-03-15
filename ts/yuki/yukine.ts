@@ -103,7 +103,6 @@ import {avg} from "./func/array/avg";
     const str1 = new String("Ohh, Hi Mark!");
     const str2 = new String("Ohh, Hi Mark!");
 
-    console.log(ks, ks.avg())
 
     /*
     // DEBUG
@@ -492,5 +491,7 @@ import {avg} from "./func/array/avg";
     console.log(bitStr.toBitString())
     console.log(garbageArray.toBitString())
     console.log(bitStr.toBitString(", "))
+
+    console.log(ks, ks.avg())
 */
 })();
