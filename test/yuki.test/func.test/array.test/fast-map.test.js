@@ -11,15 +11,15 @@ test("'fastMap' defined?", () => {
 })
 
 test("does 'fastMap' has 'monkeyPatch'?", () => {
-  expect(fastMap.removePatch).toBeDefined();
-  expect(fastMap.removePatch).not.toBeNull();
-  expect(typeof fastMap.removePatch).toBe("function");
-})
-
-test("does 'fastMap' has 'removePatch' functions?", () => {
   expect(fastMap.monkeyPatch).toBeDefined();
   expect(fastMap.monkeyPatch).not.toBeNull();
   expect(typeof fastMap.monkeyPatch).toBe("function");
+})
+
+test("does 'fastMap' has 'removePatch' functions?", () => {
+  expect(fastMap.removePatch).toBeDefined();
+  expect(fastMap.removePatch).not.toBeNull();
+  expect(typeof fastMap.removePatch).toBe("function");
 })
 
 test("'fastMap', is 'monkeyPatch' and 'removePatch' same?", () => {

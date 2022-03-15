@@ -18,15 +18,15 @@ test("'abs' defined?", () => {
 })
 
 test("does 'abs' has 'monkeyPatch'?", () => {
-  expect(abs.removePatch).toBeDefined();
-  expect(abs.removePatch).not.toBeNull();
-  expect(typeof abs.removePatch).toBe("function");
-})
-
-test("does 'abs' has 'removePatch' functions?", () => {
   expect(abs.monkeyPatch).toBeDefined();
   expect(abs.monkeyPatch).not.toBeNull();
   expect(typeof abs.monkeyPatch).toBe("function");
+})
+
+test("does 'abs' has 'removePatch' functions?", () => {
+  expect(abs.removePatch).toBeDefined();
+  expect(abs.removePatch).not.toBeNull();
+  expect(typeof abs.removePatch).toBe("function");
 })
 
 test("'abs', is 'monkeyPatch' and 'removePatch' same?", () => {
