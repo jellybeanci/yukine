@@ -106,3 +106,5 @@ dist
 *.todo
 
 js/
+
+test/yuki
