@@ -33,6 +33,13 @@ test("'abs', is 'monkeyPatch' and 'removePatch' same?", () => {
   expect(abs.monkeyPatch === abs.removePatch).not.toBe(true);
 })
 
+test("is 'monkeyPatch' work with 'abs'?", () => {
+  abs.removePatch();
+  expect(xs.abs).not.toBeDefined();
+  abs.monkeyPatch(); // Patch 🩹
+  expect(xs.abs).toBeDefined();
+})
+
 test("is 'abs' working properly?", () => {
   expect(abs(as)).toEqual([0, 1, 4, 9, 16]);
   expect(abs(bs)).toEqual([1.56, 2.67, 3.78, 4.89, 5.91]);
@@ -47,10 +54,16 @@ test("is 'abs' working properly?", () => {
   expect(abs(emptyArray)).toEqual([]);
 })
 
-// test("is 'monkeyPatch' work with 'abs'?", () => {
-//   expect(abs.monkeyPatch).toBeDefined();
-//   expect(typeof abs.monkeyPatch).toBe("function");
-//   expect(xs.abs).not.toBeDefined(); // potantial mess
-//   abs.monkeyPatch(); // Patch 🩹
-//   expect(xs.abs).toBeDefined();
-// })
+test("is 'abs' working properly with patch?", () => {
+  expect(as.abs()).toEqual([0, 1, 4, 9, 16]);
+  expect(bs.abs()).toEqual([1.56, 2.67, 3.78, 4.89, 5.91]);
+  expect(xs.abs()).toEqual([1, 2, 3, 4, 5, 6]);
+  expect(ys.abs()).toEqual([4, 2, 5, 10, 2, 1]);
+  expect(zs.abs()).toEqual([1, 2, 3, 4, 5, 6]);
+  expect(ks.abs()).toEqual([1.2, 2.3, 3.4, 4.5, 5.6, 0]);
+  expect(ns.abs()).toEqual([15, 30, 45, 60, 90, 135, 210]);
+  expect(hs.abs()).toEqual([1, 8, 27, 64, 125, 216, 343, 512]);
+  expect(fs.abs()).toEqual(ds);
+  expect(nameArray.abs()).toEqual([NaN, NaN, NaN, NaN]);
+  expect(emptyArray.abs()).toEqual([]);
+})
