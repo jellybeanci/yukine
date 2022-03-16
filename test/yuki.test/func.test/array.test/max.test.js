@@ -45,7 +45,7 @@ test("is 'max' working properly?", () => {
   expect(max(xs)).toEqual(6);
   expect(max(ys)).toEqual(10);
   expect(max(zs)).toEqual(6);
-  expect(max(ks)).toBeCloseTo(4.5);
+  expect(max(ks)).toEqual(4.5);
   expect(max(ns)).toEqual(210);
   expect(max(hs)).toEqual(512);
   expect(max(fs)).toEqual(-1);
@@ -59,7 +59,7 @@ test("is 'max' working properly with patch?", () => {
   expect(xs.max()).toEqual(6);
   expect(ys.max()).toEqual(10);
   expect(zs.max()).toEqual(6);
-  expect(ks.max()).toBeCloseTo(4.5);
+  expect(ks.max()).toEqual(4.5);
   expect(ns.max()).toEqual(210);
   expect(hs.max()).toEqual(512);
   expect(fs.max()).toEqual(-1);
