@@ -27,9 +27,9 @@ test("'mult', is 'monkeyPatch' and 'removePatch' same?", () => {
 
 test("is 'monkeyPatch' work with 'mult'?", () => {
   mult.removePatch();
-  expect(xs.add).not.toBeDefined();
+  expect(xs.mult).not.toBeDefined();
   mult.monkeyPatch(); // Patch 🩹
-  expect(xs.fastMap).toBeDefined();
+  expect(xs.mult).toBeDefined();
 })
 
 test("is 'mult' working properly?", () => {

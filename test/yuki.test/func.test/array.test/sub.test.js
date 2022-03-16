@@ -27,9 +27,9 @@ test("'sub', is 'monkeyPatch' and 'removePatch' same?", () => {
 
 test("is 'monkeyPatch' work with 'sub'?", () => {
   sub.removePatch();
-  expect(xs.add).not.toBeDefined();
+  expect(xs.sub).not.toBeDefined();
   sub.monkeyPatch(); // Patch 🩹
-  expect(xs.fastMap).toBeDefined();
+  expect(xs.sub).toBeDefined();
 })
 
 test("is 'sub' working properly?", () => {

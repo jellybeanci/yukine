@@ -28,7 +28,7 @@ test("'fastMap', is 'monkeyPatch' and 'removePatch' same?", () => {
 
 test("is 'monkeyPatch' work with 'fastMap'?", () => {
   fastMap.removePatch();
-  expect(as.add).not.toBeDefined();
+  expect(as.fastMap).not.toBeDefined();
   fastMap.monkeyPatch(); // Patch 🩹
   expect(as.fastMap).toBeDefined();
 })
