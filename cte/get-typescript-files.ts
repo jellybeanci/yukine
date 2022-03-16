@@ -1,4 +1,4 @@
-import {matcher} from "../yuki/func/matcher";
+import {matcher} from "../ts/yuki/func/matcher";
 
 const isTypeScriptFile = /^([a-z0-9_-]+)\.(ts)$/gi;
 

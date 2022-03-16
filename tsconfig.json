@@ -2,17 +2,21 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "ESNext",
-    "sourceMap": true, // default true
-    "outDir": "./yuki-js",
-    "rootDir": "./yuki",
+    "sourceMap": true,
+    // default true
+    "outDir": "./js",
+    "rootDir": "./ts",
     "moduleResolution": "node",
     "removeComments": true,
-    "declaration": false, // default false
+    "declaration": false,
+    // default false
     "experimentalDecorators": true
   },
   "exclude": [
     "node_modules",
     "js",
-    "cte"
+    "yuki-js",
+    "cte",
+    "test"
   ]
 }

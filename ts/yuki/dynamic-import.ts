@@ -1,14 +1,14 @@
 import {promises} from "fs";
 import {join} from "path";
 import {exist} from "./utils/exist";
-import {matcher} from "./func/matcher";
+import {matcher} from "./utils/matcher";
 import {Monkey} from "./types/monkey";
 import {FileNode} from "./utils/file-node";
 import {Patch} from "./enums/patch";
 
 const {readdir} = promises;
 
-const isTypeScriptPath = /^(([\/\\])?[a-z0-9_-]+)*(\.ts)$/gi;
+const isTypeScriptPath = /^(([\/\\])?[a-z0-9_-]+)*(\.[tj]s)$/gi;
 
 async function dumpDirObject(entryPoint: string): Promise<FileNode[]> {
     const currentDir = await readdir(entryPoint, {withFileTypes: true, encoding: "utf-8"});

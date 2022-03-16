@@ -35,7 +35,7 @@ function* iterate(array) {
     // for await (const dependency of iterate(dependencies)) {
     //     console.log(dependency)
     // }
-    import("../yuki/func/array/abs").then(loaded => {
+    import("../ts/yuki/func/array/abs").then(loaded => {
         const method = Object.values(loaded)[0];
         method.monkeyPatch();
         console.log([-1, 3, -5, 20, -10].abs());

@@ -104,3 +104,7 @@ dist
 .tern-port
 
 *.todo
+
+js/
+
+test/yuki

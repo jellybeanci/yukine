@@ -64,73 +64,11 @@ import {arrayCotd} from "./func/array/array-cotd";
 import {toBitString} from "./func/array/to-bit-string";
 import {patchFactory} from "./dynamic-import";
 import {Patch} from "./enums/patch";
-
-/*
-fastMap.monkeyPatch();
-abs.monkeyPatch();
-max.monkeyPatch();
-min.monkeyPatch();
-sum.monkeyPatch();
-prod.monkeyPatch();
-apply.monkeyPatch();
-pow.monkeyPatch();
-sqrt.monkeyPatch();
-exp.monkeyPatch();
-operation.monkeyPatch();
-add.monkeyPatch();
-addBy.monkeyPatch();
-sub.monkeyPatch();
-subBy.monkeyPatch();
-subFrom.monkeyPatch();
-mult.monkeyPatch();
-multBy.monkeyPatch();
-div.monkeyPatch();
-divBy.monkeyPatch();
-divFrom.monkeyPatch();
-arraySin.monkeyPatch();
-arrayCos.monkeyPatch();
-arrayTan.monkeyPatch();
-arrayEquals.monkeyPatch();
-deepEquals.monkeyPatch();
-swap.monkeyPatch();
-zip.monkeyPatch();
-binarize.monkeyPatch();
-toInt.monkeyPatch();
-arraySquare.monkeyPatch();
-arrayCube.monkeyPatch();
-mod.monkeyPatch();
-round.monkeyPatch();
-ceil.monkeyPatch();
-floor.monkeyPatch();
-cbrt.monkeyPatch();
-stringEquals.monkeyPatch();
-defineConstants.monkeyPatch();
-deg2rad.monkeyPatch();
-rad2deg.monkeyPatch();
-randomRange.monkeyPatch();
-randomGaussian.monkeyPatch();
-randomGaussianRange.monkeyPatch();
-randomBoolean.monkeyPatch();
-randomInt.monkeyPatch();
-cot.monkeyPatch();
-cotd.monkeyPatch();
-square.monkeyPatch();
-cube.monkeyPatch();
-numberEquals.monkeyPatch();
-sind.monkeyPatch();
-cosd.monkeyPatch();
-tand.monkeyPatch();
-arrayCot.monkeyPatch();
-isValid.monkeyPatch();
-arraySind.monkeyPatch();
-arrayCosd.monkeyPatch();
-arrayTand.monkeyPatch();
-arrayCotd.monkeyPatch();
-toBitString.monkeyPatch();
-*/
-
+import {avg} from "./func/array/avg";
 
 (async _ => {
+    const patcher = await patchFactory();
+    patcher(Patch.ACTIVATE);
 
 
     const doubler = n => n * 2;
@@ -165,7 +103,9 @@ toBitString.monkeyPatch();
     const str1 = new String("Ohh, Hi Mark!");
     const str2 = new String("Ohh, Hi Mark!");
 
-// DEBUG
+
+    /*
+    // DEBUG
 
     console.log(fastMap(xs, doubler))
     console.log(xs.fastMap(doubler))
@@ -552,4 +492,6 @@ toBitString.monkeyPatch();
     console.log(garbageArray.toBitString())
     console.log(bitStr.toBitString(", "))
 
+    console.log(ks, ks.avg())
+*/
 })();
