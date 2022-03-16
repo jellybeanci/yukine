@@ -1,4 +1,5 @@
 const {swap} = require("../../../yuki/func/array/swap");
+const {xs} = require("../../../constants/alpha-beta/xs");
 const {os} = require("../../../constants/alpha-beta/os");
 
 test("'swap' defined?", () => {
