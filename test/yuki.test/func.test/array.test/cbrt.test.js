@@ -2,7 +2,6 @@ const {cbrt} = require("../../../yuki/func/array/cbrt");
 const {xs} = require("../../../constants/alpha-beta/xs");
 const {ds} = require("../../../constants/alpha-beta/ds");
 const {fs} = require("../../../constants/alpha-beta/fs");
-const {gs} = require("../../../constants/alpha-beta/gs");
 const {hs} = require("../../../constants/alpha-beta/hs");
 const {emptyArray} = require("../../../constants/empty-array");
 const {nameArray} = require("../../../constants/name-array");
