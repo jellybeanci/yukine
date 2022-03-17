@@ -3,6 +3,8 @@ const {xs} = require("../../../constants/alpha-beta/xs");
 const {ds} = require("../../../constants/alpha-beta/ds");
 const {es} = require("../../../constants/alpha-beta/es");
 const {fs} = require("../../../constants/alpha-beta/fs");
+const {addFn} = require("../../../constants/add-fn");
+const {multFn} = require("../../../constants/mult-fn");
 
 test("'apply' defined?", () => {
   expect(apply).toBeDefined();
@@ -31,9 +33,6 @@ test("is 'monkeyPatch' work with 'apply'?", () => {
   apply.monkeyPatch(); // Patch 🩹
   expect(xs.apply).toBeDefined();
 })
-
-const addFn = (a, b) => a + b;
-const multFn = (a, b) => a * b;
 
 test("is 'apply' working properly?", () => {
   expect(apply(ds, 1, addFn)).toEqual([2, 3, 4, 5, 6, 7, 8, 7, 2]);
