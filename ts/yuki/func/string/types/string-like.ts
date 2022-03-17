@@ -1,0 +1,1 @@
+export type StringLike = string | String

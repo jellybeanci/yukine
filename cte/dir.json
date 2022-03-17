@@ -1,0 +1,241 @@
+[
+  {
+    "head": "array",
+    "childeren": [
+      {
+        "head": "abs.ts"
+      },
+      {
+        "head": "add-by.ts"
+      },
+      {
+        "head": "add.ts"
+      },
+      {
+        "head": "apply.ts"
+      },
+      {
+        "head": "array-cos.ts"
+      },
+      {
+        "head": "array-cosd.ts"
+      },
+      {
+        "head": "array-cot.ts"
+      },
+      {
+        "head": "array-cotd.ts"
+      },
+      {
+        "head": "array-cube.ts"
+      },
+      {
+        "head": "array-equals.ts"
+      },
+      {
+        "head": "array-sin.ts"
+      },
+      {
+        "head": "array-sind.ts"
+      },
+      {
+        "head": "array-square.ts"
+      },
+      {
+        "head": "array-tan.ts"
+      },
+      {
+        "head": "array-tand.ts"
+      },
+      {
+        "head": "binarize.ts"
+      },
+      {
+        "head": "cbrt.ts"
+      },
+      {
+        "head": "ceil.ts"
+      },
+      {
+        "head": "deep-equals.ts"
+      },
+      {
+        "head": "div-by.ts"
+      },
+      {
+        "head": "div-from.ts"
+      },
+      {
+        "head": "div.ts"
+      },
+      {
+        "head": "exp.ts"
+      },
+      {
+        "head": "fast-map.ts"
+      },
+      {
+        "head": "floor.ts"
+      },
+      {
+        "head": "max.ts"
+      },
+      {
+        "head": "min.ts"
+      },
+      {
+        "head": "mod.ts"
+      },
+      {
+        "head": "mult-by.ts"
+      },
+      {
+        "head": "mult.ts"
+      },
+      {
+        "head": "operation.ts"
+      },
+      {
+        "head": "pow.ts"
+      },
+      {
+        "head": "prod.ts"
+      },
+      {
+        "head": "round.ts"
+      },
+      {
+        "head": "sqrt.ts"
+      },
+      {
+        "head": "sub-by.ts"
+      },
+      {
+        "head": "sub-from.ts"
+      },
+      {
+        "head": "sub.ts"
+      },
+      {
+        "head": "sum.ts"
+      },
+      {
+        "head": "swap.ts"
+      },
+      {
+        "head": "to-bit-string.ts"
+      },
+      {
+        "head": "to-int.ts"
+      },
+      {
+        "head": "types",
+        "childeren": [
+          {
+            "head": "binary.ts"
+          },
+          {
+            "head": "callback-op.ts"
+          },
+          {
+            "head": "primitive-type.ts"
+          }
+        ]
+      },
+      {
+        "head": "zip.ts"
+      }
+    ]
+  },
+  {
+    "head": "math",
+    "childeren": [
+      {
+        "head": "constants",
+        "childeren": [
+          {
+            "head": "half-pi.ts"
+          },
+          {
+            "head": "quarter-pi.ts"
+          },
+          {
+            "head": "two-pi.ts"
+          }
+        ]
+      },
+      {
+        "head": "cosd.ts"
+      },
+      {
+        "head": "cot.ts"
+      },
+      {
+        "head": "cotd.ts"
+      },
+      {
+        "head": "cube.ts"
+      },
+      {
+        "head": "define-constants.ts"
+      },
+      {
+        "head": "deg2rad.ts"
+      },
+      {
+        "head": "rad2deg.ts"
+      },
+      {
+        "head": "random-boolean.ts"
+      },
+      {
+        "head": "random-gaussian-range.ts"
+      },
+      {
+        "head": "random-gaussian.ts"
+      },
+      {
+        "head": "random-int.ts"
+      },
+      {
+        "head": "random-range.ts"
+      },
+      {
+        "head": "sind.ts"
+      },
+      {
+        "head": "square.ts"
+      },
+      {
+        "head": "tand.ts"
+      }
+    ]
+  },
+  {
+    "head": "number",
+    "childeren": [
+      {
+        "head": "is-valid.ts"
+      },
+      {
+        "head": "number-equals.ts"
+      }
+    ]
+  },
+  {
+    "head": "string",
+    "childeren": [
+      {
+        "head": "string-equals.ts"
+      },
+      {
+        "head": "types",
+        "childeren": [
+          {
+            "head": "string-like.ts"
+          }
+        ]
+      }
+    ]
+  }
+]
