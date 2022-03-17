@@ -1,3 +1,6 @@
+/**
+ * @type {number[]}
+ */
 const is = Object.freeze([
   2.718281828459045,
   7.38905609893065,

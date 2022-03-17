@@ -1,3 +1,6 @@
+/**
+ * @type {number[][]}
+ */
 const simpleArray = Object.freeze([
   [1, 2, 3, 4]
 ]);
