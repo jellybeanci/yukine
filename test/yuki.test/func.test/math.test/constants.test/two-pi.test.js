@@ -15,7 +15,6 @@ test("does 'TWO_PI' has 'monkeyPatch' functions?", () => {
   expect(typeof monkeyPatch_TWO_PI).toBe("function");
 })
 
-
 test("does 'TWO_PI' has 'removePatch' functions?", () => {
   expect(removePatch_TWO_PI).toBeDefined();
   expect(removePatch_TWO_PI).not.toBeNull();
