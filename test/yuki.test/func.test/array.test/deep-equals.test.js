@@ -1,10 +1,10 @@
 const {deepEquals} = require("../../../yuki/func/array/deep-equals");
+const {arrayEquals} = require("../../../yuki/func/array/array-equals");
 const {mult} = require("../../../yuki/func/array/mult");
 const {xs} = require("../../../constants/alpha-beta/xs");
 const {ds} = require("../../../constants/alpha-beta/ds");
 const {es} = require("../../../constants/alpha-beta/es");
 const {os} = require("../../../constants/alpha-beta/os");
-const {arrayEquals} = require("../../../yuki/func/array/array-equals");
 
 const complexArray1 = [1, 2, 3, [4, 5], 6, 7];
 const complexArray2 = [1, 2, 3, [4, 5], 6, 7];
