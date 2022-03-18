@@ -9,7 +9,7 @@ test("'QUARTER_PI's type.", () => {
   expect(typeof QUARTER_PI).toBe("number");
 })
 
-test("does 'HALF_QUARTER' has 'monkeyPatch' functions?", () => {
+test("does 'QUARTER_PI' has 'monkeyPatch' functions?", () => {
   expect(monkeyPatch_QUARTER_PI).toBeDefined();
   expect(monkeyPatch_QUARTER_PI).not.toBeNull();
   expect(typeof monkeyPatch_QUARTER_PI).toBe("function");
