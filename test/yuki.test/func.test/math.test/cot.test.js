@@ -1,6 +1,5 @@
 const {cot} = require("../../../yuki/func/math/cot");
-const {randomRange} = require("../../../yuki/func/math/random-range");
-const {TWO_PI} = require("../../../yuki/func/math/constants/two-pi");
+const {getRandomRadian} = require("../../../constants/get-random-randian");
 
 test("'cot' defined?", () => {
   expect(cot).toBeDefined();
@@ -29,8 +28,6 @@ test("is 'monkeyPatch' work with 'cot'?", () => {
   cot.monkeyPatch(); // Patch 🩹
   expect(Math.cot).toBeDefined();
 })
-
-const getRandomRadian = () => randomRange(-TWO_PI, TWO_PI);
 
 test("is 'cot' working properly?", () => {
   for (let i = 0; i < 1_000; i++) {
