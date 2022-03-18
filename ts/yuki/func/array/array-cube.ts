@@ -25,5 +25,5 @@ arrayCube.removePatch = (): void => {
 }
 
 export function arrayCube(thisArray: number[]): number[] {
-    return thisArray.fastMap(cube);
+    return thisArray.fastMap(Math.cube);
 }

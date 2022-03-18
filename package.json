@@ -19,18 +19,18 @@
     "compile-test-view": "npm run compile-test && npm run view-coverage"
   },
   "keywords": [],
-  "author": "Göksel Küçükşahin",
+  "author": "Goksel KUCUKSAHIN <gokselkucuksahin@gmail.com> (https://github.com/GokselKUCUKSAHIN)",
   "license": "MIT",
   "devDependencies": {
-    "@jellybeanci/range": "^0.0.2",
     "@types/node": "^17.0.21",
     "browserify": "^17.0.0",
     "jest": "^27.5.1",
-    "terser": "^5.12.0",
+    "terser": "^5.12.1",
     "ts-node": "^10.7.0"
   },
   "dependencies": {
     "@jellybeanci/int": "^0.1.1",
+    "@jellybeanci/range": "^0.0.2",
     "@jellybeanci/random": "^0.1.1",
     "fast-equals": "^3.0.0"
   }
