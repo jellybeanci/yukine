@@ -34,39 +34,45 @@ test("is 'randomInt' working properly?", () => {
     const randomExpect = expect(rand);
     randomExpect.toBeGreaterThan(-15);
     randomExpect.toBeLessThanOrEqual(-5);
-    expect(Math.floor(rand)).toBeCloseTo(rand);
+    expect(Math.trunc(rand)).toBeCloseTo(rand);
   }
   for (let i = 0; i < 1_000; i++) {
     const rand = randomInt(10, 20);
     const randomExpect = expect(rand);
     randomExpect.toBeGreaterThanOrEqual(10);
     randomExpect.toBeLessThan(20);
-    expect(Math.floor(rand)).toBeCloseTo(rand);
+    expect(Math.trunc(rand)).toBeCloseTo(rand);
   }
   for (let i = 0; i < 1_000; i++) {
     const rand = randomInt(50);
     const randomExpect = expect(rand);
     randomExpect.toBeGreaterThanOrEqual(0);
     randomExpect.toBeLessThan(50);
-    expect(Math.floor(rand)).toBeCloseTo(rand);
+    expect(Math.trunc(rand)).toBeCloseTo(rand);
   }
 })
 
 test("is 'randomInt' working properly with patch?", () => {
   for (let i = 0; i < 1_000; i++) {
-    const randomExpect = expect(Math.randomInt(-5, -15));
+    const rand = Math.randomInt(-5, -15);
+    const randomExpect = expect(rand);
     randomExpect.toBeGreaterThan(-15);
     randomExpect.toBeLessThanOrEqual(-5);
+    expect(Math.trunc(rand)).toBeCloseTo(rand);
   }
   for (let i = 0; i < 1_000; i++) {
-    const randomExpect = expect(Math.randomInt(10, 20));
+    const rand = Math.randomInt(10, 20);
+    const randomExpect = expect(rand);
     randomExpect.toBeGreaterThanOrEqual(10);
     randomExpect.toBeLessThan(20);
+    expect(Math.trunc(rand)).toBeCloseTo(rand);
   }
   for (let i = 0; i < 1_000; i++) {
-    const randomExpect = expect(Math.randomInt(50));
+    const rand = Math.randomInt(50);
+    const randomExpect = expect(rand);
     randomExpect.toBeGreaterThanOrEqual(0);
     randomExpect.toBeLessThan(50);
+    expect(Math.trunc(rand)).toBeCloseTo(rand);
   }
   randomInt.removePatch();
 })
