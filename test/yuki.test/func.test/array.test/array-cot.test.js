@@ -1,10 +1,10 @@
 const {arrayCot} = require("../../../yuki/func/array/array-cot");
+const {cot} = require("../../../yuki/func/math/cot");
+const {as} = require("../../../constants/alpha-beta/as");
 const {xs} = require("../../../constants/alpha-beta/xs");
 const {ys} = require("../../../constants/alpha-beta/ys");
-const {ks} = require("../../../constants/alpha-beta/ks");
-const {cot} = require("../../../yuki/func/math/cot");
 const {js} = require("../../../constants/alpha-beta/js");
-const {as} = require("../../../constants/alpha-beta/as");
+const {ks} = require("../../../constants/alpha-beta/ks");
 const {nameArray} = require("../../../constants/name-array");
 const {emptyArray} = require("../../../constants/empty-array");
 
