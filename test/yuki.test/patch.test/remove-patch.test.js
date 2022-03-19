@@ -7,6 +7,6 @@ test("'removePatch' defined?", () => {
 })
 
 test("is 'removePatch' working properly?", () => {
-  let empty;
+  let empty = void 0;
   expect(removePatch(empty)).toBe(undefined);
 })
