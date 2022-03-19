@@ -6,17 +6,21 @@
   "scripts": {
     "start": "node js/yuki/yukine.js",
     "build": "date +\"%T\" && echo \"Cleaning...\" && rm -rf ./js && echo \"Compiling...\" && tsc && echo \"Done!\" && date +\"%T\" && echo ~~~~~~~~~~~~~~~~\n",
-    "build-w-types": "tsc --declaration",
-    "bundle": "npm run build && browserify --node --ignore-missing yuki-js/yukine.js | terser > bundle.js",
+    "build-with-types": "tsc --declaration",
+    "bundle": "npm run build && browserify --node --ignore-missing js/yuki/yukine.js | terser > bundle.js",
     "compile": "npm run build && npm run start",
-    "run-on-ts-node": "ts-node ts/yuki/yukine.ts",
     "test": "jest --collect-coverage --rootDir=test",
     "pre-test": "cp -R ./js/ ./test/",
     "clear": "rm -rf ./test/yuki",
     "clean-test": "npm run clear && npm run pre-test && npm run test",
     "compile-test": "npm run build && npm run clean-test",
     "view-coverage": "open ./test/coverage/lcov-report/index.html",
-    "compile-test-view": "npm run compile-test && npm run view-coverage"
+    "compile-test-view": "npm run compile-test && npm run view-coverage",
+
+    "win-build": "date /t && echo \"Cleaning...\" && del \"./js\" /s /q && echo \"Compiling...\" && tsc && echo \"Done!\" && date /t && echo \"~~~~~~~~~~~~~~~~\"",
+    "win-bundle": "npm run win-build && browserify --node --ignore-missing js/yuki/yukine.js | terser > bundle.js",
+    "win-compile": "npm run win-build && npm run start",
+    "run-on-ts-node": "ts-node ts/yuki/yukine.ts"
   },
   "keywords": [],
   "author": "Goksel KUCUKSAHIN <gokselkucuksahin@gmail.com> (https://github.com/GokselKUCUKSAHIN)",
