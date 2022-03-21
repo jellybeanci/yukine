@@ -132,3 +132,15 @@ const monkeys: readonly Monkey[] = [
     numberEquals,
     stringEquals
 ];
+
+export function activateIt() {
+    for (const monkey of monkeys) {
+        monkey.monkeyPatch();
+    }
+}
+
+export function deactivateIt() {
+    for (const monkey of monkeys) {
+        monkey.removePatch();
+    }
+}
