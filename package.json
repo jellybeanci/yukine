@@ -7,7 +7,7 @@
     "start": "node js/yuki/yukine.js",
     "build": "date +\"%T\" && echo \"Cleaning...\" && rm -rf ./js && echo \"Compiling...\" && tsc && echo \"Done!\" && date +\"%T\" && echo ~~~~~~~~~~~~~~~~\n",
     "build-with-types": "tsc --declaration",
-    "bundle": "npm run build && browserify --node --ignore-missing js/yuki/yukine.js | terser > bundle.js",
+    "bundle": "npm run build && browserify --node --ignore-missing js/yuki/yukine.js | terser > compiled/yukine.js",
     "compile": "npm run build && npm run start",
     "test": "jest --collect-coverage --rootDir=test",
     "pre-test": "cp -R ./js/ ./test/",
@@ -18,7 +18,7 @@
     "compile-test-view": "npm run compile-test && npm run view-coverage",
 
     "win-build": "date /t && echo \"Cleaning...\" && del \"./js\" /s /q && echo \"Compiling...\" && tsc && echo \"Done!\" && date /t && echo \"~~~~~~~~~~~~~~~~\"",
-    "win-bundle": "npm run win-build && browserify --node --ignore-missing js/yuki/yukine.js | terser > bundle.js",
+    "win-bundle": "npm run win-build && browserify --node --ignore-missing js/yuki/yukine.js | terser > compiled/yukine.js",
     "win-compile": "npm run win-build && npm run start",
     "run-on-ts-node": "ts-node ts/yuki/yukine.ts"
   },
@@ -26,7 +26,7 @@
   "author": "Goksel KUCUKSAHIN <gokselkucuksahin@gmail.com> (https://github.com/GokselKUCUKSAHIN)",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^17.0.21",
+    "@types/node": "^17.0.23",
     "browserify": "^17.0.0",
     "jest": "^27.5.1",
     "terser": "^5.12.1",
