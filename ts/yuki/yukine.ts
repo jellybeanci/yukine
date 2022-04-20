@@ -65,6 +65,7 @@ import {isValid} from "./func/number/is-valid";
 import {numberEquals} from "./func/number/number-equals";
 import {stringEquals} from "./func/string/string-equals";
 import {stddev} from "./func/array/stddev";
+import {randomItem} from "./func/array/random-item";
 
 const monkeys: readonly Monkey[] = [
     fastMap,
@@ -132,6 +133,7 @@ const monkeys: readonly Monkey[] = [
     isValid,
     numberEquals,
     stringEquals,
+    randomItem,
     stddev
 ];
 
