@@ -1,8 +1,9 @@
 import {safePrototypePatch} from "../../patch/safe-patcher";
 import {removePatch} from "../../patch/remove-patch";
+import {sum} from "./sum";
 import {avg} from "./avg";
-
-avg.monkeyPatch();
+import {subBy} from "./sub-by";
+import {arraySquare} from "./array-square";
 
 declare global {
     interface Array<T> {
@@ -23,5 +24,5 @@ stddev.removePatch = (): void => {
 }
 
 export function stddev(self: number[]): number {
-    return Math.sqrt(self.subBy(self.avg()).square().sum() / self.length);
+    return Math.sqrt(sum(arraySquare(subBy(self, avg(self))))/ self.length);
 }
