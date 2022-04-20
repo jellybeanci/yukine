@@ -64,6 +64,7 @@ import {randomRange} from "./func/math/random-range";
 import {isValid} from "./func/number/is-valid";
 import {numberEquals} from "./func/number/number-equals";
 import {stringEquals} from "./func/string/string-equals";
+import {stddev} from "./func/array/stddev";
 
 const monkeys: readonly Monkey[] = [
     fastMap,
@@ -130,7 +131,8 @@ const monkeys: readonly Monkey[] = [
     randomRange,
     isValid,
     numberEquals,
-    stringEquals
+    stringEquals,
+    stddev
 ];
 
 export function activateIt() {
