@@ -1,15 +1,10 @@
 const {stddev} = require("../../../yuki/func/array/stddev");
 const {as} = require("../../../constants/alpha-beta/as");
 const {bs} = require("../../../constants/alpha-beta/bs");
-const {fs} = require("../../../constants/alpha-beta/fs");
-const {hs} = require("../../../constants/alpha-beta/hs");
 const {ks} = require("../../../constants/alpha-beta/ks");
 const {ns} = require("../../../constants/alpha-beta/ns");
 const {xs} = require("../../../constants/alpha-beta/xs");
 const {ys} = require("../../../constants/alpha-beta/ys");
-const {zs} = require("../../../constants/alpha-beta/zs");
-const {emptyArray} = require("../../../constants/empty-array");
-const {nameArray} = require("../../../constants/name-array");
 
 test("'stddev' defined?", () => {
   expect(stddev).toBeDefined();
