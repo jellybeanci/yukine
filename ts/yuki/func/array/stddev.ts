@@ -4,14 +4,14 @@ import {variance} from "./variance";
 
 declare global {
     interface Array<T> {
-        stddev(): number;
+        stddev(sample?: boolean): number;
     }
 }
 
 stddev.monkeyPatch = (): void => {
     safePrototypePatch(Array, 'stddev',
-        function () {
-            return stddev(this);
+        function (sample?: boolean) {
+            return stddev(this, sample);
         }
     );
 }
@@ -20,6 +20,6 @@ stddev.removePatch = (): void => {
     removePatch(Array.prototype, 'stddev');
 }
 
-export function stddev(self: number[]): number {
-    return Math.sqrt(variance(self));
+export function stddev(self: number[], sample: boolean = false): number {
+    return Math.sqrt(variance(self, sample));
 }
