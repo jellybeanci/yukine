@@ -74,29 +74,3 @@ export async function patchFactory(funcPath: string = "func"): Promise<(patch: P
         }
     }
 }
-
-
-(async main => {
-    // const root = await dumpPaths("func");
-    // const tsPaths = await getTypeScriptPaths(root);
-    // const imports = await autoImporter(tsPaths);
-    // filterModules(imports).forEach(monkey => {
-    //     console.log(monkey);
-    // })
-
-    // console.log(imports);
-    // for (const rootElement of root.pathIterator()) {
-    //     console.log(rootElement)
-    // }
-
-    // await getTypeScriptPaths(root);
-
-    // console.log(root.toString())
-    // console.dir(dirArray, {'depth': null});
-    // console.log(JSON.stringify(root));
-
-    // const dirArr = await dumpDir(entryPoint);
-    // const typeScriptFiles = await getTypeScriptFiles(dirArr);
-    // console.log(typeScriptFiles);
-    // await autoImporter(typeScriptFiles);
-})();
