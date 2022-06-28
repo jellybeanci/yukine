@@ -41,6 +41,9 @@ test("is 'variance' working properly?", () => {
   expect(variance(ys)).toBeCloseTo(24.88889);
   expect(variance(ks)).toBeCloseTo(10.7155556);
   expect(variance(ns)).toBeCloseTo(4040.81632653061);
+  expect(variance(as, true)).toBeCloseTo(43.5);
+  expect(variance(bs, true)).toBeCloseTo(2.9819699999999996);
+  expect(variance(xs, true)).toBeCloseTo(3.5);
 })
 
 test("is 'variance' working properly with patch?", () => {
@@ -50,5 +53,8 @@ test("is 'variance' working properly with patch?", () => {
   expect(ys.variance()).toBeCloseTo(24.88889);
   expect(ks.variance()).toBeCloseTo(10.7155556);
   expect(ns.variance()).toBeCloseTo(4040.81632653061);
+  expect(as.variance(true)).toBeCloseTo(43.5);
+  expect(bs.variance(true)).toBeCloseTo(2.9819699999999996);
+  expect(xs.variance(true)).toBeCloseTo(3.5);
   variance.removePatch();
 })

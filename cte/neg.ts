@@ -1,1 +1,0 @@
-const neg = (callback: (args: any) => boolean) => (args: any) => !callback(args);
