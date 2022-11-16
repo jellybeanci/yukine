@@ -25,16 +25,16 @@
   "author": "Goksel KUCUKSAHIN <gokselkucuksahin@gmail.com> (https://github.com/GokselKUCUKSAHIN)",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^17.0.25",
+    "@types/node": "^18.0.0",
     "browserify": "^17.0.0",
-    "jest": "^27.5.1",
-    "terser": "^5.12.1",
-    "ts-node": "^10.7.0"
+    "jest": "^28.1.1",
+    "terser": "^5.14.1",
+    "ts-node": "^10.8.1"
   },
   "dependencies": {
     "@jellybeanci/int": "^0.1.1",
     "@jellybeanci/random": "^0.1.1",
     "@jellybeanci/range": "^0.0.2",
-    "fast-equals": "^3.0.1"
+    "fast-equals": "^4.0.1"
   }
 }

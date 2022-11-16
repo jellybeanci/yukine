@@ -66,6 +66,7 @@ import {numberEquals} from "./func/number/number-equals";
 import {stringEquals} from "./func/string/string-equals";
 import {stddev} from "./func/array/stddev";
 import {randomItem} from "./func/array/random-item";
+import {variance} from "./func/array/variance";
 
 const monkeys: readonly Monkey[] = [
     fastMap,
@@ -134,7 +135,8 @@ const monkeys: readonly Monkey[] = [
     numberEquals,
     stringEquals,
     randomItem,
-    stddev
+    stddev,
+    variance
 ];
 
 export function activateIt() {
