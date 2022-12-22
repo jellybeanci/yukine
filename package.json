@@ -16,9 +16,6 @@
     "compile-test": "npm run build && npm run clean-test",
     "view-coverage": "open ./test/coverage/lcov-report/index.html",
     "compile-test-view": "npm run compile-test && npm run view-coverage",
-    "win-build": "date /t && echo \"Cleaning...\" && del \"./js\" /s /q && echo \"Compiling...\" && tsc && echo \"Done!\" && date /t && echo \"~~~~~~~~~~~~~~~~\"",
-    "win-bundle": "npm run win-build && browserify --node --ignore-missing js/yuki/yukine.js | terser > compiled/yukine.js",
-    "win-compile": "npm run win-build && npm run start",
     "run-on-ts-node": "ts-node ts/yuki/yukine.ts"
   },
   "keywords": [],
